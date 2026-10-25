@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
 import { BrandLogo } from './Brand';
+import { triggerJumpscare } from './Jumpscare';
 import { buttonClass } from '../ui/Button';
 import { useSiteSettings, useBusinessName } from '../../lib/SiteSettings';
 
@@ -38,7 +39,9 @@ export function Footer() {
           <div className="footer-col">
             <h3>Studio</h3>
             <a href="/#services">Services</a>
-            <a href="/#process">Process</a>
+            <a href="/#process" onClick={triggerJumpscare}>
+              Process
+            </a>
             <a href="/#about">About</a>
             <Link to="/book">Book a call</Link>
           </div>

@@ -697,3 +697,42 @@
     flex-direction: column;
   }
 }
+
+/* Jumpscare ---------------------------------------------------------------- */
+
+.jumpscare {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #000;
+  cursor: pointer;
+  animation: jumpscare-flash 0.12s steps(2) infinite;
+}
+
+.jumpscare img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: jumpscare-zoom 0.25s cubic-bezier(0.2, 2, 0.4, 1) both, jumpscare-shake 0.08s linear 0.25s infinite;
+  filter: contrast(1.4) saturate(1.3);
+}
+
+@keyframes jumpscare-zoom {
+  from { transform: scale(0.2); }
+  to { transform: scale(1.15); }
+}
+
+@keyframes jumpscare-shake {
+  0% { transform: scale(1.15) translate(0, 0) rotate(0); }
+  25% { transform: scale(1.18) translate(-12px, 8px) rotate(-1.5deg); }
+  50% { transform: scale(1.15) translate(10px, -10px) rotate(1deg); }
+  75% { transform: scale(1.2) translate(-8px, -6px) rotate(-1deg); }
+  100% { transform: scale(1.15) translate(0, 0) rotate(0); }
+}
+
+@keyframes jumpscare-flash {
+  from { background: #000; }
+  to { background: #7a0000; }
+}

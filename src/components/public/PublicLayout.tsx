@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { Jumpscare } from './Jumpscare';
 import '../../pages/public/public.css';
 
 /** Scrolls to hash targets after navigation, or to top on route change. */
@@ -29,6 +30,7 @@ export function PublicLayout({ hideFooter = false }: { hideFooter?: boolean }) {
         <Outlet />
       </main>
       {hideFooter ? null : <Footer />}
+      <Jumpscare />
     </div>
   );
 }

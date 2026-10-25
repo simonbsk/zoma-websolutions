@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { BrandLogo } from './Brand';
+import { triggerJumpscare } from './Jumpscare';
 import { buttonClass } from '../ui/Button';
 
 const LINKS = [
@@ -31,7 +32,11 @@ export function Navbar() {
         <BrandLogo />
         <nav className="nav-links" aria-label="Primary">
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href}>
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={link.label === 'Process' ? triggerJumpscare : undefined}
+            >
               {link.label}
             </a>
           ))}
@@ -54,7 +59,14 @@ export function Navbar() {
       {open ? (
         <div className="nav-mobile">
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => {
+                setOpen(false);
+                if (link.label === 'Process') triggerJumpscare();
+              }}
+            >
               {link.label}
             </a>
           ))}

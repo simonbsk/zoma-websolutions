@@ -47,7 +47,7 @@
   width: 14px;
   height: 14px;
   border-radius: 4px;
-  background: var(--teal-800);
+  background: var(--teal-800) url('/eyuep.png') center 20% / cover no-repeat;
   flex: none;
 }
 

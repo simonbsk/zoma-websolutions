@@ -7,6 +7,7 @@ import { countAppointments, listAppointmentsBetween } from '../../lib/api/appoin
 import { useAsync } from '../../lib/useAsync';
 import { formatDbDate, formatDbTime, safeFormat, toDbDate } from '../../lib/time';
 import { useAuth } from '../../auth/AuthProvider';
+import { ExperimentPanel } from './ExperimentPanel';
 
 async function loadOverview() {
   const now = new Date();
@@ -113,6 +114,8 @@ export function OverviewPage() {
           </EmptyState>
         )}
       </section>
+
+      <ExperimentPanel />
     </>
   );
 }

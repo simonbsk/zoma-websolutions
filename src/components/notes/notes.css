@@ -1,0 +1,256 @@
+/* Design-note pins: fixed colours so they read on any time of day. */
+
+.note-host {
+  position: relative;
+}
+
+.note-pin {
+  position: absolute;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1.5px solid #ff8a3d;
+  border-radius: 50%;
+  background: #0b0c10;
+  color: #fff;
+  font: 600 12.5px/1 'Inter', system-ui, sans-serif;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+
+.note-pin::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 138, 61, 0.6);
+  animation: note-ping 2.4s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+.note-pin:hover,
+.note-pin.is-open {
+  transform: scale(1.12);
+  background: #ff8a3d;
+  color: #0b0c10;
+}
+
+.note-pin.is-open::after {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes note-ping {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  80%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.note-pop {
+  position: absolute;
+  z-index: 200;
+  border-radius: 18px;
+  background: #fffdfa;
+  color: #17191c;
+  box-shadow: 0 0 0 1px rgba(23, 25, 28, 0.06), 0 24px 60px -12px rgba(10, 8, 20, 0.45);
+  font-family: 'Inter', system-ui, sans-serif;
+  animation: note-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+.note-pop-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid #efebe4;
+}
+
+.note-pop-n {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0b0c10;
+  color: #ff9a52;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.note-pop-head > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.note-pop-tag {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c65f22;
+}
+
+.note-pop-head strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.note-pop-close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin: -4px -4px 0 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #6b6f78;
+  cursor: pointer;
+}
+
+.note-pop-close:hover {
+  background: #f1ede6;
+  color: #17191c;
+}
+
+.note-pop-body {
+  padding: 12px 16px 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #3d4046;
+}
+
+.note-pop-body p + p,
+.note-pop-body p + ul,
+.note-pop-body ul + p {
+  margin-top: 8px;
+}
+
+.note-pop-body ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.note-pop-body li + li {
+  margin-top: 4px;
+}
+
+.note-pop-body strong {
+  color: #17191c;
+  font-weight: 600;
+}
+
+/* Floating toggle ----------------------------------------------------------- */
+
+.notes-toggle {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 150;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 12px 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  background: rgba(11, 12, 16, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #f3efe8;
+  font: 500 13.5px/1 'Inter', system-ui, sans-serif;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+.notes-toggle svg {
+  color: #ff9a52;
+}
+
+.notes-toggle em {
+  margin-left: 4px;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: rgba(255, 138, 61, 0.18);
+  color: #ffb27a;
+  font-style: normal;
+  font-size: 12px;
+}
+
+.notes-switch {
+  position: relative;
+  width: 30px;
+  height: 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.18s ease;
+}
+
+.notes-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.18s ease;
+}
+
+.notes-toggle.is-on .notes-switch {
+  background: #ff8a3d;
+}
+
+.notes-toggle.is-on .notes-switch::after {
+  transform: translateX(12px);
+}
+
+/* Compact toggle on phones so it doesn't cover content. */
+@media (max-width: 560px) {
+  .notes-toggle {
+    left: 12px;
+    bottom: 12px;
+    height: 38px;
+    gap: 8px;
+    padding: 0 10px 0 12px;
+  }
+  .notes-toggle > span:not(.notes-switch) {
+    font-size: 0;
+  }
+  .notes-toggle em {
+    margin-left: 0;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .note-pin::after {
+    animation: none;
+  }
+}

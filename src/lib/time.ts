@@ -102,13 +102,18 @@ export function formatDuration(minutes: number): string {
   return m ? `${h} h ${m} min` : `${h} h`;
 }
 
-export function formatPrice(cents: number, currency = 'EUR'): string {
-  if (!cents) return 'Free consultation';
+/** Plain currency amount, e.g. "€2,400". */
+export function formatMoney(cents: number, currency = 'EUR'): string {
   return new Intl.NumberFormat('en-GB', {
     style: 'currency',
     currency,
     maximumFractionDigits: cents % 100 === 0 ? 0 : 2,
   }).format(cents / 100);
+}
+
+/** Consultation price; zero reads as "Free consultation". */
+export function formatPrice(cents: number, currency = 'EUR'): string {
+  return cents ? formatMoney(cents, currency) : 'Free consultation';
 }
 
 export const WEEKDAY_NAMES = [

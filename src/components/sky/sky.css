@@ -1,0 +1,483 @@
+/* Scroll-driven sky over the sea. All colours arrive as custom properties from SkyBackground. */
+
+.sky {
+  --horizon: 84%;
+  --sky-top: #8098c4;
+  --sky-mid: #d9b4c0;
+  --sky-low: #ffd0a6;
+  --sky-haze: #ffe7cc;
+  --sun-color: #fff0d6;
+  --sun-glow: rgba(255, 190, 135, 0.6);
+  --cloud-lit: #fff3e6;
+  --cloud-shade: #b896ad;
+  --leak: rgba(255, 170, 120, 0.32);
+  --sea-horizon: #efc5ad;
+  --sea-deep: #4a5b85;
+  --sea-hi: rgba(255, 240, 225, 0.55);
+  --sea-lo: rgba(30, 36, 60, 0.5);
+  --sea-line: rgba(255, 245, 230, 0.9);
+  --glitter: #ffdcae;
+  --glint-a: 0.9;
+  --glint-x: 16%;
+  --glint-w: 16%;
+  --glint-ang: 30deg;
+  --rays: 0.3;
+  --stars: 0;
+  --moon: 0;
+  --night: 0;
+  --sun-x: 16%;
+  --sun-y: 85%;
+
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #05070f;
+}
+
+.sky > * {
+  position: absolute;
+  inset: 0;
+}
+
+.sky-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--sky-top) 0%,
+    var(--sky-mid) 46%,
+    var(--sky-low) 72%,
+    var(--sky-haze) var(--horizon),
+    var(--sky-haze) 100%
+  );
+}
+
+/* Stars --------------------------------------------------------------------- */
+
+.sky-stars {
+  opacity: var(--stars);
+  mask-image: linear-gradient(180deg, #000 0%, #000 48%, transparent calc(var(--horizon) - 4%));
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 48%, transparent calc(var(--horizon) - 4%));
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+}
+
+.stars-0 {
+  background-size: 640px 640px;
+  animation: twinkle 5.5s ease-in-out infinite;
+}
+
+.stars-1 {
+  background-size: 900px 900px;
+  background-position: 210px 140px;
+  animation: twinkle 7.5s ease-in-out -3s infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* Moon ---------------------------------------------------------------------- */
+
+.sky-moon {
+  opacity: var(--moon);
+}
+
+.moon-glow,
+.moon-disc {
+  position: absolute;
+  left: 78%;
+  top: 17%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.moon-glow {
+  width: 760px;
+  height: 760px;
+  background: radial-gradient(
+    circle,
+    rgba(214, 224, 255, 0.26) 0%,
+    rgba(170, 188, 245, 0.1) 22%,
+    rgba(120, 140, 220, 0.03) 45%,
+    rgba(120, 140, 220, 0) 62%
+  );
+}
+
+.moon-disc {
+  width: 52px;
+  height: 52px;
+  /* Soft maria and a gentle terminator, kept painterly rather than detailed. */
+  background: radial-gradient(circle at 62% 38%, rgba(176, 172, 160, 0.38) 0 9%, transparent 16%),
+    radial-gradient(circle at 36% 62%, rgba(170, 166, 154, 0.32) 0 12%, transparent 20%),
+    radial-gradient(circle at 58% 70%, rgba(186, 182, 170, 0.28) 0 6%, transparent 12%),
+    radial-gradient(circle at 40% 36%, #fffdf6 0%, #f3efe2 50%, #dcd7c7 100%);
+  box-shadow: inset -7px -4px 12px rgba(60, 64, 90, 0.28), 0 0 18px rgba(236, 240, 255, 0.7),
+    0 0 60px rgba(200, 214, 255, 0.35), 0 0 140px rgba(170, 190, 255, 0.18);
+  filter: blur(0.35px);
+}
+
+/* Sun: a diffuse bloom rather than a disc ---------------------------------- */
+
+.sky-sun {
+  inset: auto;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  will-change: transform, opacity;
+}
+
+.sun-rays,
+.sun-glow,
+.sun-body,
+.sun-bloom,
+.sun-core {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.sun-rays,
+.sun-glow,
+.sun-bloom,
+.sun-core {
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sun-rays {
+  width: 2200px;
+  height: 2200px;
+  opacity: var(--rays);
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, 0.55) 16%, rgba(0, 0, 0, 0.18) 34%, transparent 56%);
+  -webkit-mask-image: radial-gradient(
+    circle,
+    #000 0%,
+    rgba(0, 0, 0, 0.55) 16%,
+    rgba(0, 0, 0, 0.18) 34%,
+    transparent 56%
+  );
+  animation: rays-turn 420s linear infinite;
+}
+
+@keyframes rays-turn {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.sun-glow {
+  width: 1400px;
+  height: 1400px;
+  background: radial-gradient(circle, var(--sun-glow) 0%, transparent 62%);
+  mix-blend-mode: screen;
+}
+
+.sun-body {
+  width: 0;
+  height: 0;
+  mix-blend-mode: screen;
+}
+
+.sun-bloom {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    var(--sun-color) 14%,
+    color-mix(in srgb, var(--sun-color) 42%, transparent) 32%,
+    transparent 68%
+  );
+  filter: blur(12px);
+  animation: sun-breathe 11s ease-in-out infinite alternate;
+}
+
+.sun-core {
+  width: 76px;
+  height: 76px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--sun-color) 22%, #fff) 0%,
+    color-mix(in srgb, var(--sun-color) 55%, #fff) 34%,
+    var(--sun-color) 58%,
+    transparent 78%
+  );
+  filter: blur(6px);
+}
+
+@keyframes sun-breathe {
+  from {
+    opacity: 0.88;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.07);
+  }
+}
+
+/* Haze resting on the horizon, brightest under the sun. */
+.sky-horizon {
+  background: radial-gradient(120% 26% at var(--sun-x) var(--horizon), var(--sky-haze) 0%, transparent 72%);
+  opacity: calc(0.9 - var(--night) * 0.6);
+}
+
+/* Clouds -------------------------------------------------------------------- */
+
+.cloud-layer {
+  /* One texture tile keeps the texture's 4:3 aspect (layer is 132vh tall → 176vh wide),
+     but is never narrower than the viewport, so phones don't get vertically smeared clouds. */
+  --tile: max(100vw, 176vh);
+  inset: -12% 0 -20% 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  will-change: transform, opacity;
+}
+
+.cloud-drift {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--tile) * 2);
+  height: 100%;
+  animation: cloud-drift 260s linear infinite;
+}
+
+.cloud-far .cloud-drift {
+  animation-duration: 340s;
+}
+
+.cloud-bank .cloud-drift {
+  animation-duration: 420s;
+}
+
+.cloud-mid .cloud-drift {
+  animation-duration: 230s;
+}
+
+.cloud-near .cloud-drift {
+  animation-duration: 150s;
+}
+
+.cloud-body,
+.cloud-shade {
+  position: absolute;
+  inset: 0;
+  mask-size: var(--tile) 100%;
+  -webkit-mask-size: var(--tile) 100%;
+  mask-repeat: repeat-x;
+  -webkit-mask-repeat: repeat-x;
+}
+
+.cloud-body {
+  background: var(--cloud-lit);
+}
+
+.cloud-shade {
+  background: var(--cloud-shade);
+}
+
+/* Far clouds sit slightly hazier — aerial perspective. */
+.cloud-far {
+  filter: saturate(0.85);
+}
+
+@keyframes cloud-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Sea ----------------------------------------------------------------------- */
+
+.sea {
+  inset: auto 0 0 0;
+  top: var(--horizon);
+  overflow: hidden;
+}
+
+.sea > * {
+  position: absolute;
+  inset: 0;
+}
+
+.sea-body {
+  background: linear-gradient(
+    180deg,
+    var(--sea-horizon) 0%,
+    color-mix(in srgb, var(--sea-horizon) 30%, var(--sea-deep)) 24%,
+    var(--sea-deep) 100%
+  );
+}
+
+/* Wave bands, drifting a few pixels back and forth like a slow swell. */
+.sea-tex {
+  inset: 0 -1%;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  animation: swell 9s ease-in-out infinite alternate;
+}
+
+.sea-hi {
+  background: var(--sea-hi);
+}
+
+.sea-lo {
+  background: var(--sea-lo);
+  animation-delay: -4.5s;
+}
+
+@keyframes swell {
+  from {
+    transform: translateX(-5px);
+  }
+  to {
+    transform: translateX(5px);
+  }
+}
+
+/* Soft warm light on the water right under the sun or moon. */
+.sea-glow {
+  background: radial-gradient(
+    ellipse calc(var(--glint-w) * 0.7) 110% at var(--glint-x) 0%,
+    var(--glitter) 0%,
+    transparent 70%
+  );
+  opacity: calc(var(--glint-a) * 0.35);
+  mix-blend-mode: screen;
+}
+
+.sea-glints {
+  opacity: var(--glint-a);
+  mix-blend-mode: screen;
+}
+
+.sea-glint {
+  position: absolute;
+  inset: 0;
+  background: var(--glitter);
+  mask-size: 100% 100%, 100% 100%;
+  -webkit-mask-size: 100% 100%, 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+/* The two glitter variants cross-fade, so the path shimmers. */
+.sea-glint-a {
+  animation: glint 4.6s ease-in-out infinite;
+}
+
+.sea-glint-b {
+  animation: glint 4.6s ease-in-out -2.3s infinite;
+}
+
+@keyframes glint {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.sea-line {
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sea-line) 12%, var(--sea-line) 88%, transparent);
+  opacity: 0.75;
+}
+
+/* Film treatment: light leak, vignette, grain ------------------------------ */
+
+.sky-leak {
+  background: radial-gradient(70% 55% at 0% 0%, var(--leak) 0%, transparent 70%),
+    radial-gradient(60% 50% at 100% 100%, var(--leak) 0%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+.sky-vignette {
+  background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(12, 8, 24, 0.32) 100%);
+  opacity: calc(0.7 + var(--night) * 0.3);
+}
+
+.sky-grain {
+  inset: -50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  animation: grain 1.2s steps(4) infinite;
+}
+
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-3%, 2%);
+  }
+  50% {
+    transform: translate(2%, -3%);
+  }
+  75% {
+    transform: translate(-2%, -1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 720px) {
+  .sun-glow {
+    width: 800px;
+    height: 800px;
+  }
+  .sun-rays {
+    width: 1400px;
+    height: 1400px;
+  }
+  .moon-disc,
+  .moon-glow {
+    left: 82%;
+    top: 12%;
+  }
+  .moon-disc {
+    width: 40px;
+    height: 40px;
+  }
+  .moon-glow {
+    width: 480px;
+    height: 480px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-drift,
+  .stars,
+  .sky-grain,
+  .sun-rays,
+  .sun-bloom,
+  .sea-tex,
+  .sea-glint {
+    animation: none !important;
+  }
+}

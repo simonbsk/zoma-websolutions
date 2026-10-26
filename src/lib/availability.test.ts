@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { generateSlots, overlaps, type GenerateSlotsInput } from './availability';
+import { findFirstSlot, generateSlots, overlaps, type GenerateSlotsInput } from './availability';
 import type { BusinessHour } from './types';
 
 // Monday 2026-11-02, "now" is the Friday before at 08:00.
@@ -98,5 +98,21 @@ describe('generateSlots', () => {
 
   it('never produces a slot longer than the shift', () => {
     expect(labels(base({ durationMinutes: 240 }))).toEqual([]);
+  });
+});
+
+describe('findFirstSlot', () => {
+  const { date: _date, ...rest } = base();
+
+  it('finds the next open day', () => {
+    const slot = findFirstSlot({ ...rest, from: NOW, days: 7 });
+    expect(slot?.start.getDate()).toBe(2);
+    expect(slot?.label).toBe('09:00');
+  });
+
+  it('skips blocked days and returns null when nothing is free', () => {
+    const blockedDates = [{ blocked_date: '2026-11-02', start_time: null, end_time: null }];
+    expect(findFirstSlot({ ...rest, blockedDates, from: NOW, days: 7 })).toBeNull();
+    expect(findFirstSlot({ ...rest, blockedDates, from: NOW, days: 14 })?.start.getDate()).toBe(9);
   });
 });

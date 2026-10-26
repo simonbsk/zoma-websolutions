@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { endOfMonth, endOfWeek, startOfMonth, startOfWeek, addDays } from 'date-fns';
 import { ArrowLeft, ArrowRight, Check, Clock, Lock, CalendarX2 } from 'lucide-react';
@@ -11,9 +11,11 @@ import { getBookedRanges, listBlockedDates, listBusinessHours } from '../../lib/
 import { createAppointment } from '../../lib/api/appointments';
 import { ApiError, errorMessage } from '../../lib/api/errors';
 import { generateSlots } from '../../lib/availability';
+import { track } from '../../lib/experiments';
 import { useSiteSettings } from '../../lib/SiteSettings';
 import { useAsync } from '../../lib/useAsync';
-import { formatDuration, formatPrice, safeFormat, startOfLocalDay, toDbDate } from '../../lib/time';
+import { formatDuration, formatMoney, formatPrice, parseDbDate, safeFormat, startOfLocalDay, toDbDate } from '../../lib/time';
+import { saveBookingDraft } from '../../lib/visitor';
 import type { Service, Slot } from '../../lib/types';
 import { Calendar } from './Calendar';
 import { BookingSummary, BookingSummaryBar } from './BookingSummary';
@@ -70,10 +72,14 @@ export function BookingPage() {
   const services = useAsync(listActiveServices, []);
   const hours = useAsync(listBusinessHours, []);
 
+  // Deep links may carry a date and time (e.g. from "Next free slot") to pre-select.
+  const [linkedDate] = useState(() => parseDbDate(params.get('date')));
+  const [pendingTime, setPendingTime] = useState<string | null>(() => (linkedDate ? params.get('time') : null));
+
   const [step, setStep] = useState<Step>(1);
   const [service, setService] = useState<Service | null>(null);
-  const [month, setMonth] = useState(() => startOfMonth(new Date()));
-  const [date, setDate] = useState<Date | null>(null);
+  const [month, setMonth] = useState(() => startOfMonth(linkedDate ?? new Date()));
+  const [date, setDate] = useState<Date | null>(linkedDate);
   const [slot, setSlot] = useState<Slot | null>(null);
   const [details, setDetails] = useState<Details>({ fullName: '', email: '', phone: '', notes: '' });
   const [errors, setErrors] = useState<DetailErrors>({});
@@ -91,6 +97,17 @@ export function BookingPage() {
       setStep(2);
     }
   }, [params, services.data, service]);
+
+  // Remember the chosen service (for "welcome back — continue booking") and count the start once.
+  const startTracked = useRef(false);
+  useEffect(() => {
+    if (!service) return;
+    saveBookingDraft(service.slug, service.name);
+    if (!startTracked.current) {
+      startTracked.current = true;
+      track('booking_started');
+    }
+  }, [service]);
 
   // Month range (including leading/trailing week days shown in the grid).
   const range = useMemo(() => {
@@ -146,11 +163,22 @@ export function BookingPage() {
 
   const isAvailable = useCallback((d: Date) => (slotsByDay.get(toDbDate(d))?.length ?? 0) > 0, [slotsByDay]);
 
+  // Apply a linked time once that day's slots are known.
+  useEffect(() => {
+    if (!pendingTime || !date) return;
+    const slots = slotsByDay.get(toDbDate(date));
+    if (!slots) return;
+    const match = slots.find((s) => s.label === pendingTime);
+    if (match) setSlot(match);
+    setPendingTime(null);
+  }, [pendingTime, date, slotsByDay]);
+
   // Keep the selected date/slot valid when availability changes.
   useEffect(() => {
     if (date && slotsByDay.size && !isAvailable(date)) {
       setDate(null);
       setSlot(null);
+      setPendingTime(null);
     } else if (slot && date) {
       const stillThere = (slotsByDay.get(toDbDate(date)) ?? []).some((s) => s.start.getTime() === slot.start.getTime());
       if (slotsByDay.size && !stillThere) setSlot(null);
@@ -168,6 +196,8 @@ export function BookingPage() {
     setStep(2);
     setSubmitError(null);
     params.set('service', next.slug);
+    params.delete('date');
+    params.delete('time');
     setParams(params, { replace: true });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -175,6 +205,7 @@ export function BookingPage() {
   function chooseDate(next: Date) {
     setDate(next);
     setSlot(null);
+    setPendingTime(null);
   }
 
   function goTo(next: Step) {
@@ -313,6 +344,11 @@ export function BookingPage() {
                                 </span>
                                 <span className="service-option-price">{formatPrice(s.price_cents, s.currency)}</span>
                               </div>
+                              {s.project_from_cents ? (
+                                <span className="service-option-from">
+                                  Projects from {formatMoney(s.project_from_cents, s.currency)}
+                                </span>
+                              ) : null}
                             </div>
                             <span className="service-option-check" aria-hidden>
                               <Check size={14} strokeWidth={3} />

@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   Layers,
   LogOut,
+  Mail,
   Menu,
   Settings,
   Clock,
@@ -22,6 +23,7 @@ const NAV = [
   { to: '/admin/services', label: 'Services', icon: Layers },
   { to: '/admin/hours', label: 'Business hours', icon: Clock },
   { to: '/admin/blocked', label: 'Blocked dates', icon: CalendarOff },
+  { to: '/admin/subscribers', label: 'Subscribers', icon: Mail },
   { to: '/admin/settings', label: 'Settings', icon: Settings },
 ];
 

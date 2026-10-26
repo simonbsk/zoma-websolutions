@@ -20,6 +20,9 @@
   --teal-400: #5b958c;
   --teal-100: #e2ece9;
   --teal-50: #f0f5f3;
+  /* Highlight accent: teal in the classic design (the sky design overrides it with ember). */
+  --ember: #2d6a63;
+  --ember-soft: #5b958c;
 
   /* Status */
   --amber-700: #8a5a12;

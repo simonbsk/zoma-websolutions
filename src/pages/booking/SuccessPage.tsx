@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { markBooked, readSession, writeSession } from '../../lib/visitor';
+import { track } from '../../lib/experiments';
 import { CalendarPlus, Check, Mail, MessagesSquare, ClipboardList } from 'lucide-react';
 import { buttonClass } from '../../components/ui/Button';
 import { EmptyState } from '../../components/ui/misc';
@@ -56,6 +59,18 @@ export function SuccessPage() {
   const location = useLocation();
   const state = location.state as SuccessState | null;
   const businessName = useBusinessName();
+  const appointmentId = state?.appointment?.id ?? null;
+
+  // Remember the booking so the homepage can say thanks instead, and count it once for the experiment.
+  useEffect(() => {
+    if (!appointmentId) return;
+    markBooked();
+    const countedKey = `zoma:booking-counted:${appointmentId}`;
+    if (readSession(countedKey) !== '1') {
+      writeSession(countedKey, '1');
+      track('booking_completed');
+    }
+  }, [appointmentId]);
 
   if (!state?.appointment) {
     return (

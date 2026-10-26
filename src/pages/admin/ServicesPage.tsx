@@ -15,7 +15,7 @@ import {
 } from '../../lib/api/services';
 import { errorMessage } from '../../lib/api/errors';
 import { useAsync } from '../../lib/useAsync';
-import { formatDuration, formatPrice } from '../../lib/time';
+import { formatDuration, formatMoney, formatPrice } from '../../lib/time';
 import { SERVICE_VISUALS, type Service, type ServiceVisual as VisualKind } from '../../lib/types';
 
 const VISUAL_LABELS: Record<VisualKind, string> = {
@@ -33,6 +33,7 @@ interface FormState {
   description: string;
   duration: string;
   price: string;
+  project_from: string;
   currency: string;
   visual: VisualKind;
   is_active: boolean;
@@ -45,6 +46,7 @@ const EMPTY: FormState = {
   description: '',
   duration: '60',
   price: '0',
+  project_from: '',
   currency: 'EUR',
   visual: 'landing',
   is_active: true,
@@ -58,6 +60,7 @@ function toForm(s: Service): FormState {
     description: s.description,
     duration: String(s.duration_minutes),
     price: (s.price_cents / 100).toString(),
+    project_from: s.project_from_cents ? (s.project_from_cents / 100).toString() : '',
     currency: s.currency,
     visual: s.visual,
     is_active: s.is_active,
@@ -67,10 +70,11 @@ function toForm(s: Service): FormState {
 
 type Errors = Partial<Record<keyof FormState, string>>;
 
-function parseForm(f: FormState): { input?: ServiceInput; errors: Errors } {
+function parseForm(f: FormState, original?: Service): { input?: ServiceInput; errors: Errors } {
   const errors: Errors = {};
   const duration = Number(f.duration);
   const price = Number(f.price.replace(',', '.'));
+  const projectFrom = f.project_from.trim() ? Number(f.project_from.replace(',', '.')) : null;
   const sort = Number(f.sort_order);
   const slug = slugify(f.slug || f.name);
 
@@ -78,6 +82,9 @@ function parseForm(f: FormState): { input?: ServiceInput; errors: Errors } {
   if (!slug) errors.slug = 'Slug is required.';
   if (!Number.isInteger(duration) || duration < 5 || duration > 600) errors.duration = 'Between 5 and 600 minutes.';
   if (!Number.isFinite(price) || price < 0) errors.price = 'Enter a valid price (0 for free).';
+  if (projectFrom !== null && (!Number.isFinite(projectFrom) || projectFrom < 0)) {
+    errors.project_from = 'Enter a valid amount, or leave empty.';
+  }
   if (!/^[A-Z]{3}$/.test(f.currency.trim().toUpperCase())) errors.currency = '3-letter code, e.g. EUR.';
   if (!Number.isInteger(sort)) errors.sort_order = 'Whole number.';
 
@@ -90,6 +97,11 @@ function parseForm(f: FormState): { input?: ServiceInput; errors: Errors } {
       description: f.description.trim(),
       duration_minutes: duration,
       price_cents: Math.round(price * 100),
+      // Only send the project price when it's set (or being cleared), so services still save
+      // on databases without the 0002 migration.
+      ...(projectFrom !== null || original?.project_from_cents
+        ? { project_from_cents: projectFrom === null ? null : Math.round(projectFrom * 100) }
+        : {}),
       currency: f.currency.trim().toUpperCase(),
       visual: f.visual,
       is_active: f.is_active,
@@ -136,7 +148,7 @@ export function ServicesPage() {
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
-    const { input, errors: found } = parseForm(form);
+    const { input, errors: found } = parseForm(form, editing === 'new' || !editing ? undefined : editing);
     setErrors(found);
     if (!input) return;
     setSaving(true);
@@ -225,7 +237,12 @@ export function ServicesPage() {
                         </div>
                       </td>
                       <td>{formatDuration(s.duration_minutes)}</td>
-                      <td>{formatPrice(s.price_cents, s.currency)}</td>
+                      <td>
+                        <div>{formatPrice(s.price_cents, s.currency)}</div>
+                        {s.project_from_cents ? (
+                          <div className="cell-secondary">Projects from {formatMoney(s.project_from_cents, s.currency)}</div>
+                        ) : null}
+                      </td>
                       <td className="hide-md cell-secondary">{s.sort_order}</td>
                       <td>
                         <Toggle checked={s.is_active} onChange={() => void toggleActive(s)} label={<span className="sr-only">Visible on website</span>} />
@@ -303,6 +320,16 @@ export function ServicesPage() {
                   />
                 </div>
               </div>
+              <TextField
+                label="Projects from"
+                optional
+                inputMode="decimal"
+                placeholder="e.g. 2400"
+                value={form.project_from}
+                onChange={(e) => set('project_from', e.target.value)}
+                error={errors.project_from}
+                hint="Typical project price, shown on the website as “Projects from €2,400”."
+              />
               <div className="grid-2">
                 <SelectField label="Card visual" value={form.visual} onChange={(e) => set('visual', e.target.value as VisualKind)}>
                   {SERVICE_VISUALS.map((v) => (

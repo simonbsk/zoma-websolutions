@@ -3,12 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { BrandLogo } from './Brand';
 import { buttonClass } from '../ui/Button';
+import { NotePin } from '../notes/DesignNotes';
+import { track } from '../../lib/experiments';
 
 const LINKS = [
   { href: '/#services', label: 'Services' },
   { href: '/#process', label: 'Process' },
-  { href: '/#about', label: 'About' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/#about', label: 'Studio' },
 ];
 
 export function Navbar() {
@@ -36,10 +37,16 @@ export function Navbar() {
             </a>
           ))}
         </nav>
-        <div className="nav-actions">
-          <Link to="/book" className={buttonClass('primary', 'md', 'nav-cta')}>
+        <div className="nav-actions note-host">
+          <Link to="/book" className={buttonClass('primary', 'md', 'nav-cta btn-midnight')} onClick={() => track('cta_click')}>
             Book a call <ArrowRight size={16} />
           </Link>
+          <NotePin id="german" n={10} tag="Reach" title="A German version" style={{ top: 30, right: -10 }}>
+            <p>
+              Most local clients search in German. All public copy now lives in one file
+              (<code>src/content/site.ts</code>), so a DE/EN switch — German by default — is a contained next step.
+            </p>
+          </NotePin>
           <button
             type="button"
             className="btn btn-subtle btn-icon nav-toggle"

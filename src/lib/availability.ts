@@ -118,3 +118,15 @@ export function generateSlotsForDbDate(dbDate: string, input: Omit<GenerateSlots
   const date = parseDbDate(dbDate);
   return date ? generateSlots({ ...input, date }) : [];
 }
+
+/** The earliest bookable slot within `days` calendar days starting at `from`, or null. */
+export function findFirstSlot(input: Omit<GenerateSlotsInput, 'date'> & { from: Date; days: number }): Slot | null {
+  const { from, days, ...rest } = input;
+  const start = startOfLocalDay(from);
+  for (let i = 0; i < days; i++) {
+    const date = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+    const slots = generateSlots({ ...rest, date });
+    if (slots.length) return slots[0];
+  }
+  return null;
+}

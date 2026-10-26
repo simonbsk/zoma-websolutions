@@ -4,7 +4,16 @@ import { unwrap } from './errors';
 
 export type ServiceInput = Pick<
   Service,
-  'name' | 'slug' | 'description' | 'duration_minutes' | 'price_cents' | 'currency' | 'visual' | 'is_active' | 'sort_order'
+  | 'name'
+  | 'slug'
+  | 'description'
+  | 'duration_minutes'
+  | 'price_cents'
+  | 'project_from_cents'
+  | 'currency'
+  | 'visual'
+  | 'is_active'
+  | 'sort_order'
 >;
 
 const ORDER = { sort: 'sort_order', name: 'name' } as const;

@@ -11,12 +11,28 @@ export interface Service {
   description: string;
   duration_minutes: number;
   price_cents: number;
+  /** Typical project price ("Projects from …"). Added by 0002_marketing.sql — may be absent. */
+  project_from_cents?: number | null;
   currency: string;
   visual: ServiceVisual;
   is_active: boolean;
   sort_order: number;
   created_at: string;
   updated_at: string;
+}
+
+export interface Subscriber {
+  id: string;
+  email: string;
+  source: string;
+  created_at: string;
+}
+
+export interface ExperimentResult {
+  variant: string;
+  views: number;
+  cta_clicks: number;
+  bookings: number;
 }
 
 export interface Appointment {

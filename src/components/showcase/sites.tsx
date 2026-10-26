@@ -23,6 +23,9 @@ export function AtelierNord() {
         <span className="s-logo">Atelier Nord</span>
         <span className="s-links">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>Projects</span>
           <span>Studio</span>
           <span>Journal</span>
@@ -42,6 +45,7 @@ export function AtelierNord() {
             <div className="s-row">
               <p>Architecture and interiors for homes, studios and small public buildings across Northern Germany.</p>
               <span className="s-more">View projects ↗</span>
+<<<<<<< HEAD
 =======
           <span>Projekte</span>
           <span>Studio</span>
@@ -63,6 +67,8 @@ export function AtelierNord() {
               <p>Architektur und Innenräume für Wohnhäuser, Ateliers und kleine öffentliche Bauten in ganz Norddeutschland.</p>
               <span className="s-more">Projekte ansehen ↗</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             </div>
           </div>
         </div>
@@ -74,19 +80,27 @@ export function AtelierNord() {
       <div className="s-work">
         <div className="s-work-head">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span>Selected projects</span>
 =======
           <span>Ausgewählte Projekte</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <span>Selected projects</span>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span className="s-count">(12)</span>
         </div>
         <div className="s-work-grid">
           {[
 <<<<<<< HEAD
+<<<<<<< HEAD
             ['atelier-timber', 'Timber House', 'Lüneburg'],
 =======
             ['atelier-timber', 'Holzhaus', 'Lüneburg'],
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+            ['atelier-timber', 'Timber House', 'Lüneburg'],
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             ['atelier-interior', 'Studio Elbe', 'Hamburg'],
             ['atelier-facade', 'Haus am Hang', 'Kiel'],
           ].map(([photo, name, city]) => (
@@ -114,6 +128,9 @@ export function GlutRoastery() {
         <span className="s-links">
           <span>Shop</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>Subscriptions</span>
           <span>Café</span>
           <span>Story</span>
@@ -130,6 +147,7 @@ export function GlutRoastery() {
         <div className="s-actions">
           <span className="s-btn">Shop the beans</span>
           <span className="s-btn s-btn-line">Try a subscription</span>
+<<<<<<< HEAD
 =======
           <span>Abos</span>
           <span>Café</span>
@@ -148,11 +166,14 @@ export function GlutRoastery() {
           <span className="s-btn">Bohnen kaufen</span>
           <span className="s-btn s-btn-line">Abo testen</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         </div>
         <div className="s-disc">
           <Photo name="glut-cup" />
         </div>
         <span className="s-sticker">
+<<<<<<< HEAD
 <<<<<<< HEAD
           New
           <br />
@@ -162,17 +183,26 @@ export function GlutRoastery() {
           <br />
           Äthiopien
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          New
+          <br />
+          Ethiopia
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <br />
           Guji
         </span>
       </div>
       <div className="s-band">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         <span>Free shipping from €30</span>
         <span>✺</span>
         <span>Roasted to order</span>
         <span>✺</span>
         <span>Compostable bags</span>
+<<<<<<< HEAD
 =======
         <span>Gratisversand ab 30 €</span>
         <span>✺</span>
@@ -180,6 +210,8 @@ export function GlutRoastery() {
         <span>✺</span>
         <span>Kompostierbare Tüten</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
       </div>
     </div>
   );
@@ -199,6 +231,9 @@ export function VeloNine() {
           </span>
           <span className="s-links">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             <span>Bikes</span>
             <span>Gear</span>
             <span>Rides</span>
@@ -216,6 +251,7 @@ export function VeloNine() {
           <div className="s-row">
             <span className="s-cta">Configure yours ↗</span>
             <span className="s-spec">7.4 kg · Shimano 105 Di2 · from €3,490</span>
+<<<<<<< HEAD
 =======
             <span>Räder</span>
             <span>Ausrüstung</span>
@@ -235,6 +271,8 @@ export function VeloNine() {
             <span className="s-cta">Jetzt konfigurieren ↗</span>
             <span className="s-spec">7,4 kg · Shimano 105 Di2 · ab 3.490 €</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           </div>
         </div>
         <div className="s-dots">
@@ -245,6 +283,9 @@ export function VeloNine() {
       </div>
       <div className="s-more">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         <div className="s-more-title">Built for the long way round.</div>
         <div className="s-cards">
           <div className="s-card s-card-photo">
@@ -254,6 +295,7 @@ export function VeloNine() {
           <div className="s-card s-card-lime">
             <span className="s-big">Free bike fitting</span>
             <span>with every new frame. Book in store or online.</span>
+<<<<<<< HEAD
 =======
         <div className="s-more-title">Gebaut für den langen Weg.</div>
         <div className="s-cards">
@@ -265,6 +307,8 @@ export function VeloNine() {
             <span className="s-big">Kostenloses Bikefitting</span>
             <span>zu jedem neuen Rahmen. Im Laden oder online buchen.</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           </div>
         </div>
       </div>
@@ -281,6 +325,9 @@ export function HafenLegal() {
         <span className="s-logo">
           Hafen &amp; Co.
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <small>Attorneys at law</small>
         </span>
         <span className="s-links">
@@ -309,6 +356,7 @@ export function HafenLegal() {
             </span>
             <span>
               <b>4.9</b> client rating
+<<<<<<< HEAD
 =======
           <small>Rechtsanwälte</small>
         </span>
@@ -339,6 +387,8 @@ export function HafenLegal() {
             <span>
               <b>4,9</b> Mandantenbewertung
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             </span>
           </div>
         </div>
@@ -346,12 +396,17 @@ export function HafenLegal() {
           <Photo name="hafen-towers" />
           <div className="s-quote">
 <<<<<<< HEAD
+<<<<<<< HEAD
             “They made a complex merger feel simple.”
             <small>Managing director, logistics group</small>
 =======
             „Sie haben eine komplexe Fusion einfach wirken lassen.“
             <small>Geschäftsführung, Logistikgruppe</small>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+            “They made a complex merger feel simple.”
+            <small>Managing director, logistics group</small>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           </div>
         </div>
       </div>
@@ -367,26 +422,36 @@ export function MaisonFlora() {
       <div className="s-nav">
         <span className="s-links">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span>Bouquets</span>
           <span>Weddings</span>
 =======
           <span>Sträuße</span>
           <span>Hochzeiten</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <span>Bouquets</span>
+          <span>Weddings</span>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>Events</span>
         </span>
         <span className="s-logo">Maison Flora</span>
         <span className="s-links s-links-end">
           <span>Workshops</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span>Bag (0)</span>
 =======
           <span>Warenkorb (0)</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <span>Bag (0)</span>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         </span>
       </div>
       <div className="s-hero">
         <div className="s-title">
+<<<<<<< HEAD
 <<<<<<< HEAD
           Flowers for the
           <br />
@@ -396,12 +461,20 @@ export function MaisonFlora() {
           <br />
           <em>Tage</em> dazwischen
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          Flowers for the
+          <br />
+          <em>in-between</em> days
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         </div>
         <div className="s-arch">
           <Photo name="flora-tulips" />
         </div>
         <div className="s-note">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           Same-day delivery
           <br />
           across Munich
@@ -411,6 +484,7 @@ export function MaisonFlora() {
           Seasonal
           <br />
           &amp; hand-tied
+<<<<<<< HEAD
 =======
           Lieferung am selben Tag
           <br />
@@ -422,6 +496,8 @@ export function MaisonFlora() {
           <br />
           &amp; handgebunden
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         </span>
       </div>
     </div>
@@ -442,6 +518,9 @@ export function OrbitAnalytics() {
         </span>
         <span className="s-links">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>Product</span>
           <span>Pricing</span>
           <span>Customers</span>
@@ -463,6 +542,7 @@ export function OrbitAnalytics() {
         <div className="s-actions">
           <span className="s-btn">Start free trial</span>
           <span className="s-btn s-btn-ghost">Book a demo</span>
+<<<<<<< HEAD
 =======
           <span>Produkt</span>
           <span>Preise</span>
@@ -486,6 +566,8 @@ export function OrbitAnalytics() {
           <span className="s-btn">Kostenlos testen</span>
           <span className="s-btn s-btn-ghost">Demo buchen</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         </div>
         <div className="s-dash">
           <div className="s-dash-side">
@@ -498,6 +580,9 @@ export function OrbitAnalytics() {
             <div className="s-kpis">
               <span>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
                 Revenue <b>€128.4k</b> <em>+12.6%</em>
               </span>
               <span>
@@ -505,6 +590,7 @@ export function OrbitAnalytics() {
               </span>
               <span>
                 Churn <b>1.8%</b> <em>−0.3%</em>
+<<<<<<< HEAD
 =======
                 Umsatz <b>128.400 €</b> <em>+12,6 %</em>
               </span>
@@ -514,6 +600,8 @@ export function OrbitAnalytics() {
               <span>
                 Abwanderung <b>1,8 %</b> <em>−0,3 %</em>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
               </span>
             </div>
             <svg className="s-chart" viewBox="0 0 400 120" preserveAspectRatio="none">
@@ -551,12 +639,16 @@ export function LindeNordic() {
         <span className="s-logo">Café Linde</span>
         <span className="s-links">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>Menu</span>
           <span>Breakfast</span>
           <span>Events</span>
           <span>Visit</span>
         </span>
         <span className="s-btn s-btn-line">Reserve a table</span>
+<<<<<<< HEAD
 =======
           <span>Karte</span>
           <span>Frühstück</span>
@@ -565,11 +657,16 @@ export function LindeNordic() {
         </span>
         <span className="s-btn s-btn-line">Tisch reservieren</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
       </div>
       <div className="s-hero">
         <div className="s-copy">
           <span className="s-open">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             <i /> Open today · 8:00 – 18:00
           </span>
           <div className="s-title">
@@ -581,6 +678,7 @@ export function LindeNordic() {
           <div className="s-actions">
             <span className="s-btn">See the menu</span>
             <span className="s-link">Find us →</span>
+<<<<<<< HEAD
 =======
             <i /> Heute geöffnet · 8:00 – 18:00
           </span>
@@ -594,6 +692,8 @@ export function LindeNordic() {
             <span className="s-btn">Zur Karte</span>
             <span className="s-link">Anfahrt →</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           </div>
         </div>
         <div className="s-media">
@@ -603,6 +703,7 @@ export function LindeNordic() {
       <div className="s-menu">
         {[
 <<<<<<< HEAD
+<<<<<<< HEAD
           ['Cardamom bun', '3.80'],
           ['Flat white', '3.90'],
           ['Sourdough & eggs', '9.50'],
@@ -611,6 +712,11 @@ export function LindeNordic() {
           ['Flat White', '3,90'],
           ['Sauerteigbrot & Eier', '9,50'],
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          ['Cardamom bun', '3.80'],
+          ['Flat white', '3.90'],
+          ['Sourdough & eggs', '9.50'],
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         ].map(([item, price]) => (
           <span key={item}>
             {item}
@@ -628,16 +734,22 @@ export function LindeBistro() {
       <div className="s-nav">
         <span className="s-links">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span>Menu</span>
           <span>Wine</span>
 =======
           <span>Karte</span>
           <span>Wein</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <span>Menu</span>
+          <span>Wine</span>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>Events</span>
         </span>
         <span className="s-logo">
           Café Linde
+<<<<<<< HEAD
 <<<<<<< HEAD
           <small>est. 1987</small>
         </span>
@@ -647,6 +759,11 @@ export function LindeBistro() {
         </span>
         <span className="s-btn s-btn-line">Reservierung</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <small>est. 1987</small>
+        </span>
+        <span className="s-btn s-btn-line">Reservations</span>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
       </div>
       <div className="s-hero">
         <div className="s-media">
@@ -656,12 +773,16 @@ export function LindeBistro() {
           <span className="s-kicker">Bistro · Bar · Kaffeehaus</span>
           <div className="s-title">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             Coffee by day,
             <br />
             <em>wine by night.</em>
           </div>
           <p>Hand-brewed coffee until five, natural wines and small plates until late. Thursday to Saturday until midnight.</p>
           <span className="s-btn">Book a table</span>
+<<<<<<< HEAD
 =======
             Tagsüber Kaffee,
             <br />
@@ -670,10 +791,13 @@ export function LindeBistro() {
           <p>Handgebrühter Kaffee bis fünf, Naturweine und kleine Teller bis spät. Donnerstag bis Samstag bis Mitternacht.</p>
           <span className="s-btn">Tisch buchen</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         </div>
       </div>
       <div className="s-menu">
         {[
+<<<<<<< HEAD
 <<<<<<< HEAD
           ['Espresso tonic', '4.50'],
           ['Burrata & figs', '12.00'],
@@ -683,6 +807,11 @@ export function LindeBistro() {
           ['Burrata & Feigen', '12,00'],
           ['Glas Riesling', '7,00'],
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          ['Espresso tonic', '4.50'],
+          ['Burrata & figs', '12.00'],
+          ['Glass of Riesling', '7.00'],
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         ].map(([item, price]) => (
           <span key={item}>
             {item}
@@ -702,6 +831,9 @@ export function LindePop() {
         <span className="s-logo">linde!</span>
         <span className="s-links">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>Menu</span>
           <span>Bowls</span>
           <span>Catering</span>
@@ -718,6 +850,7 @@ export function LindePop() {
           mornings.
         </div>
         <p>Bowls, buns and very good coffee. Open daily from 7 — come hungry.</p>
+<<<<<<< HEAD
 =======
           <span>Karte</span>
           <span>Bowls</span>
@@ -736,11 +869,16 @@ export function LindePop() {
         </div>
         <p>Bowls, Gebäck und richtig guter Kaffee. Täglich ab 7 Uhr geöffnet — kommen Sie hungrig.</p>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         <div className="s-tile">
           <Photo name="linde-berries" />
         </div>
         <span className="s-sticker">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           New
           <br />
           menu!
@@ -765,6 +903,7 @@ export function LindePop() {
           ].map(([name, price]) => (
             <span key={name}>
               <b>{name}</b>€{price}
+<<<<<<< HEAD
 =======
           Neue
           <br />
@@ -792,6 +931,8 @@ export function LindePop() {
               <b>{name}</b>
               {price} €
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             </span>
           ))}
         </div>

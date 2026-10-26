@@ -65,6 +65,7 @@ const TYPEFACES = [
 
 const PALETTES = [
 <<<<<<< HEAD
+<<<<<<< HEAD
   { name: 'Stone', mood: 'Calm · Precise', bg: '#f1efea', ink: '#161616', muted: '#5d5a54', line: '#d9d5cc' },
   { name: 'Night', mood: 'Moody · Bold', bg: '#171716', ink: '#eeeae2', muted: '#a29d93', line: '#34322e' },
   { name: 'Sage', mood: 'Fresh · Natural', bg: '#e3e8dc', ink: '#1d2a21', muted: '#566358', line: '#c5cfbd' },
@@ -73,10 +74,16 @@ const PALETTES = [
   { name: 'Nacht', mood: 'Dunkel · Kraftvoll', bg: '#171716', ink: '#eeeae2', muted: '#a29d93', line: '#34322e' },
   { name: 'Salbei', mood: 'Frisch · Natürlich', bg: '#e3e8dc', ink: '#1d2a21', muted: '#566358', line: '#c5cfbd' },
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+  { name: 'Stone', mood: 'Calm · Precise', bg: '#f1efea', ink: '#161616', muted: '#5d5a54', line: '#d9d5cc' },
+  { name: 'Night', mood: 'Moody · Bold', bg: '#171716', ink: '#eeeae2', muted: '#a29d93', line: '#34322e' },
+  { name: 'Sage', mood: 'Fresh · Natural', bg: '#e3e8dc', ink: '#1d2a21', muted: '#566358', line: '#c5cfbd' },
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
 ];
 
 // Radii are in cqw so they scale with the mock-up like everything else in it.
 const CORNERS = [
+<<<<<<< HEAD
 <<<<<<< HEAD
   { name: 'Sharp', radius: '0' },
   { name: 'Soft', radius: '1cqw' },
@@ -86,6 +93,11 @@ const CORNERS = [
   { name: 'Sanft', radius: '1cqw' },
   { name: 'Rund', radius: '3cqw' },
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+  { name: 'Sharp', radius: '0' },
+  { name: 'Soft', radius: '1cqw' },
+  { name: 'Round', radius: '3cqw' },
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
 ];
 
 export function StyleExample() {
@@ -113,6 +125,7 @@ export function StyleExample() {
   return (
     <div ref={ref} className={`example ${inView ? 'is-in' : ''}`}>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <ExampleHint hidden={touched}>Try it — restyle the site live</ExampleHint>
       <div className="example-window" aria-hidden>
         <BrowserWindow address="Atelier Nord · concept">
@@ -121,6 +134,11 @@ export function StyleExample() {
       <div className="example-window" aria-hidden>
         <BrowserWindow address="Atelier Nord · Konzept">
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+      <ExampleHint hidden={touched}>Try it — restyle the site live</ExampleHint>
+      <div className="example-window" aria-hidden>
+        <BrowserWindow address="Atelier Nord · concept">
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <div className="style-live" style={style}>
             <AtelierNord />
           </div>
@@ -128,16 +146,22 @@ export function StyleExample() {
       </div>
       <div className="inspector">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
         <strong>Your style</strong>
         <div className="inspector-row">
           <span>Typeface</span>
           <span className="inspector-segment" role="group" aria-label="Typeface">
+<<<<<<< HEAD
 =======
         <strong>Ihr Stil</strong>
         <div className="inspector-row">
           <span>Schrift</span>
           <span className="inspector-segment" role="group" aria-label="Schrift">
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             {TYPEFACES.map(({ name, family, weight }, i) => (
               <button
                 key={name}
@@ -155,12 +179,17 @@ export function StyleExample() {
         </div>
         <div className="inspector-row">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span>Palette</span>
           <span className="inspector-swatches" role="group" aria-label="Palette">
 =======
           <span>Farben</span>
           <span className="inspector-swatches" role="group" aria-label="Farben">
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <span>Palette</span>
+          <span className="inspector-swatches" role="group" aria-label="Palette">
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             {PALETTES.map(({ name, bg, ink }, i) => (
               <button
                 key={name}
@@ -176,12 +205,17 @@ export function StyleExample() {
         </div>
         <div className="inspector-row">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span>Corners</span>
           <span className="inspector-segment" role="group" aria-label="Corners">
 =======
           <span>Ecken</span>
           <span className="inspector-segment" role="group" aria-label="Ecken">
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <span>Corners</span>
+          <span className="inspector-segment" role="group" aria-label="Corners">
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
             {CORNERS.map(({ name }, i) => (
               <button key={name} type="button" aria-pressed={i === corners} onClick={() => pick(setCorners)(i)}>
                 {name}
@@ -191,10 +225,14 @@ export function StyleExample() {
         </div>
         <div className="inspector-row">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span>Mood</span>
 =======
           <span>Wirkung</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+          <span>Mood</span>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <span>{mood}</span>
         </div>
       </div>
@@ -207,10 +245,14 @@ export function StyleExample() {
 // `swatch` is each draft's page colour, shown as a tiny preview on its tab.
 const DRAFTS = [
 <<<<<<< HEAD
+<<<<<<< HEAD
   { id: 'A', name: 'Nordic', swatch: '#f5f2ec', Site: LindeNordic },
 =======
   { id: 'A', name: 'Nordisch', swatch: '#f5f2ec', Site: LindeNordic },
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+  { id: 'A', name: 'Nordic', swatch: '#f5f2ec', Site: LindeNordic },
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
   { id: 'B', name: 'Bistro', swatch: '#14110e', Site: LindeBistro },
   { id: 'C', name: 'Pop', swatch: '#ffd23f', Site: LindePop },
 ];
@@ -239,19 +281,27 @@ export function DraftsExample() {
       onBlur={() => setPaused(false)}
     >
 <<<<<<< HEAD
+<<<<<<< HEAD
       <ExampleHint hidden={picked}>Click a tab to compare the drafts</ExampleHint>
 =======
       <ExampleHint hidden={picked}>Klicken Sie auf einen Tab, um die Entwürfe zu vergleichen</ExampleHint>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+      <ExampleHint hidden={picked}>Click a tab to compare the drafts</ExampleHint>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
       <div className="example-window">
         {/* The drafts switch like browser tabs, so the controls stay out of the page itself. */}
         <BrowserWindow
           bar={
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div className="window-tabs" role="group" aria-label="Preview a design draft">
 =======
             <div className="window-tabs" role="group" aria-label="Designentwurf ansehen">
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+            <div className="window-tabs" role="group" aria-label="Preview a design draft">
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
               {DRAFTS.map(({ id, name, swatch }, i) => (
                 <button
                   key={id}
@@ -264,10 +314,14 @@ export function DraftsExample() {
                 >
                   <i className="window-tab-swatch" style={{ background: swatch }} />
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <span>Draft {id}</span>
 =======
                   <span>Entwurf {id}</span>
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+                  <span>Draft {id}</span>
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
                   <small>{name}</small>
                 </button>
               ))}
@@ -289,27 +343,38 @@ export function DraftsExample() {
 
 const COMMENTS = [
 <<<<<<< HEAD
+<<<<<<< HEAD
   { pin: 1, text: 'Could the headline be even bigger?', reply: 'Done — resolved' },
   { pin: 2, text: 'Love it. Can we try lime for the button?', reply: 'Updated in draft 3' },
 =======
   { pin: 1, text: 'Kann die Überschrift noch größer sein?', reply: 'Erledigt' },
   { pin: 2, text: 'Super! Können wir den Button in Limette testen?', reply: 'In Entwurf 3 umgesetzt' },
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+  { pin: 1, text: 'Could the headline be even bigger?', reply: 'Done — resolved' },
+  { pin: 2, text: 'Love it. Can we try lime for the button?', reply: 'Updated in draft 3' },
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
 ];
 
 // Notes the visitor's own pin cycles through, one per click.
 const VISITOR_NOTES = [
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
   'Can this part be a touch bigger?',
   'Love this — keep it exactly like that!',
   'Could we try a warmer colour here?',
   'Swap this photo for one of ours?',
+<<<<<<< HEAD
 =======
   'Kann dieser Bereich etwas größer werden?',
   'Gefällt mir — bitte genau so lassen!',
   'Können wir hier eine wärmere Farbe probieren?',
   'Können wir dieses Foto gegen eines von uns tauschen?',
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
 ];
 
 export function FeedbackExample() {
@@ -330,6 +395,7 @@ export function FeedbackExample() {
   return (
     <div ref={ref} className={`example example-feedback ${inView ? 'is-in' : ''}`} aria-hidden>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <ExampleHint hidden={note !== null}>Click anywhere on the design to leave a note</ExampleHint>
       <div className="example-window">
         <BrowserWindow address="Velo Nine · review">
@@ -338,6 +404,11 @@ export function FeedbackExample() {
       <div className="example-window">
         <BrowserWindow address="Velo Nine · Feedback">
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+      <ExampleHint hidden={note !== null}>Click anywhere on the design to leave a note</ExampleHint>
+      <div className="example-window">
+        <BrowserWindow address="Velo Nine · review">
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
           <VeloNine />
           <div className="feedback-canvas" onClick={dropPin} />
           <span className="pin pin-1">1</span>
@@ -372,10 +443,14 @@ export function FeedbackExample() {
               <p>{VISITOR_NOTES[note.n % VISITOR_NOTES.length]}</p>
               <span className="comment-reply">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <Check size={13} strokeWidth={2.6} /> Noted — in the next round
 =======
                 <Check size={13} strokeWidth={2.6} /> Notiert — kommt in die nächste Runde
 >>>>>>> 6960f0b622f2295ac36c61a8b41b0122fb35071c
+=======
+                <Check size={13} strokeWidth={2.6} /> Noted — in the next round
+>>>>>>> 19c8353 (Small Changes  - Interactions and Main Page adjustments)
               </span>
             </div>
           </div>

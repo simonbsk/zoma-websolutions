@@ -1,4 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
 import { AuthProvider } from './auth/AuthProvider';
 import { RequireAdmin } from './auth/RequireAdmin';
 import { SiteSettingsProvider } from './lib/SiteSettings';
@@ -18,16 +19,16 @@ import { SettingsPage } from './pages/admin/SettingsPage';
 
 function NotFound() {
   return (
-    <div className="center-screen" style={{ textAlign: 'center', padding: 24 }}>
+    <div className="center-screen" style={{ textAlign: 'center', padding: '120px 24px 24px', minHeight: '80vh' }}>
       <div>
         <p className="eyebrow" style={{ justifyContent: 'center' }}>
           404
         </p>
-        <h1 className="serif" style={{ fontSize: 40, marginTop: 12 }}>
+        <h1 className="display" style={{ fontSize: 'clamp(40px, 5vw, 64px)', marginTop: 16 }}>
           This page doesn't exist.
         </h1>
-        <Link to="/" className={buttonClass('dark')} style={{ marginTop: 24 }}>
-          Back to homepage
+        <Link to="/" className={buttonClass('dark', 'md', 'btn-cta')} style={{ marginTop: 32 }}>
+          Back to homepage <ArrowUpRight size={18} strokeWidth={1.8} />
         </Link>
       </div>
     </div>

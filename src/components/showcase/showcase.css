@@ -1,0 +1,608 @@
+/* Hero flow ----------------------------------------------------------------- */
+
+.flow {
+  /* One grid unit: a colour square. Screenshots are 2 × 1 units. */
+  --u: clamp(112px, 13.25vw, 240px);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.flow-track {
+  position: absolute;
+  /* Row 0's square sits just above the top edge; each row steps one unit down-left. */
+  left: calc(100% - 80px);
+  top: calc(var(--u) * -1);
+  animation: flow-diagonal calc(var(--n) * 2.8s) linear infinite;
+  will-change: transform;
+}
+
+.flow.is-paused .flow-track {
+  animation-play-state: paused;
+}
+
+@keyframes flow-diagonal {
+  to {
+    transform: translate3d(calc(var(--n) * var(--u)), calc(var(--n) * var(--u) * -1), 0);
+  }
+}
+
+.flow-row {
+  position: absolute;
+  left: calc(var(--u) * (var(--i) + 2) * -1);
+  top: calc(var(--u) * var(--i));
+  display: flex;
+}
+
+.flow-shot {
+  width: calc(var(--u) * 2);
+  height: var(--u);
+  overflow: hidden;
+  background: #fff;
+}
+
+.flow-tag {
+  position: relative;
+  width: var(--u);
+  height: var(--u);
+}
+
+.flow-stripe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.flow-tag span {
+  position: relative;
+  display: block;
+  padding: calc(var(--u) * 0.06) calc(var(--u) * 0.065);
+  font-size: calc(var(--u) * 0.074);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* Browser window -------------------------------------------------------------- */
+
+.window {
+  overflow: hidden;
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.window-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 14px;
+  background: #f4f4f4;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.window-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d9d9d9;
+}
+
+.window-address {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 14px;
+  border-radius: var(--r-xs);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.window-body {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  container-type: inline-size;
+}
+
+/* Feature examples ------------------------------------------------------------ */
+
+.example {
+  position: relative;
+  height: 100%;
+}
+
+.example-window {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: calc(100% + 72px);
+}
+
+/* Taller than the card so the window always runs off its bottom edge. */
+.example-window .window-body {
+  aspect-ratio: auto;
+  height: 640px;
+}
+
+/* Mirrored cards keep the site's left edge (logo, headline) in view. */
+.feature.is-flipped .example-window {
+  left: 72px;
+  width: calc(100% - 72px);
+}
+
+/* 1 — style inspector */
+.inspector {
+  position: absolute;
+  right: 40px;
+  bottom: 48px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 280px;
+  padding: 16px 16px 10px;
+  border-radius: var(--r-card);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 8px 30px rgba(0, 0, 0, 0.14);
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease) 0.2s, transform 0.6s var(--ease) 0.2s;
+}
+
+.example.is-in .inspector {
+  opacity: 1;
+  transform: none;
+}
+
+.inspector strong {
+  margin-bottom: 8px;
+  font-size: 14px;
+  letter-spacing: -0.03em;
+}
+
+.inspector-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 38px;
+  border-top: 1px solid var(--hairline);
+}
+
+.inspector-row > span:first-child {
+  color: var(--slate);
+}
+
+.inspector-row > span:last-child {
+  font-weight: 500;
+}
+
+.inspector button {
+  border: 0;
+  cursor: pointer;
+}
+
+.inspector button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Palette picks: each circle is that palette's page + text colour. */
+.inspector-swatches {
+  display: flex;
+  gap: 8px;
+}
+
+.inspector-swatches button {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.inspector-swatches button:hover {
+  transform: scale(1.12);
+}
+
+.inspector-swatches button[aria-pressed='true'] {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18), 0 0 0 2px #fff, 0 0 0 3.5px var(--ink);
+}
+
+.inspector-segment {
+  display: flex;
+  padding: 2px;
+  border-radius: 6px;
+  background: var(--accent-50);
+  font-size: 12px;
+}
+
+.inspector-segment button {
+  padding: 3px 8px;
+  border-radius: var(--r-xs);
+  background: transparent;
+  color: var(--slate);
+  font-size: inherit;
+  font-weight: 500;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.inspector-segment button:hover {
+  color: var(--ink);
+}
+
+.inspector-segment button[aria-pressed='true'] {
+  background: #fff;
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* Typeface picks are "Aa" samples set in their own face (inline styles). */
+.inspector-segment button[aria-label] {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+/* Live restyle of the Atelier Nord mock-up, driven by the inspector's --st-* values. */
+.style-live {
+  height: 100%;
+}
+
+.style-live .s-atelier {
+  background: var(--st-bg);
+  color: var(--st-ink);
+  transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+
+.style-live .s-atelier .s-nav,
+.style-live .s-atelier .s-copy,
+.style-live .s-atelier .s-work {
+  border-color: var(--st-line);
+  transition: border-color 0.5s var(--ease);
+}
+
+.style-live .s-atelier .s-index,
+.style-live .s-atelier .s-count,
+.style-live .s-atelier .s-row p,
+.style-live .s-atelier .s-work-meta span + span {
+  color: var(--st-muted);
+}
+
+.style-live .s-atelier .s-title,
+.style-live .s-atelier .s-work-head {
+  font-family: var(--st-font);
+  font-weight: var(--st-weight);
+}
+
+.style-live .s-atelier .s-photo,
+.style-live .s-atelier .s-caption {
+  border-radius: var(--st-radius);
+  transition: border-radius 0.4s var(--ease);
+}
+
+.style-live .s-atelier .s-caption {
+  background: var(--st-bg);
+}
+
+/* 2 — draft switcher */
+.draft {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s var(--ease);
+}
+
+.draft.is-active {
+  opacity: 1;
+}
+
+/* Browser tabs in the window bar; the active one opens into the white page below. */
+.window-tabs {
+  display: flex;
+  align-self: stretch;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 0;
+  margin: 0 0 -1px 18px;
+}
+
+/* Inactive tabs are solid chips (not bare text) so they read as buttons. */
+.window-tabs button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  height: 30px;
+  padding: 0 14px 0 10px;
+  border: 1px solid #dcdcdc;
+  border-bottom: 0;
+  border-radius: 7px 7px 0 0;
+  background: #e8e8e8;
+  color: #4a4a4a;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.window-tab-swatch {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.window-tabs button span {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.window-tabs button small {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.window-tabs button:hover {
+  background: #f6f6f6;
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+.window-tabs button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.window-tabs button[aria-pressed='true'] {
+  z-index: 1;
+  border-color: #e6e6e6;
+  background: #fff;
+  color: var(--ink);
+  transform: none;
+}
+
+/* Hint above the drafts window; fades once a tab has been clicked. */
+.example-hint {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--slate);
+  letter-spacing: -0.02em;
+  transition: opacity 0.4s var(--ease);
+}
+
+.feature.is-flipped .example-hint {
+  left: 72px;
+}
+
+.example-hint.is-hidden {
+  opacity: 0;
+}
+
+/* 3 — feedback pins */
+.pin {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 4px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px var(--ink), 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: transform 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.pin-1 {
+  left: 42cqw;
+  top: 21cqw;
+  transition-delay: 0.2s;
+}
+
+.pin-2 {
+  left: 19cqw;
+  top: 40cqw;
+  transition-delay: 0.45s;
+}
+
+.example.is-in .pin {
+  transform: scale(1);
+}
+
+/* Click layer over the Velo mock-up: wherever the visitor clicks, their pin drops. */
+.feedback-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: crosshair;
+}
+
+/* Remounted on every click, so the drop animation replays. */
+.pin.pin-you {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: 0 0 0 2px #fff, 0 4px 12px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  animation: pin-drop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+
+@keyframes pin-drop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.comments {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.comment {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--r-card);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 8px 30px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.comment-1 {
+  transition-delay: 0.5s;
+}
+
+.comment-2 {
+  transition-delay: 0.8s;
+}
+
+.example.is-in .comment {
+  opacity: 1;
+  transform: none;
+}
+
+/* The visitor's own note slides in fresh on every click. */
+.example .comment-you {
+  animation: comment-in 0.45s var(--ease) both;
+}
+
+@keyframes comment-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.comment-pin {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50% 50% 50% 4px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.comment p {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.comment-reply {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--slate);
+}
+
+@media (max-width: 900px) {
+  .example-window,
+  .feature.is-flipped .example-window {
+    top: 0;
+    left: 0;
+    width: calc(100% + 64px);
+  }
+
+  /* Compact card in the top-right corner so the site's headline stays visible. */
+  .inspector {
+    top: 50px;
+    right: 12px;
+    bottom: auto;
+    width: 186px;
+    padding: 10px 10px 4px;
+    font-size: 12px;
+  }
+
+  .inspector strong {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  .inspector-row {
+    min-height: 30px;
+  }
+
+  /* Keep palette and corners; drop typeface and mood. */
+  .inspector-row:nth-of-type(1),
+  .inspector-row:last-child {
+    display: none;
+  }
+
+  .window-tabs {
+    margin-left: 12px;
+  }
+
+  .window-tabs button {
+    padding: 0 10px 0 8px;
+  }
+
+  /* The window sits at the top of the card here, so there is no room for the hint. */
+  .example-hint {
+    display: none;
+  }
+
+  /* Short tabs on small screens: "Draft A" only. */
+  .window-tabs button small {
+    display: none;
+  }
+
+  .comments {
+    right: 16px;
+    bottom: 16px;
+    width: min(270px, calc(100% - 32px));
+  }
+
+  /* One card fits: the first note, or the visitor's own once they've clicked. */
+  .comment-2,
+  .comments:has(.comment-you) .comment-1 {
+    display: none;
+  }
+}

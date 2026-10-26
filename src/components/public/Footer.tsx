@@ -11,36 +11,28 @@ export function Footer() {
 
   return (
     <footer className="footer" id="contact">
-      <div className="container">
-        <div className="footer-cta">
-          <div>
-            <h2 className="serif">Let's build something that lasts.</h2>
-            <p>Book a free consultation — we'll map out scope, timeline and the right approach for your site.</p>
-          </div>
-          <div className="footer-cta-actions">
-            <Link to="/book" className={buttonClass('primary', 'lg')}>
-              Book a consultation
-            </Link>
-            {settings?.business_email ? (
-              <a href={`mailto:${settings.business_email}`} className={buttonClass('ghost', 'lg', 'btn-on-dark')}>
-                Email us
-              </a>
-            ) : null}
-          </div>
-        </div>
+      <div className="wrap footer-cta">
+        <h2 className="display">Let's build your new site.</h2>
+        <Link to="/book" className={buttonClass('primary', 'md', 'btn-xl')}>
+          Book your free consultation date today <ArrowUpRight size={22} strokeWidth={1.8} />
+        </Link>
+      </div>
 
-        <div className="footer-grid">
+      <div className="footer-panel">
+        <div className="wrap footer-grid">
           <div className="footer-brand">
             <BrandLogo light />
-            <p>Premium websites, designed and engineered with care for businesses that want to look as good as they are.</p>
+            <p className="footer-tagline">Say hello to your new site.</p>
           </div>
 
           <div className="footer-col">
             <h3>Studio</h3>
-            <a href="/#services">Services</a>
-            <a href="/#process">Process</a>
-            <a href="/#about">About</a>
-            <Link to="/book">Book a call</Link>
+            <a href="/#approach">Approach</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/#team">The Team</a>
+            <Link to="/book">
+              Book a call <ArrowUpRight size={15} />
+            </Link>
           </div>
 
           <div className="footer-col">
@@ -68,7 +60,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="footer-base">
+        <div className="wrap footer-base">
           <span>
             © {year} {name}. All rights reserved.
           </span>

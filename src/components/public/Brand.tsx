@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 
-export function BrandMark({ size = 30 }: { size?: number }) {
+/** Monochrome "Z" mark — its 45° diagonal echoes the stripes in the hero. */
+export function BrandMark({ size = 30, light = false }: { size?: number; light?: boolean }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden>
-      <rect width="32" height="32" rx="9" fill="#1f4e4a" />
+      <rect width="32" height="32" rx="5" fill={light ? '#ffffff' : '#222222'} />
       <path
-        d="M10 11h12l-12 10h12"
+        d="M10 10h12L10 22h12"
         fill="none"
-        stroke="#fbfaf7"
-        strokeWidth="2.4"
+        stroke={light ? '#222222' : '#ffffff'}
+        strokeWidth="2.6"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -19,7 +20,7 @@ export function BrandMark({ size = 30 }: { size?: number }) {
 export function BrandLogo({ to = '/', light = false }: { to?: string; light?: boolean }) {
   return (
     <Link to={to} className={`brand ${light ? 'brand-light' : ''}`} aria-label="ZomaWebsolutions home">
-      <BrandMark />
+      <BrandMark size={26} light={light} />
       <span className="brand-word">
         Zoma<span>Websolutions</span>
       </span>

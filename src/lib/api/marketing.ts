@@ -33,5 +33,7 @@ export async function getExperimentSummary(experiment: string): Promise<Experime
     views: Number(r.views),
     cta_clicks: Number(r.cta_clicks),
     bookings: Number(r.bookings),
+    // Absent until 0003_project_requests.sql has been applied.
+    requests: Number(r.requests ?? 0),
   }));
 }

@@ -1,4 +1,4 @@
-/* Design-note pins: fixed colours so they read on any time of day. */
+/* Design-note pins: fixed colours so they read on both backgrounds. */
 
 .note-host {
   position: relative;
@@ -12,11 +12,11 @@
   width: 28px;
   height: 28px;
   padding: 0;
-  border: 1.5px solid #ff8a3d;
+  border: 1.5px solid #8052ff;
   border-radius: 50%;
   background: #0b0c10;
   color: #fff;
-  font: 600 12.5px/1 'Inter', system-ui, sans-serif;
+  font: 600 12.5px/1 'Space Grotesk', system-ui, sans-serif;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
   cursor: pointer;
   transition: transform 0.18s ease, background-color 0.18s ease;
@@ -27,7 +27,7 @@
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 138, 61, 0.6);
+  border: 1.5px solid rgba(128, 82, 255, 0.55);
   animation: note-ping 2.4s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
   pointer-events: none;
 }
@@ -35,8 +35,8 @@
 .note-pin:hover,
 .note-pin.is-open {
   transform: scale(1.12);
-  background: #ff8a3d;
-  color: #0b0c10;
+  background: #8052ff;
+  color: #fff;
 }
 
 .note-pin.is-open::after {
@@ -63,7 +63,7 @@
   background: #fffdfa;
   color: #17191c;
   box-shadow: 0 0 0 1px rgba(23, 25, 28, 0.06), 0 24px 60px -12px rgba(10, 8, 20, 0.45);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   animation: note-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
 }
@@ -91,7 +91,7 @@
   height: 26px;
   border-radius: 50%;
   background: #0b0c10;
-  color: #ff9a52;
+  color: #b9a4ff;
   font-size: 12px;
   font-weight: 600;
 }
@@ -108,7 +108,7 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #c65f22;
+  color: #6a3cf5;
 }
 
 .note-pop-head strong {
@@ -183,21 +183,21 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: #f3efe8;
-  font: 500 13.5px/1 'Inter', system-ui, sans-serif;
+  font: 500 13.5px/1 'Space Grotesk', system-ui, sans-serif;
   box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.45);
   cursor: pointer;
 }
 
 .notes-toggle svg {
-  color: #ff9a52;
+  color: #b9a4ff;
 }
 
 .notes-toggle em {
   margin-left: 4px;
   padding: 2px 7px;
   border-radius: 9999px;
-  background: rgba(255, 138, 61, 0.18);
-  color: #ffb27a;
+  background: rgba(128, 82, 255, 0.24);
+  color: #cdbfff;
   font-style: normal;
   font-size: 12px;
 }
@@ -224,7 +224,7 @@
 }
 
 .notes-toggle.is-on .notes-switch {
-  background: #ff8a3d;
+  background: #8052ff;
 }
 
 .notes-toggle.is-on .notes-switch::after {

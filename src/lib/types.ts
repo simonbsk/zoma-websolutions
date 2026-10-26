@@ -33,6 +33,27 @@ export interface ExperimentResult {
   views: number;
   cta_clicks: number;
   bookings: number;
+  /** Project requests sent from /start. Added by 0003_project_requests.sql. */
+  requests: number;
+}
+
+export const REQUEST_STATUSES = ['new', 'contacted', 'closed'] as const;
+export type RequestStatus = (typeof REQUEST_STATUSES)[number];
+
+/** A project request from the start form (0003_project_requests.sql). */
+export interface ProjectRequest {
+  id: string;
+  full_name: string;
+  email: string;
+  phone: string | null;
+  business_name: string | null;
+  service: string;
+  budget: string;
+  reply_channel: string;
+  message: string;
+  status: RequestStatus;
+  source: string | null;
+  created_at: string;
 }
 
 export interface Appointment {

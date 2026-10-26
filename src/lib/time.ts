@@ -60,6 +60,18 @@ export function startOfLocalDay(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
+/** The day `days` working days (Monday–Friday) after `date`. Public holidays are not considered. */
+export function addWorkingDays(date: Date, days: number): Date {
+  const result = startOfLocalDay(date);
+  let added = 0;
+  while (added < days) {
+    result.setDate(result.getDate() + 1);
+    const weekday = result.getDay();
+    if (weekday !== 0 && weekday !== 6) added++;
+  }
+  return result;
+}
+
 /** Date -> "yyyy-MM-dd" for the database. */
 export function toDbDate(date: Date): string {
   if (!isValidDate(date)) throw new Error('toDbDate received an invalid Date');

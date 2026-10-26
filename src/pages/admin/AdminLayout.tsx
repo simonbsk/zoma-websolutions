@@ -4,6 +4,7 @@ import {
   CalendarClock,
   CalendarOff,
   ExternalLink,
+  Inbox,
   LayoutDashboard,
   Layers,
   LogOut,
@@ -19,6 +20,7 @@ import './admin.css';
 
 const NAV = [
   { to: '/admin', label: 'Overview', icon: LayoutDashboard, end: true },
+  { to: '/admin/requests', label: 'Requests', icon: Inbox },
   { to: '/admin/appointments', label: 'Appointments', icon: CalendarClock },
   { to: '/admin/services', label: 'Services', icon: Layers },
   { to: '/admin/hours', label: 'Business hours', icon: Clock },

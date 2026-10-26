@@ -12,26 +12,28 @@ export function ExperimentPanel() {
 
   const rows = HEADLINE_VARIANTS.map((variant) => {
     const r = data?.find((d) => d.variant === variant);
-    return { variant, views: r?.views ?? 0, clicks: r?.cta_clicks ?? 0, bookings: r?.bookings ?? 0 };
+    const conversions = (r?.requests ?? 0) + (r?.bookings ?? 0);
+    return { variant, views: r?.views ?? 0, clicks: r?.cta_clicks ?? 0, conversions };
   });
   const totalViews = rows.reduce((sum, r) => sum + r.views, 0);
-  // Lead by booking rate once there are bookings, otherwise by click rate.
+  // Lead by conversion rate once there are requests or bookings, otherwise by click rate.
   const score = (r: (typeof rows)[number]) =>
-    r.views ? (rows.some((x) => x.bookings) ? r.bookings / r.views : r.clicks / r.views) : 0;
+    r.views ? (rows.some((x) => x.conversions) ? r.conversions / r.views : r.clicks / r.views) : 0;
   const leader = totalViews ? rows.reduce((best, r) => (score(r) > score(best) ? r : best)).variant : null;
+  const pending = loading && !data;
 
   return (
     <section className="panel">
       <div className="panel-header">
         <div>
           <h2>Headline experiment</h2>
-          <p>Three hero headlines, assigned at random per visitor. Last 90 days.</p>
+          <p>Three hero headlines, assigned at random per visitor. Conversions are project requests plus bookings. Last 90 days.</p>
         </div>
       </div>
 
       {error ? (
         <EmptyState icon={<FlaskConical size={20} />} title="No results yet">
-          Results appear here once the marketing migration (0002) is applied and visitors arrive.
+          Results appear here once the marketing migrations (0002 and 0003) are applied and visitors arrive.
         </EmptyState>
       ) : (
         <div className="table-wrap">
@@ -40,10 +42,10 @@ export function ExperimentPanel() {
               <tr>
                 <th>Headline</th>
                 <th>Views</th>
-                <th>Book clicks</th>
+                <th>Start clicks</th>
                 <th className="hide-md">Click rate</th>
-                <th>Bookings</th>
-                <th className="hide-md">Booking rate</th>
+                <th>Conversions</th>
+                <th className="hide-md">Conversion rate</th>
               </tr>
             </thead>
             <tbody>
@@ -51,7 +53,7 @@ export function ExperimentPanel() {
                 <tr key={r.variant}>
                   <td>
                     <div className="cell-primary">
-                      “{HEADLINES[r.variant].lead} {HEADLINES[r.variant].accent}”
+                      “{HEADLINES[r.variant].lead} {HEADLINES[r.variant].accent}.”
                       {leader === r.variant ? <span className="badge badge-active experiment-lead">Leading</span> : null}
                     </div>
                     <div className="cell-secondary">
@@ -61,11 +63,11 @@ export function ExperimentPanel() {
                       </a>
                     </div>
                   </td>
-                  <td>{loading && !data ? '…' : r.views}</td>
-                  <td>{loading && !data ? '…' : r.clicks}</td>
+                  <td>{pending ? '…' : r.views}</td>
+                  <td>{pending ? '…' : r.clicks}</td>
                   <td className="hide-md">{percent(r.clicks, r.views)}</td>
-                  <td>{loading && !data ? '…' : r.bookings}</td>
-                  <td className="hide-md">{percent(r.bookings, r.views)}</td>
+                  <td>{pending ? '…' : r.conversions}</td>
+                  <td className="hide-md">{percent(r.conversions, r.views)}</td>
                 </tr>
               ))}
             </tbody>

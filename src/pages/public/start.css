@@ -1,0 +1,342 @@
+/* The project form (/start): form on the left, what happens next on the right. */
+
+.start {
+  position: relative;
+  padding: clamp(32px, 5vw, 56px) 0 clamp(80px, 10vw, 140px);
+}
+
+.start-head {
+  max-width: 780px;
+  margin-bottom: clamp(32px, 4vw, 52px);
+}
+
+.start-head h1 {
+  margin-top: 18px;
+  font-size: clamp(44px, 6.6vw, 96px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.start-head .lede {
+  margin-top: 20px;
+}
+
+.start-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+
+/* Form ---------------------------------------------------------------------- */
+
+.start-form {
+  display: grid;
+  gap: 34px;
+  padding: clamp(24px, 3.4vw, 44px);
+}
+
+.start-carried {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--iris) 10%, transparent);
+  font-size: 14.5px;
+  color: var(--iris-text);
+}
+
+.start-carried svg {
+  flex: none;
+}
+
+.start-group {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.start-group legend {
+  margin-bottom: 14px;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.start-channels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.start-channel {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 16px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  font-size: 14.5px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.start-channel:hover {
+  border-color: var(--ink);
+}
+
+.start-channel.is-on {
+  border-color: var(--iris);
+  background: color-mix(in srgb, var(--iris) 9%, var(--surface));
+  color: var(--iris-text);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--iris) 18%, transparent);
+}
+
+.start-channel:has(:focus-visible) {
+  box-shadow: var(--focus);
+}
+
+/* Honeypot: off-screen for people, still in the form for bots. */
+.start-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.start-submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.start-privacy {
+  max-width: 40ch;
+  font-size: 13.5px;
+  color: var(--ash);
+}
+
+/* Aside --------------------------------------------------------------------- */
+
+.start-aside {
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+  display: grid;
+  gap: 16px;
+}
+
+.start-steps {
+  padding: 30px;
+}
+
+.start-steps h2 {
+  font-size: 24px;
+  letter-spacing: -0.035em;
+}
+
+.start-steps ol {
+  display: grid;
+  gap: 22px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.start-steps li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.start-step-n {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.start-steps strong {
+  font-size: 16.5px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.start-steps p {
+  margin-top: 4px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.start-promise {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.start-promise i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--verdant);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--verdant) 20%, transparent);
+}
+
+.start-call {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+}
+
+.start-call strong {
+  font-weight: 500;
+}
+
+.start-call p {
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.start-call b {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.start-contact {
+  padding: 0 6px;
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.start-contact a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Sent ---------------------------------------------------------------------- */
+
+.start-sent {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.start-sent-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--canvas);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--verdant) 22%, transparent);
+  animation: start-pop 0.6s var(--ease-out);
+}
+
+@keyframes start-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+.start-sent h2 {
+  font-size: clamp(28px, 3vw, 40px);
+  letter-spacing: -0.045em;
+}
+
+.start-sent p {
+  max-width: 52ch;
+  font-size: 17px;
+  color: var(--slate);
+}
+
+.start-sent strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.start-sent-tips {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 18px 0 6px;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.start-sent-tips li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+
+.start-sent-tips li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--saffron);
+}
+
+@media (max-width: 960px) {
+  .start-grid {
+    grid-template-columns: 1fr;
+  }
+  .start-aside {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .start-channels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .start-call {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .start-submit .btn {
+    width: 100%;
+  }
+}
+
+.start-steps .start-promise {
+  font-size: 12.5px;
+}

@@ -89,7 +89,7 @@ export function ChecklistPage() {
         <p>
           <strong>Want a second pair of eyes?</strong> We’ll run this checklist on your site in a free audit call.
         </p>
-        <Link to="/book?service=seo-performance-audit" className={buttonClass('primary', 'md', 'btn-midnight')}>
+        <Link to="/book?service=seo-performance-audit" className={buttonClass('primary')}>
           Book a free audit <ArrowRight size={16} />
         </Link>
       </aside>

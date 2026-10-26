@@ -1,0 +1,76 @@
+/* The liquid sits behind everything; page content stacks above it (see site.css). */
+
+.ink {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ink-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* While the story plays, each showcase mockup waits for its drop (the canvas fades it in). */
+html.ink-story [data-ink-target] {
+  opacity: 0;
+}
+
+/* Without WebGL: three soft washes in the same places the ink would rest. */
+.ink-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.ink-fallback i {
+  position: absolute;
+  width: 42vmin;
+  height: 42vmin;
+  border-radius: 50%;
+  filter: blur(56px);
+  opacity: 0.28;
+}
+
+.ink-fallback i:nth-child(1) {
+  left: 50%;
+  top: 22%;
+  background: var(--iris);
+}
+
+.ink-fallback i:nth-child(2) {
+  left: 74%;
+  top: 4%;
+  width: 32vmin;
+  height: 32vmin;
+  background: var(--saffron);
+}
+
+.ink-fallback i:nth-child(3) {
+  left: 66%;
+  top: 56%;
+  width: 36vmin;
+  height: 36vmin;
+  background: var(--verdant);
+}
+
+.ink-calm .ink-fallback i:nth-child(1) {
+  left: 76%;
+  top: -8%;
+}
+
+.ink-calm .ink-fallback i:nth-child(2) {
+  left: -10%;
+  top: 46%;
+}
+
+.ink-calm .ink-fallback i:nth-child(3) {
+  left: 62%;
+  top: 78%;
+}
+
+:root[data-theme='dark'] .ink-fallback i {
+  opacity: 0.22;
+}

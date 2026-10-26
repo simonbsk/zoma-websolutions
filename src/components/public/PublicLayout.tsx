@@ -1,15 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { SkyBackground } from '../sky/SkyBackground';
+import { InkBackground } from '../ink/InkBackground';
 import { DesignNotesProvider } from '../notes/DesignNotes';
-import { DesignSwitcher } from '../../design/DesignSwitcher';
-import { useDesign } from '../../design/DesignProvider';
-import { ClassicNavbar } from '../../designs/classic/ClassicNavbar';
-import { ClassicFooter } from '../../designs/classic/ClassicFooter';
-import '../../designs/classic/classic.css';
-import '../../designs/sky/sky-design.css';
+import { ThemeProvider } from '../../theme/ThemeProvider';
+import '../../styles/site.css';
 
 /** Scrolls to hash targets after navigation, or to top on route change. */
 function ScrollManager() {
@@ -30,33 +26,27 @@ function ScrollManager() {
 interface PublicLayoutProps {
   hideFooter?: boolean;
   /**
-   * In the sky design, `home` gets the scroll-driven sunrise → midnight sky and `booking`
-   * a still midnight sky. The classic design keeps every page plain and light.
+   * `home` plays the ink story behind the page, `start` keeps the three inks calm at the edges,
+   * every other page sits on the plain background.
    */
-  page?: 'home' | 'booking' | 'page';
+  page?: 'home' | 'start' | 'page';
 }
 
 export function PublicLayout({ hideFooter = false, page = 'page' }: PublicLayoutProps) {
-  const { design } = useDesign();
-  const rootRef = useRef<HTMLDivElement>(null);
-  const sky = design === 'sky' ? (page === 'home' ? 'day' : page === 'booking' ? 'night' : undefined) : undefined;
-  const classes = ['public', sky ? 'has-sky' : '', sky === 'night' ? 'sky-static' : ''].filter(Boolean).join(' ');
-  const SiteNavbar = design === 'sky' ? Navbar : ClassicNavbar;
-  const SiteFooter = design === 'sky' ? Footer : ClassicFooter;
+  const ink = page === 'home' ? 'story' : page === 'start' ? 'calm' : null;
 
   const content = (
-    <div ref={rootRef} className={classes}>
+    <div className="site">
       <ScrollManager />
-      {sky === 'day' ? <SkyBackground scopeRef={rootRef} /> : null}
-      {sky === 'night' ? <SkyBackground scopeRef={rootRef} fixedTime={1} themeUi={false} /> : null}
-      <SiteNavbar />
+      {ink ? <InkBackground mode={ink} /> : null}
+      <Navbar />
       <main>
         <Outlet />
       </main>
-      {hideFooter ? null : <SiteFooter />}
-      <DesignSwitcher />
+      {hideFooter ? null : <Footer />}
     </div>
   );
 
-  return sky === 'day' ? <DesignNotesProvider>{content}</DesignNotesProvider> : content;
+  // Design notes (review suggestions) live on the pages that carry them.
+  return <ThemeProvider>{ink ? <DesignNotesProvider>{content}</DesignNotesProvider> : content}</ThemeProvider>;
 }

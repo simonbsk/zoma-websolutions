@@ -1,4 +1,4 @@
-/* Secondary public pages: case study and checklist. Light, warm and quiet. */
+/* Secondary public pages: case study and checklist. */
 
 .back-link {
   display: flex;
@@ -28,8 +28,6 @@
 .case-hero {
   position: relative;
   padding: 48px 0 120px;
-  background: radial-gradient(60% 90% at 88% 0%, rgba(255, 196, 140, 0.55), transparent 70%),
-    linear-gradient(180deg, #fbe9d8 0%, #f9efe5 55%, var(--canvas) 100%);
 }
 
 .case-hero h1 {
@@ -173,8 +171,8 @@
   padding: 64px 24px;
   border-radius: var(--r-card);
   text-align: center;
-  background: radial-gradient(70% 120% at 50% 120%, rgba(255, 138, 61, 0.25), transparent 70%), #0b0c10;
-  color: #f3efe8;
+  background: var(--inverse, #141414);
+  color: var(--inverse-ink, #fdfcf9);
 }
 
 .case-cta h2 {
@@ -185,7 +183,7 @@
 
 .case-cta p {
   max-width: 46ch;
-  color: rgba(243, 239, 232, 0.72);
+  color: var(--inverse-muted, rgba(253, 252, 249, 0.62));
 }
 
 .case-cta .btn {
@@ -413,4 +411,19 @@
   .checklist-section {
     break-inside: avoid;
   }
+}
+
+.case-cta-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--inverse-line, rgba(253, 252, 249, 0.14));
+  text-underline-offset: 6px;
+}
+
+.case-cta-call:hover {
+  text-decoration-color: currentColor;
 }

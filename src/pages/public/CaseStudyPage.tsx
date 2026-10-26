@@ -1,9 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { buttonClass } from '../../components/ui/Button';
+import { StartLink } from '../../components/public/StartLink';
 import { CaseStudyVisual } from '../../components/visuals/CaseStudyVisual';
 import { CASE_STUDIES } from '../../content/site';
-import { track } from '../../lib/experiments';
 import './pages.css';
 
 export function CaseStudyPage() {
@@ -32,7 +32,7 @@ export function CaseStudyPage() {
     <article className="case">
       <header className="case-hero">
         <div className="container">
-          <Link to="/#services" className="back-link">
+          <Link to="/#work" className="back-link">
             <ArrowLeft size={15} /> Back to the studio
           </Link>
           <span className="eyebrow">Case study · {study.sector}</span>
@@ -91,9 +91,10 @@ export function CaseStudyPage() {
 
         <section className="case-cta">
           <h2 className="serif">Planning something similar?</h2>
-          <p>Tell us about your business in a free, focused call. You’ll leave with a clear plan and an honest estimate.</p>
-          <Link to="/book" className={buttonClass('primary', 'lg', 'btn-midnight')} onClick={() => track('cta_click')}>
-            Book a free consultation <ArrowRight size={18} />
+          <p>Tell us about your business in two minutes. You’ll get honest feedback and a fixed-price estimate.</p>
+          <StartLink from="case-study" label="Your website starts here" className="btn btn-lg btn-inverse" />
+          <Link to="/book" className="case-cta-call">
+            Rather talk first? Book a free call <ArrowRight size={16} />
           </Link>
         </section>
       </div>

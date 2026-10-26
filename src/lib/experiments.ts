@@ -12,7 +12,13 @@ import { HEADLINE_EXPERIMENT } from '../content/site';
  *   for any analytics tool you add later.
  */
 
-export type SiteEvent = 'experiment_view' | 'cta_click' | 'booking_started' | 'booking_completed' | 'subscribe';
+export type SiteEvent =
+  | 'experiment_view'
+  | 'cta_click'
+  | 'booking_started'
+  | 'booking_completed'
+  | 'subscribe'
+  | 'request_sent';
 
 declare global {
   interface Window {

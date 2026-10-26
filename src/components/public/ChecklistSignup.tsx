@@ -1,6 +1,7 @@
 import { useId, useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
+import { buttonClass } from '../ui/Button';
 import { subscribe } from '../../lib/api/marketing';
 import { track } from '../../lib/experiments';
 
@@ -35,7 +36,7 @@ export function ChecklistSignup() {
     <div className="signup">
       <div className="signup-copy">
         <span className="signup-kicker">Free · 24 checks</span>
-        <h3 className="serif">The website launch checklist</h3>
+        <h3>The website launch checklist</h3>
         <p>The checks we run before every launch. Leave your email for occasional notes — the checklist opens right away.</p>
       </div>
 
@@ -67,7 +68,7 @@ export function ChecklistSignup() {
               aria-invalid={error ? true : undefined}
               required
             />
-            <button type="submit" className="btn btn-midnight" disabled={state === 'sending'}>
+            <button type="submit" className={buttonClass('primary')} disabled={state === 'sending'}>
               {state === 'sending' ? 'Sending…' : 'Get the checklist'}
             </button>
           </div>

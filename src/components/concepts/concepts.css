@@ -1,0 +1,1048 @@
+/* Device frames ------------------------------------------------------------- */
+
+.bframe {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 40px 90px -40px rgba(20, 20, 20, 0.45), 0 12px 30px -18px rgba(20, 20, 20, 0.22);
+}
+
+:root[data-theme='dark'] .bframe {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.75);
+}
+
+.bframe-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 38px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--band);
+}
+
+.bframe-dots {
+  display: flex;
+  flex: none;
+  gap: 6px;
+  width: 60px;
+}
+
+.bframe-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--hairline-strong);
+}
+
+.bframe-url {
+  display: grid;
+  place-items: center;
+  flex: 0 1 340px;
+  height: 24px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  white-space: nowrap;
+  color: var(--slate);
+  transform: translateX(-36px);
+}
+
+.bframe-screen {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  container-type: inline-size;
+}
+
+/* The phone is its own container so the bezel scales with it (percentage padding would follow the
+   surrounding layout instead). */
+.pframe {
+  position: relative;
+  border-radius: 15% / 7%;
+  container-type: inline-size;
+  background: #121212;
+  box-shadow: inset 0 0 0 1.5px #2e2e2e, 0 40px 80px -30px rgba(20, 20, 20, 0.55), 0 10px 24px -12px rgba(20, 20, 20, 0.3);
+}
+
+:root[data-theme='dark'] .pframe {
+  box-shadow: inset 0 0 0 1.5px #3c3c3c, 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 80px -30px rgba(0, 0, 0, 0.85);
+}
+
+/* The camera island. */
+.pframe::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  top: 4.6%;
+  left: 50%;
+  width: 28%;
+  height: 3.2%;
+  border-radius: 99px;
+  background: #000;
+  transform: translate(-50%, -50%);
+}
+
+.pframe-screen {
+  position: relative;
+  margin: 3.4cqw;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 12.5% / 5.8%;
+  container-type: inline-size;
+}
+
+/* Sites: em-based, sized by the frame ----------------------------------------- */
+
+.cx {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  font-size: calc(100cqw / 80);
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cx-phone {
+  font-size: calc(100cqw / 24);
+}
+
+.cx p {
+  margin: 0;
+}
+
+.phone-status {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.6em;
+  padding: 0 2.6em 0 2.8em;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
+.phone-icons {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.18em;
+}
+
+.phone-icons i {
+  width: 0.26em;
+  border-radius: 0.1em;
+  background: currentColor;
+}
+
+.phone-icons i:nth-child(1) {
+  height: 0.45em;
+}
+
+.phone-icons i:nth-child(2) {
+  height: 0.65em;
+}
+
+.phone-icons i:nth-child(3) {
+  height: 0.85em;
+}
+
+.phone-icons b {
+  position: relative;
+  width: 1.7em;
+  height: 0.85em;
+  margin-left: 0.45em;
+  border-radius: 0.28em;
+  box-shadow: inset 0 0 0 0.1em currentColor;
+}
+
+.phone-icons b::after {
+  content: '';
+  position: absolute;
+  inset: 0.2em 0.5em 0.2em 0.2em;
+  border-radius: 0.1em;
+  background: currentColor;
+}
+
+/* Vela — iris, software as a service ------------------------------------------ */
+
+.vela {
+  background: #0e0824;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.vela::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 4em 4em;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 22%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 22%, #000 25%, transparent 75%);
+}
+
+.vela-glow {
+  position: absolute;
+  left: 50%;
+  top: -20em;
+  width: 74em;
+  height: 46em;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(128, 82, 255, 0.72), rgba(128, 82, 255, 0.2) 55%, transparent);
+  transform: translateX(-50%);
+}
+
+.vela-nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5.2em;
+  padding: 0 3.6em;
+}
+
+.vela-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: 'Unbounded', 'Space Grotesk', sans-serif;
+  font-size: 1.45em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.vela-mark {
+  width: 1em;
+  height: 1em;
+  color: #b9a4ff;
+}
+
+.vela-links {
+  display: flex;
+  gap: 2.4em;
+  font-size: 0.95em;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.vela-nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.6em;
+  font-size: 0.95em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.vela-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.1em;
+  padding: 0 1.5em;
+  border-radius: 0.75em;
+  background: #8052ff;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 0.8em 2em -0.6em rgba(128, 82, 255, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.vela-btn-sm {
+  height: 2.5em;
+  padding: 0 1.1em;
+  font-size: 0.92em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.vela-btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.vela-hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.4em;
+  text-align: center;
+}
+
+.vela-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  height: 2.3em;
+  padding: 0 1.1em 0 0.3em;
+  border-radius: 99em;
+  background: rgba(128, 82, 255, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(185, 164, 255, 0.35);
+  font-size: 0.86em;
+  color: #ddd3ff;
+}
+
+.vela-pill b {
+  display: inline-flex;
+  align-items: center;
+  height: 1.75em;
+  padding: 0 0.75em;
+  border-radius: 99em;
+  background: #8052ff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.vela-title {
+  max-width: 13em;
+  margin-top: 0.5em;
+  font-family: 'Unbounded', 'Space Grotesk', sans-serif;
+  font-size: 3.9em;
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  background: linear-gradient(180deg, #fff 35%, #cdbfff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vela-sub {
+  max-width: 33em;
+  margin-top: 1.5em;
+  font-size: 1.12em;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.vela-ctas {
+  display: flex;
+  gap: 0.8em;
+  margin-top: 1.9em;
+}
+
+.vela-fine {
+  margin-top: 1.1em;
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.vela-app {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  gap: 0.8em;
+  width: 60em;
+  height: 24em;
+  margin: 3em auto 0;
+  padding: 0.8em;
+  border-radius: 1.3em;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 2.5em 6em -1em rgba(0, 0, 0, 0.7),
+    0 0 8em -2em rgba(128, 82, 255, 0.6);
+}
+
+.vela-side {
+  display: grid;
+  align-content: start;
+  gap: 0.9em;
+  padding: 1.1em 1em;
+  border-radius: 0.8em;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.vela-side-logo {
+  display: grid;
+  place-items: center;
+  width: 2.2em;
+  height: 2.2em;
+  margin-bottom: 0.6em;
+  border-radius: 0.6em;
+  background: #8052ff;
+}
+
+.vela-side-logo .vela-mark {
+  width: 1.2em;
+  height: 1.2em;
+  color: #fff;
+}
+
+.vela-side i {
+  display: block;
+  width: 80%;
+  height: 0.7em;
+  border-radius: 0.4em;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.vela-side i:nth-of-type(even) {
+  width: 62%;
+}
+
+.vela-side i.is-on {
+  width: 100%;
+  background: #b9a4ff;
+}
+
+.vela-main {
+  display: grid;
+  align-content: start;
+  gap: 1em;
+  padding: 1.3em 1.4em;
+  border-radius: 0.8em;
+  background: #f7f5ff;
+  color: #1b1340;
+}
+
+.vela-main-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vela-main-head strong {
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.vela-main-head span {
+  padding: 0.3em 0.7em;
+  border-radius: 0.5em;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(27, 19, 64, 0.08);
+  font-size: 0.8em;
+  color: #6b6290;
+}
+
+.vela-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8em;
+}
+
+.vela-kpis div {
+  padding: 0.9em 1em;
+  border-radius: 0.7em;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(27, 19, 64, 0.07);
+}
+
+.vela-kpis span {
+  display: block;
+  font-size: 0.74em;
+  color: #6b6290;
+}
+
+.vela-kpis strong {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 1.55em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.vela-kpis em {
+  display: inline-block;
+  margin-top: 0.4em;
+  padding: 0.15em 0.5em;
+  border-radius: 0.4em;
+  background: #efe9ff;
+  color: #5b32e6;
+  font-size: 0.7em;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.vela-kpis em.is-quiet {
+  background: #f2f1f7;
+  color: #6b6290;
+}
+
+.vela-kpis em.is-warn {
+  background: #fff1e6;
+  color: #b4531a;
+}
+
+.vela-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55em;
+  height: 7.5em;
+  padding: 1em 1.1em 0;
+  border-radius: 0.7em;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(27, 19, 64, 0.07);
+}
+
+.vela-chart i {
+  flex: 1;
+  border-radius: 0.35em 0.35em 0 0;
+  background: linear-gradient(180deg, #8052ff, #cdbfff);
+}
+
+.vela-chart i:last-child {
+  background: linear-gradient(180deg, #5b32e6, #8052ff);
+}
+
+/* Vela on a phone. */
+.vela-m .phone-status {
+  color: #fff;
+}
+
+.vela-m .vela-glow {
+  top: -12em;
+  width: 40em;
+  height: 30em;
+}
+
+.vela-m .vela-nav {
+  height: 4em;
+  padding: 0 1.7em;
+}
+
+.vela-m .vela-logo {
+  font-size: 1.3em;
+}
+
+.vela-burger {
+  display: grid;
+  gap: 0.36em;
+}
+
+.vela-burger i {
+  display: block;
+  width: 1.5em;
+  height: 0.15em;
+  border-radius: 1em;
+  background: #fff;
+}
+
+.vela-m .vela-hero {
+  padding: 2.4em 1.7em 0;
+}
+
+.vela-m .vela-pill {
+  font-size: 0.8em;
+}
+
+.vela-m .vela-title {
+  max-width: 9em;
+  font-size: 2.3em;
+}
+
+.vela-m .vela-sub {
+  max-width: 18em;
+  font-size: 0.98em;
+}
+
+.vela-m .vela-btn {
+  width: 100%;
+  height: 3.3em;
+  margin-top: 1.7em;
+}
+
+.vela-card {
+  position: relative;
+  z-index: 1;
+  margin: 2.2em 1.7em 0;
+  padding: 1.1em 1.2em 0;
+  border-radius: 1em;
+  background: #f7f5ff;
+  color: #1b1340;
+}
+
+.vela-card > span {
+  font-size: 0.78em;
+  color: #6b6290;
+}
+
+.vela-card strong {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.vela-card .vela-chart {
+  gap: 0.4em;
+  height: 5.5em;
+  margin-top: 0.6em;
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Wildpath — verdant, tours & bookings ----------------------------------------- */
+
+.wild {
+  background: #0d2b25;
+  color: #0d2b25;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.wild-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #d4eadf 0%, #ecf3e7 32%, #f7efda 54%, #d3e6d9 76%);
+}
+
+.wild-sun {
+  position: absolute;
+  left: 66%;
+  top: 14%;
+  width: 13em;
+  height: 13em;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffaf0 0 30%, rgba(255, 244, 214, 0.75) 44%, rgba(255, 244, 214, 0) 70%);
+  transform: translateX(-50%);
+}
+
+.wild-range {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.wild-range-1 {
+  height: 60%;
+  background: linear-gradient(180deg, #a6cfbf, #8fc0ad);
+  clip-path: polygon(0 52%, 6% 44%, 12% 47%, 19% 30%, 25% 38%, 31% 33%, 38% 45%, 46% 22%, 53% 34%, 58% 29%, 64% 41%, 71% 24%, 78% 36%, 84% 31%, 91% 43%, 96% 37%, 100% 40%, 100% 100%, 0 100%);
+}
+
+.wild-range-2 {
+  height: 46%;
+  background: linear-gradient(180deg, #5f9f8b, #4b8c78);
+  clip-path: polygon(0 40%, 7% 52%, 14% 36%, 22% 48%, 30% 26%, 37% 40%, 43% 34%, 50% 50%, 57% 30%, 66% 46%, 73% 38%, 81% 52%, 88% 34%, 95% 44%, 100% 38%, 100% 100%, 0 100%);
+}
+
+.wild-mist {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18%;
+  height: 22%;
+  background: linear-gradient(180deg, transparent, rgba(236, 244, 238, 0.55) 50%, transparent);
+}
+
+.wild-forest {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: 0;
+}
+
+.wild-forest-far {
+  height: 34%;
+  background: #2b7160;
+}
+
+.wild-forest-near {
+  height: 25%;
+  background: #0d3a31;
+}
+
+.wild-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5.4em;
+  padding: 0 3.6em;
+}
+
+.wild-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: 'Bebas Neue', 'Space Grotesk', sans-serif;
+  font-size: 2.2em;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.wild-logo svg {
+  width: 0.85em;
+  height: 0.85em;
+  color: #15846e;
+}
+
+.wild-links {
+  display: flex;
+  gap: 2.4em;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #2c4c44;
+}
+
+.wild-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 2.8em;
+  padding: 0 1.3em;
+  border-radius: 0.45em;
+  background: #15846e;
+  color: #fff;
+  font-size: 0.95em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.wild-hero {
+  position: absolute;
+  z-index: 2;
+  left: 3.6em;
+  top: 9em;
+}
+
+.wild-kicker {
+  display: block;
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #15846e;
+}
+
+.wild-title {
+  margin-top: 0.12em;
+  font-family: 'Bebas Neue', 'Space Grotesk', sans-serif;
+  font-size: 8.2em;
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.wild-sub {
+  max-width: 23em;
+  margin-top: 1em;
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: #2c4c44;
+}
+
+.wild-rating {
+  position: absolute;
+  z-index: 2;
+  right: 3.6em;
+  top: 9em;
+  display: grid;
+  justify-items: end;
+  gap: 0.15em;
+  padding: 0.9em 1.1em;
+  border-radius: 0.7em;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 1em 2em -1em rgba(13, 43, 37, 0.35);
+  font-size: 0.85em;
+  color: #2c4c44;
+}
+
+.wild-rating b {
+  font-family: 'Bebas Neue', 'Space Grotesk', sans-serif;
+  font-size: 2.4em;
+  font-weight: 400;
+  line-height: 1;
+  color: #0d2b25;
+}
+
+.wild-stars {
+  letter-spacing: 0.1em;
+  color: #15846e;
+}
+
+.wild-search {
+  position: absolute;
+  z-index: 2;
+  left: 3.6em;
+  right: 3.6em;
+  bottom: 3em;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr auto;
+  align-items: center;
+  padding: 0.7em;
+  border-radius: 0.9em;
+  background: #fff;
+  box-shadow: 0 1.5em 3em -1em rgba(0, 0, 0, 0.45);
+}
+
+.wild-search > div {
+  padding: 0.3em 1.4em;
+  border-right: 1px solid #e3ece8;
+}
+
+.wild-search > div span {
+  display: block;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6b8a82;
+}
+
+.wild-search strong {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: #0d2b25;
+}
+
+.wild-btn-go {
+  height: 3.3em;
+  margin-left: 0.8em;
+  padding: 0 1.6em;
+  font-size: 1em;
+}
+
+/* Crumb — saffron, a neighbourhood bakery on a phone ----------------------------- */
+
+.crumb {
+  background: #fff7e8;
+  color: #3a2414;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.crumb-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.8em;
+  padding: 0 1.6em;
+}
+
+.crumb-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.9em;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.crumb-icons {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.crumb-bag {
+  display: grid;
+  place-items: center;
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  background: #3a2414;
+  color: #ffb829;
+  font-size: 0.8em;
+  font-weight: 700;
+}
+
+.crumb-burger {
+  display: grid;
+  gap: 0.32em;
+}
+
+.crumb-burger i {
+  display: block;
+  width: 1.5em;
+  height: 0.16em;
+  border-radius: 1em;
+  background: #3a2414;
+}
+
+.crumb-hero {
+  position: relative;
+  height: 15em;
+  margin: 0.4em 1.2em 0;
+  overflow: hidden;
+  border-radius: 1.4em;
+  background: #ffe6a8;
+}
+
+.crumb-sun {
+  position: absolute;
+  left: 50%;
+  top: 1.5em;
+  width: 10.5em;
+  height: 10.5em;
+  border-radius: 50%;
+  background: #ffb829;
+  transform: translateX(-50%);
+}
+
+.crumb-loaf {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2em;
+  width: 13em;
+  height: 6.6em;
+  border-radius: 50% 50% 44% 44% / 62% 62% 38% 38%;
+  background: radial-gradient(ellipse 60% 50% at 45% 30%, #eaa95c, #c06f28 60%, #8d4a17);
+  box-shadow: 0 0.8em 1.2em -0.5em rgba(90, 45, 10, 0.55), inset 0 -0.6em 1em rgba(90, 40, 8, 0.35);
+  transform: translateX(-56%);
+}
+
+.crumb-loaf i {
+  position: absolute;
+  top: 30%;
+  width: 2.6em;
+  height: 0.7em;
+  border-radius: 50%;
+  background: #f6d29a;
+  opacity: 0.9;
+  transform: rotate(-24deg);
+}
+
+.crumb-loaf i:nth-child(1) {
+  left: 20%;
+}
+
+.crumb-loaf i:nth-child(2) {
+  left: 42%;
+}
+
+.crumb-loaf i:nth-child(3) {
+  left: 64%;
+}
+
+.crumb-bun {
+  position: absolute;
+  right: 1.5em;
+  bottom: 1.6em;
+  width: 4.4em;
+  height: 3.3em;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #f2b86f, #b8692a 72%);
+  box-shadow: 0 0.5em 0.8em -0.4em rgba(90, 45, 10, 0.5);
+}
+
+.crumb-badge {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  padding: 0.45em 0.85em;
+  border-radius: 99em;
+  background: #fff7e8;
+  font-size: 0.78em;
+  font-weight: 700;
+}
+
+.crumb-body {
+  padding: 1.5em 1.6em 0;
+}
+
+.crumb-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.55em;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.crumb-title em {
+  font-style: italic;
+  color: #c47a1c;
+}
+
+.crumb-sub {
+  margin-top: 0.7em;
+  font-size: 0.98em;
+  line-height: 1.45;
+  color: #6b4d36;
+}
+
+.crumb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.3em;
+  margin-top: 1.3em;
+  border-radius: 99em;
+  background: #ffb829;
+  font-weight: 700;
+  box-shadow: 0 0.6em 1.2em -0.6em rgba(196, 122, 28, 0.85);
+}
+
+.crumb-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 0.9em;
+  font-size: 0.82em;
+  color: #6b4d36;
+}
+
+.crumb-open i {
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background: #3fa66b;
+}
+
+.crumb-row {
+  padding: 1.5em 1.6em 0;
+}
+
+.crumb-label {
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9a7a5f;
+}
+
+.crumb-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8em;
+  margin-top: 0.8em;
+}
+
+.crumb-item {
+  display: grid;
+  gap: 0.15em;
+  padding: 0.7em;
+  border-radius: 1em;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(58, 36, 20, 0.06);
+}
+
+.crumb-thumb {
+  display: block;
+  height: 4.6em;
+  margin-bottom: 0.4em;
+  border-radius: 0.7em;
+}
+
+.crumb-thumb-bun {
+  background: radial-gradient(circle at 50% 55%, #f0b46a 0 28%, #c97a32 29% 31%, #f0b46a 32% 36%, transparent 37%), #ffe6a8;
+}
+
+.crumb-thumb-sour {
+  background: radial-gradient(ellipse 42% 30% at 50% 56%, #c06f28 0 62%, transparent 64%), #f4e2c0;
+}
+
+.crumb-item strong {
+  font-size: 0.9em;
+}
+
+.crumb-item > span:last-child {
+  font-size: 0.82em;
+  color: #9a7a5f;
+}

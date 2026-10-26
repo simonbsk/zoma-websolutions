@@ -68,12 +68,12 @@ export function SettingsPage() {
     const interval = Number(f.slot_interval_minutes);
     const notice = Number(f.booking_notice_hours);
     const advance = Number(f.max_advance_days);
-    if (f.business_name.trim().length < 2) errs.business_name = 'Required.';
-    if (f.business_email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.business_email.trim())) errs.business_email = 'Invalid email.';
-    if (!Number.isInteger(interval) || interval < 5 || interval > 240) errs.slot_interval_minutes = '5–240 minutes.';
-    if (!Number.isInteger(notice) || notice < 0 || notice > 720) errs.booking_notice_hours = '0–720 hours.';
-    if (!Number.isInteger(advance) || advance < 1 || advance > 730) errs.max_advance_days = '1–730 days.';
-    if (!f.timezone) errs.timezone = 'Required.';
+    if (f.business_name.trim().length < 2) errs.business_name = 'Pflichtfeld.';
+    if (f.business_email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.business_email.trim())) errs.business_email = 'Ungültige E-Mail-Adresse.';
+    if (!Number.isInteger(interval) || interval < 5 || interval > 240) errs.slot_interval_minutes = '5–240 Minuten.';
+    if (!Number.isInteger(notice) || notice < 0 || notice > 720) errs.booking_notice_hours = '0–720 Stunden.';
+    if (!Number.isInteger(advance) || advance < 1 || advance > 730) errs.max_advance_days = '1–730 Tage.';
+    if (!f.timezone) errs.timezone = 'Pflichtfeld.';
     setErrors(errs);
     if (Object.keys(errs).length) return null;
     return {
@@ -109,11 +109,11 @@ export function SettingsPage() {
 
   return (
     <>
-      <PageHeader title="Settings" description="Studio details and the rules that shape online availability." />
+      <PageHeader title="Einstellungen" description="Studiodaten und die Regeln für die Online-Verfügbarkeit." />
 
       {settings.error ? <Alert tone="error">{settings.error}</Alert> : null}
       {!settings.loading && !settings.data ? (
-        <Alert tone="info">No settings saved yet — online booking is disabled until you save this form.</Alert>
+        <Alert tone="info">Noch keine Einstellungen gespeichert — die Online-Buchung bleibt deaktiviert, bis Sie dieses Formular speichern.</Alert>
       ) : null}
 
       {form ? (
@@ -121,46 +121,46 @@ export function SettingsPage() {
           <section className="panel">
             <div className="panel-header">
               <div>
-                <h2>Studio details</h2>
-                <p>Shown in the website footer and booking confirmation.</p>
+                <h2>Studiodaten</h2>
+                <p>Werden im Footer der Website und in der Buchungsbestätigung angezeigt.</p>
               </div>
             </div>
             <div className="panel-body form-stack">
-              <TextField label="Business name" value={form.business_name} onChange={(e) => set('business_name', e.target.value)} error={errors.business_name} />
+              <TextField label="Firmenname" value={form.business_name} onChange={(e) => set('business_name', e.target.value)} error={errors.business_name} />
               <div className="grid-2">
-                <TextField label="Email" type="email" optional value={form.business_email} onChange={(e) => set('business_email', e.target.value)} error={errors.business_email} />
-                <TextField label="Phone" type="tel" optional value={form.business_phone} onChange={(e) => set('business_phone', e.target.value)} />
+                <TextField label="E-Mail" type="email" optional value={form.business_email} onChange={(e) => set('business_email', e.target.value)} error={errors.business_email} />
+                <TextField label="Telefon" type="tel" optional value={form.business_phone} onChange={(e) => set('business_phone', e.target.value)} />
               </div>
-              <TextField label="Address" optional value={form.business_address} onChange={(e) => set('business_address', e.target.value)} />
+              <TextField label="Adresse" optional value={form.business_address} onChange={(e) => set('business_address', e.target.value)} />
             </div>
           </section>
 
           <section className="panel">
             <div className="panel-header">
               <div>
-                <h2>Booking rules</h2>
-                <p>Applied instantly to the public booking calendar and enforced on the server.</p>
+                <h2>Buchungsregeln</h2>
+                <p>Gelten sofort für den öffentlichen Buchungskalender und werden serverseitig durchgesetzt.</p>
               </div>
             </div>
             <div className="panel-body form-stack">
               <div className="grid-2">
                 <SelectField
-                  label="Slot interval"
+                  label="Terminraster"
                   value={form.slot_interval_minutes}
                   onChange={(e) => set('slot_interval_minutes', e.target.value)}
                   error={errors.slot_interval_minutes}
-                  hint="How often a new start time is offered."
+                  hint="Wie oft eine neue Startzeit angeboten wird."
                 >
                   {[...new Set([...INTERVALS, Number(form.slot_interval_minutes)])]
                     .filter((n) => Number.isFinite(n) && n > 0)
                     .sort((a, b) => a - b)
                     .map((n) => (
                       <option key={n} value={String(n)}>
-                        Every {n} minutes
+                        Alle {n} Minuten
                       </option>
                     ))}
                 </SelectField>
-                <SelectField label="Timezone" value={form.timezone} onChange={(e) => set('timezone', e.target.value)} error={errors.timezone} hint="Used for server-side notice checks.">
+                <SelectField label="Zeitzone" value={form.timezone} onChange={(e) => set('timezone', e.target.value)} error={errors.timezone} hint="Wird für die serverseitige Prüfung der Vorlaufzeit verwendet.">
                   {[...new Set([form.timezone, ...TIMEZONES])].map((tz) => (
                     <option key={tz} value={tz}>
                       {tz}
@@ -170,24 +170,24 @@ export function SettingsPage() {
               </div>
               <div className="grid-2">
                 <TextField
-                  label="Minimum notice (hours)"
+                  label="Mindestvorlauf (Stunden)"
                   type="number"
                   min={0}
                   max={720}
                   value={form.booking_notice_hours}
                   onChange={(e) => set('booking_notice_hours', e.target.value)}
                   error={errors.booking_notice_hours}
-                  hint="Earliest bookable time from now."
+                  hint="Frühester buchbarer Zeitpunkt ab jetzt."
                 />
                 <TextField
-                  label="Booking window (days)"
+                  label="Buchungszeitraum (Tage)"
                   type="number"
                   min={1}
                   max={730}
                   value={form.max_advance_days}
                   onChange={(e) => set('max_advance_days', e.target.value)}
                   error={errors.max_advance_days}
-                  hint="How far ahead clients can book."
+                  hint="Wie weit im Voraus Kunden buchen können."
                 />
               </div>
             </div>
@@ -195,9 +195,9 @@ export function SettingsPage() {
 
           <div className="settings-foot">
             {saveError ? <Alert tone="error">{saveError}</Alert> : null}
-            {saved ? <Alert tone="success">Settings saved.</Alert> : null}
+            {saved ? <Alert tone="success">Einstellungen gespeichert.</Alert> : null}
             <Button type="submit" size="lg" loading={saving}>
-              Save settings
+              Einstellungen speichern
             </Button>
           </div>
         </form>

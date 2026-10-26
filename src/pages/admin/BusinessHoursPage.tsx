@@ -43,16 +43,16 @@ function toWeek(rows: BusinessHour[]): Week {
 
 function validateDay(day: DayState): string | null {
   if (!day.open) return null;
-  if (!day.shifts.length) return 'Add at least one time range or mark the day as closed.';
+  if (!day.shifts.length) return 'Fügen Sie mindestens einen Zeitraum hinzu oder markieren Sie den Tag als geschlossen.';
   const ranges = day.shifts
     .map((s) => ({ start: timeToMinutes(s.start), end: timeToMinutes(s.end) }))
     .sort((a, b) => (a.start ?? 0) - (b.start ?? 0));
   for (const r of ranges) {
-    if (r.start === null || r.end === null) return 'Enter a valid start and end time.';
-    if (r.end <= r.start) return 'End time must be after start time.';
+    if (r.start === null || r.end === null) return 'Geben Sie eine gültige Start- und Endzeit ein.';
+    if (r.end <= r.start) return 'Die Endzeit muss nach der Startzeit liegen.';
   }
   for (let i = 1; i < ranges.length; i++) {
-    if ((ranges[i].start as number) < (ranges[i - 1].end as number)) return 'Time ranges must not overlap.';
+    if ((ranges[i].start as number) < (ranges[i - 1].end as number)) return 'Zeiträume dürfen sich nicht überschneiden.';
   }
   return null;
 }
@@ -130,8 +130,8 @@ export function BusinessHoursPage() {
   return (
     <>
       <PageHeader
-        title="Business hours"
-        description="Bookable time ranges for each weekday. Slots are generated inside these hours only."
+        title="Geschäftszeiten"
+        description="Buchbare Zeiträume für jeden Wochentag. Termine werden nur innerhalb dieser Zeiten angeboten."
         actions={
           <>
             {dirty ? (
@@ -143,11 +143,11 @@ export function BusinessHoursPage() {
                 }}
                 disabled={saving}
               >
-                Discard
+                Verwerfen
               </Button>
             ) : null}
             <Button onClick={() => void save()} disabled={!dirty || hasErrors} loading={saving}>
-              Save hours
+              Zeiten speichern
             </Button>
           </>
         }
@@ -155,7 +155,7 @@ export function BusinessHoursPage() {
 
       {hours.error ? <Alert tone="error">{hours.error}</Alert> : null}
       {saveError ? <Alert tone="error">{saveError}</Alert> : null}
-      {saved && !dirty ? <Alert tone="success">Business hours saved. Availability updates immediately.</Alert> : null}
+      {saved && !dirty ? <Alert tone="success">Geschäftszeiten gespeichert. Die Verfügbarkeit wird sofort aktualisiert.</Alert> : null}
 
       <section className="panel hours">
         {!week ? (
@@ -198,7 +198,7 @@ export function BusinessHoursPage() {
                                 shifts: cur.shifts.map((x) => (x.key === s.key ? { ...x, start: e.target.value } : x)),
                               }))
                             }
-                            aria-label={`${WEEKDAY_NAMES[d]} start time`}
+                            aria-label={`${WEEKDAY_NAMES[d]} Startzeit`}
                           />
                           <span className="shift-sep">–</span>
                           <input
@@ -212,13 +212,13 @@ export function BusinessHoursPage() {
                                 shifts: cur.shifts.map((x) => (x.key === s.key ? { ...x, end: e.target.value } : x)),
                               }))
                             }
-                            aria-label={`${WEEKDAY_NAMES[d]} end time`}
+                            aria-label={`${WEEKDAY_NAMES[d]} Endzeit`}
                           />
                           <button
                             type="button"
                             className="btn btn-subtle btn-sm btn-icon"
                             onClick={() => update(d, (cur) => ({ ...cur, shifts: cur.shifts.filter((x) => x.key !== s.key) }))}
-                            aria-label="Remove time range"
+                            aria-label="Zeitraum entfernen"
                           >
                             <Trash2 size={15} />
                           </button>
@@ -227,7 +227,7 @@ export function BusinessHoursPage() {
                       {errors[d] ? <span className="field-error">{errors[d]}</span> : null}
                     </>
                   ) : (
-                    <span className="hours-closed">Closed</span>
+                    <span className="hours-closed">Geschlossen</span>
                   )}
                 </div>
 
@@ -246,10 +246,10 @@ export function BusinessHoursPage() {
                           update(d, (cur) => ({ ...cur, shifts: [...cur.shifts, { key: newKey(), start, end }] }));
                         }}
                       >
-                        <Plus size={14} /> Add range
+                        <Plus size={14} /> Zeitraum hinzufügen
                       </button>
                       {d >= 1 && d <= 5 ? (
-                        <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => copyToWeekdays(d)} title="Copy to all weekdays" aria-label="Copy to all weekdays">
+                        <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => copyToWeekdays(d)} title="Auf alle Werktage übertragen" aria-label="Auf alle Werktage übertragen">
                           <Copy size={14} />
                         </button>
                       ) : null}

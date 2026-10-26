@@ -5,10 +5,10 @@ import { BrandLogo } from './Brand';
 import { buttonClass } from '../ui/Button';
 
 const LINKS = [
-  { href: '/#approach', label: 'Approach' },
-  { href: '/#pricing', label: 'Pricing' },
+  { href: '/#approach', label: 'Arbeitsweise' },
+  { href: '/#pricing', label: 'Preise' },
   { href: '/#team', label: 'Team' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/#contact', label: 'Kontakt' },
 ];
 
 export function Navbar() {
@@ -22,7 +22,7 @@ export function Navbar() {
       <div className="nav-bar">
         <BrandLogo />
         <div className="nav-right">
-          <nav className="nav-links" aria-label="Primary">
+          <nav className="nav-links" aria-label="Hauptnavigation">
             {LINKS.map((link) => (
               <a key={link.href} href={link.href}>
                 {link.label}
@@ -30,12 +30,12 @@ export function Navbar() {
             ))}
           </nav>
           <Link to="/book" className={buttonClass('primary', 'md', 'btn-cta nav-cta')}>
-            Book a call <ArrowUpRight size={18} strokeWidth={1.8} />
+            Termin buchen <ArrowUpRight size={18} strokeWidth={1.8} />
           </Link>
           <button
             type="button"
             className="btn btn-subtle btn-icon nav-toggle"
-            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-label={open ? 'Menü schließen' : 'Menü öffnen'}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
@@ -51,7 +51,7 @@ export function Navbar() {
             </a>
           ))}
           <Link to="/book" className={buttonClass('primary', 'lg', 'btn-cta btn-block')}>
-            Book your free consultation <ArrowUpRight size={18} strokeWidth={1.8} />
+            Kostenloses Erstgespräch buchen <ArrowUpRight size={18} strokeWidth={1.8} />
           </Link>
         </div>
       ) : null}

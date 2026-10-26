@@ -81,7 +81,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
     if (error) {
       throw new Error(
-        error.message === 'Invalid login credentials' ? 'Incorrect email or password.' : error.message,
+        error.message === 'Invalid login credentials' ? 'E-Mail oder Passwort ist falsch.' : error.message,
       );
     }
   }, []);

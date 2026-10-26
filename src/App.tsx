@@ -25,10 +25,10 @@ function NotFound() {
           404
         </p>
         <h1 className="display" style={{ fontSize: 'clamp(40px, 5vw, 64px)', marginTop: 16 }}>
-          This page doesn't exist.
+          Diese Seite gibt es nicht.
         </h1>
         <Link to="/" className={buttonClass('dark', 'md', 'btn-cta')} style={{ marginTop: 32 }}>
-          Back to homepage <ArrowUpRight size={18} strokeWidth={1.8} />
+          Zurück zur Startseite <ArrowUpRight size={18} strokeWidth={1.8} />
         </Link>
       </div>
     </div>

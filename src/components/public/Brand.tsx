@@ -19,7 +19,7 @@ export function BrandMark({ size = 30, light = false }: { size?: number; light?:
 
 export function BrandLogo({ to = '/', light = false }: { to?: string; light?: boolean }) {
   return (
-    <Link to={to} className={`brand ${light ? 'brand-light' : ''}`} aria-label="ZomaWebsolutions home">
+    <Link to={to} className={`brand ${light ? 'brand-light' : ''}`} aria-label="ZomaWebsolutions Startseite">
       <BrandMark size={26} light={light} />
       <span className="brand-word">
         Zoma<span>Websolutions</span>

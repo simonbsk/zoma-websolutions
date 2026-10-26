@@ -34,22 +34,22 @@ function downloadIcs(start: Date, end: Date, title: string, uid: string) {
     `DTSTART:${toIcsStamp(start)}`,
     `DTEND:${toIcsStamp(end)}`,
     `SUMMARY:${escapeIcs(title)}`,
-    'DESCRIPTION:Pending confirmation — you will receive an email once confirmed.',
+    'DESCRIPTION:Bestätigung ausstehend — Sie erhalten eine E-Mail\\, sobald der Termin bestätigt ist.',
     'END:VEVENT',
     'END:VCALENDAR',
   ].join('\r\n');
   const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'zoma-consultation.ics';
+  a.download = 'zoma-erstgespraech.ics';
   a.click();
   URL.revokeObjectURL(url);
 }
 
 const NEXT_STEPS = [
-  { icon: Mail, title: 'Confirmation email', text: 'We review your request and confirm by email, usually within one business day.' },
-  { icon: ClipboardList, title: 'Light preparation', text: 'Have your current site, examples you like and rough goals at hand.' },
-  { icon: MessagesSquare, title: 'Your session', text: 'A focused conversation and clear next steps — no obligation.' },
+  { icon: Mail, title: 'Bestätigung per E-Mail', text: 'Wir prüfen Ihre Anfrage und bestätigen sie per E-Mail, in der Regel innerhalb eines Werktags.' },
+  { icon: ClipboardList, title: 'Kurze Vorbereitung', text: 'Halten Sie Ihre aktuelle Website, Beispiele, die Ihnen gefallen, und grobe Ziele bereit.' },
+  { icon: MessagesSquare, title: 'Ihr Termin', text: 'Ein fokussiertes Gespräch und klare nächste Schritte — unverbindlich.' },
 ];
 
 export function SuccessPage() {
@@ -62,12 +62,12 @@ export function SuccessPage() {
       <div className="booking">
         <div className="container success-wrap">
           <div className="booking-panel">
-            <EmptyState icon={<CalendarPlus size={20} />} title="No recent booking found">
-              Looking to schedule a session? Start a new booking below.
+            <EmptyState icon={<CalendarPlus size={20} />} title="Keine aktuelle Buchung gefunden">
+              Sie möchten einen Termin vereinbaren? Starten Sie unten eine neue Buchung.
             </EmptyState>
             <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 24 }}>
               <Link to="/book" className={buttonClass('primary')}>
-                Book a consultation
+                Beratung buchen
               </Link>
             </div>
           </div>
@@ -83,14 +83,14 @@ export function SuccessPage() {
   const reference = appointment.id.slice(0, 8).toUpperCase();
 
   const rows = [
-    { label: 'Service', value: service.name },
-    { label: 'Date', value: safeFormat(start, 'EEEE, d MMMM yyyy') },
-    { label: 'Time', value: `${safeFormat(start, 'HH:mm')} – ${safeFormat(end, 'HH:mm')}` },
-    { label: 'Duration', value: formatDuration(service.duration_minutes) },
-    { label: 'Price', value: formatPrice(service.price_cents, service.currency) },
+    { label: 'Leistung', value: service.name },
+    { label: 'Datum', value: safeFormat(start, 'EEEE, d. MMMM yyyy') },
+    { label: 'Uhrzeit', value: `${safeFormat(start, 'HH:mm')} – ${safeFormat(end, 'HH:mm')} Uhr` },
+    { label: 'Dauer', value: formatDuration(service.duration_minutes) },
+    { label: 'Preis', value: formatPrice(service.price_cents, service.currency) },
     { label: 'Name', value: appointment.full_name },
-    { label: 'Email', value: appointment.email },
-    { label: 'Phone', value: appointment.phone },
+    { label: 'E-Mail', value: appointment.email },
+    { label: 'Telefon', value: appointment.phone },
   ];
 
   return (
@@ -101,18 +101,18 @@ export function SuccessPage() {
             <span className="success-badge">
               <Check size={26} strokeWidth={2.6} />
             </span>
-            <span className="eyebrow">Request received</span>
-            <h1>Thank you, {appointment.full_name.split(' ')[0]}.</h1>
+            <span className="eyebrow">Anfrage erhalten</span>
+            <h1>Vielen Dank, {appointment.full_name}.</h1>
             <p>
-              Your appointment request has been sent to {businessName}. We'll confirm it by email at{' '}
+              Ihre Terminanfrage wurde an {businessName} gesendet. Wir bestätigen sie per E-Mail an{' '}
               <strong>{appointment.email}</strong>.
             </p>
           </div>
 
           <div className="success-summary">
             <div className="success-summary-head">
-              <span>Appointment summary</span>
-              <span className="badge badge-dot badge-pending">Pending confirmation</span>
+              <span>Terminübersicht</span>
+              <span className="badge badge-dot badge-pending">Bestätigung ausstehend</span>
             </div>
             <dl>
               {rows.map((row) => (
@@ -123,13 +123,13 @@ export function SuccessPage() {
               ))}
               {appointment.notes ? (
                 <div className="success-notes">
-                  <dt>Notes</dt>
+                  <dt>Notizen</dt>
                   <dd>{appointment.notes}</dd>
                 </div>
               ) : null}
             </dl>
             <div className="success-ref">
-              Reference <code>{reference}</code>
+              Referenz <code>{reference}</code>
             </div>
           </div>
 
@@ -140,17 +140,17 @@ export function SuccessPage() {
                 className={buttonClass('ghost')}
                 onClick={() => downloadIcs(start, end, `${service.name} — ${businessName}`, appointment.id)}
               >
-                <CalendarPlus size={16} /> Add to calendar
+                <CalendarPlus size={16} /> Zum Kalender hinzufügen
               </button>
             ) : null}
             <Link to="/" className={buttonClass('dark')}>
-              Back to homepage
+              Zurück zur Startseite
             </Link>
           </div>
         </div>
 
         <div className="next-steps">
-          <h2>What happens next</h2>
+          <h2>Wie es weitergeht</h2>
           <ol>
             {NEXT_STEPS.map(({ icon: Icon, title, text }) => (
               <li key={title}>

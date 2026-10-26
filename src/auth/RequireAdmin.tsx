@@ -26,12 +26,12 @@ export function RequireAdmin({ children }: { children: ReactNode }) {
           <div className="empty-icon" style={{ margin: '0 auto 16px' }}>
             <ShieldAlert size={20} />
           </div>
-          <h1 className="auth-title">No admin access</h1>
+          <h1 className="auth-title">Kein Admin-Zugang</h1>
           <p className="muted" style={{ marginTop: 8 }}>
-            {user?.email} is signed in but is not authorised to use the dashboard.
+            {user?.email} ist angemeldet, hat aber keine Berechtigung für das Dashboard.
           </p>
           <Button variant="dark" block style={{ marginTop: 24 }} onClick={() => void signOut()}>
-            Sign out
+            Abmelden
           </Button>
         </div>
       </div>

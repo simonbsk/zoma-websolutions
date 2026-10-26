@@ -22,25 +22,25 @@ export function AtelierNord() {
       <div className="s-nav">
         <span className="s-logo">Atelier Nord</span>
         <span className="s-links">
-          <span>Projects</span>
+          <span>Projekte</span>
           <span>Studio</span>
           <span>Journal</span>
-          <span>Contact</span>
+          <span>Kontakt</span>
         </span>
-        <span className="s-talk">Let's talk ↗</span>
+        <span className="s-talk">Anfragen ↗</span>
       </div>
       <div className="s-hero">
         <div className="s-copy">
-          <span className="s-index">(01) Selected work 2019 — 2026</span>
+          <span className="s-index">(01) Ausgewählte Arbeiten 2019 — 2026</span>
           <div>
             <div className="s-title">
-              Quiet spaces,
+              Ruhige Räume,
               <br />
-              built to last.
+              die bleiben.
             </div>
             <div className="s-row">
-              <p>Architecture and interiors for homes, studios and small public buildings across Northern Germany.</p>
-              <span className="s-more">View projects ↗</span>
+              <p>Architektur und Innenräume für Wohnhäuser, Ateliers und kleine öffentliche Bauten in ganz Norddeutschland.</p>
+              <span className="s-more">Projekte ansehen ↗</span>
             </div>
           </div>
         </div>
@@ -51,12 +51,12 @@ export function AtelierNord() {
       </div>
       <div className="s-work">
         <div className="s-work-head">
-          <span>Selected projects</span>
+          <span>Ausgewählte Projekte</span>
           <span className="s-count">(12)</span>
         </div>
         <div className="s-work-grid">
           {[
-            ['atelier-timber', 'Timber House', 'Lüneburg'],
+            ['atelier-timber', 'Holzhaus', 'Lüneburg'],
             ['atelier-interior', 'Studio Elbe', 'Hamburg'],
             ['atelier-facade', 'Haus am Hang', 'Kiel'],
           ].map(([photo, name, city]) => (
@@ -83,40 +83,40 @@ export function GlutRoastery() {
         <span className="s-logo">glut.</span>
         <span className="s-links">
           <span>Shop</span>
-          <span>Subscriptions</span>
+          <span>Abos</span>
           <span>Café</span>
-          <span>Story</span>
+          <span>Geschichte</span>
         </span>
-        <span className="s-cart">Cart (2)</span>
+        <span className="s-cart">Warenkorb (2)</span>
       </div>
       <div className="s-hero">
         <div className="s-title">
-          Roasted
+          Feurig
           <br />
-          with fire.
+          geröstet.
         </div>
-        <p className="s-sub">Small-batch speciality coffee from Leipzig. Roasted every Tuesday, at your door by Friday.</p>
+        <p className="s-sub">Spezialitätenkaffee in kleinen Chargen aus Leipzig. Jeden Dienstag geröstet, freitags bei Ihnen.</p>
         <div className="s-actions">
-          <span className="s-btn">Shop the beans</span>
-          <span className="s-btn s-btn-line">Try a subscription</span>
+          <span className="s-btn">Bohnen kaufen</span>
+          <span className="s-btn s-btn-line">Abo testen</span>
         </div>
         <div className="s-disc">
           <Photo name="glut-cup" />
         </div>
         <span className="s-sticker">
-          New
+          Neu
           <br />
-          Ethiopia
+          Äthiopien
           <br />
           Guji
         </span>
       </div>
       <div className="s-band">
-        <span>Free shipping from €30</span>
+        <span>Gratisversand ab 30 €</span>
         <span>✺</span>
-        <span>Roasted to order</span>
+        <span>Auf Bestellung geröstet</span>
         <span>✺</span>
-        <span>Compostable bags</span>
+        <span>Kompostierbare Tüten</span>
       </div>
     </div>
   );
@@ -135,23 +135,23 @@ export function VeloNine() {
             Velo<b>/9</b>
           </span>
           <span className="s-links">
-            <span>Bikes</span>
-            <span>Gear</span>
-            <span>Rides</span>
+            <span>Räder</span>
+            <span>Ausrüstung</span>
+            <span>Touren</span>
             <span>Service</span>
           </span>
-          <span className="s-shop">Shop now</span>
+          <span className="s-shop">Jetzt shoppen</span>
         </div>
         <div className="s-copy">
-          <span className="s-kicker">New · Aero 9 Carbon</span>
+          <span className="s-kicker">Neu · Aero 9 Carbon</span>
           <div className="s-title">
-            Ride
+            Weiter
             <br />
-            further<b>.</b>
+            fahren<b>.</b>
           </div>
           <div className="s-row">
-            <span className="s-cta">Configure yours ↗</span>
-            <span className="s-spec">7.4 kg · Shimano 105 Di2 · from €3,490</span>
+            <span className="s-cta">Jetzt konfigurieren ↗</span>
+            <span className="s-spec">7,4 kg · Shimano 105 Di2 · ab 3.490 €</span>
           </div>
         </div>
         <div className="s-dots">
@@ -161,15 +161,15 @@ export function VeloNine() {
         </div>
       </div>
       <div className="s-more">
-        <div className="s-more-title">Built for the long way round.</div>
+        <div className="s-more-title">Gebaut für den langen Weg.</div>
         <div className="s-cards">
           <div className="s-card s-card-photo">
             <Photo name="velo-ride" />
-            <span>Gravel 9 — from €2,790</span>
+            <span>Gravel 9 — ab 2.790 €</span>
           </div>
           <div className="s-card s-card-lime">
-            <span className="s-big">Free bike fitting</span>
-            <span>with every new frame. Book in store or online.</span>
+            <span className="s-big">Kostenloses Bikefitting</span>
+            <span>zu jedem neuen Rahmen. Im Laden oder online buchen.</span>
           </div>
         </div>
       </div>
@@ -185,42 +185,42 @@ export function HafenLegal() {
       <div className="s-nav">
         <span className="s-logo">
           Hafen &amp; Co.
-          <small>Attorneys at law</small>
+          <small>Rechtsanwälte</small>
         </span>
         <span className="s-links">
-          <span>Expertise</span>
+          <span>Kompetenzen</span>
           <span>Team</span>
-          <span>Insights</span>
-          <span>Careers</span>
+          <span>Einblicke</span>
+          <span>Karriere</span>
         </span>
-        <span className="s-btn">Book a consultation</span>
+        <span className="s-btn">Beratung vereinbaren</span>
       </div>
       <div className="s-hero">
         <div className="s-copy">
-          <span className="s-kicker">Commercial · Employment · Real estate</span>
+          <span className="s-kicker">Wirtschaft · Arbeitsrecht · Immobilien</span>
           <div className="s-title">
-            Clarity in every
+            Klarheit in jeder
             <br />
-            <em>decision.</em>
+            <em>Entscheidung.</em>
           </div>
-          <p>Independent advice for owner-led companies — precise, discreet and always on your side of the table.</p>
+          <p>Unabhängige Beratung für inhabergeführte Unternehmen — präzise, diskret und immer auf Ihrer Seite des Tisches.</p>
           <div className="s-stats">
             <span>
-              <b>35+</b> years of practice
+              <b>35+</b> Jahre Erfahrung
             </span>
             <span>
-              <b>1,200</b> cases closed
+              <b>1.200</b> abgeschlossene Mandate
             </span>
             <span>
-              <b>4.9</b> client rating
+              <b>4,9</b> Mandantenbewertung
             </span>
           </div>
         </div>
         <div className="s-media">
           <Photo name="hafen-towers" />
           <div className="s-quote">
-            “They made a complex merger feel simple.”
-            <small>Managing director, logistics group</small>
+            „Sie haben eine komplexe Fusion einfach wirken lassen.“
+            <small>Geschäftsführung, Logistikgruppe</small>
           </div>
         </div>
       </div>
@@ -235,35 +235,35 @@ export function MaisonFlora() {
     <div className="site s-flora">
       <div className="s-nav">
         <span className="s-links">
-          <span>Bouquets</span>
-          <span>Weddings</span>
+          <span>Sträuße</span>
+          <span>Hochzeiten</span>
           <span>Events</span>
         </span>
         <span className="s-logo">Maison Flora</span>
         <span className="s-links s-links-end">
           <span>Workshops</span>
-          <span>Bag (0)</span>
+          <span>Warenkorb (0)</span>
         </span>
       </div>
       <div className="s-hero">
         <div className="s-title">
-          Flowers for the
+          Blumen für die
           <br />
-          <em>in-between</em> days
+          <em>Tage</em> dazwischen
         </div>
         <div className="s-arch">
           <Photo name="flora-tulips" />
         </div>
         <div className="s-note">
-          Same-day delivery
+          Lieferung am selben Tag
           <br />
-          across Munich
-          <span>Order by 2 pm →</span>
+          in ganz München
+          <span>Bestellung bis 14 Uhr →</span>
         </div>
         <span className="s-badge">
-          Seasonal
+          Saisonal
           <br />
-          &amp; hand-tied
+          &amp; handgebunden
         </span>
       </div>
     </div>
@@ -283,27 +283,27 @@ export function OrbitAnalytics() {
           orbit
         </span>
         <span className="s-links">
-          <span>Product</span>
-          <span>Pricing</span>
-          <span>Customers</span>
-          <span>Docs</span>
+          <span>Produkt</span>
+          <span>Preise</span>
+          <span>Kunden</span>
+          <span>Doku</span>
         </span>
         <span className="s-auth">
-          <span>Sign in</span>
-          <span className="s-btn">Start free trial</span>
+          <span>Anmelden</span>
+          <span className="s-btn">Kostenlos testen</span>
         </span>
       </div>
       <div className="s-hero">
-        <span className="s-pill">✦ New: AI forecasts →</span>
+        <span className="s-pill">✦ Neu: KI-Prognosen →</span>
         <div className="s-title">
-          Know your numbers
+          Kennen Sie Ihre Zahlen,
           <br />
-          before they happen.
+          bevor sie entstehen.
         </div>
-        <p>Live revenue, retention and forecasting for teams that would rather act than wait for reports.</p>
+        <p>Live-Umsatz, Kundenbindung und Prognosen für Teams, die lieber handeln, als auf Reports zu warten.</p>
         <div className="s-actions">
-          <span className="s-btn">Start free trial</span>
-          <span className="s-btn s-btn-ghost">Book a demo</span>
+          <span className="s-btn">Kostenlos testen</span>
+          <span className="s-btn s-btn-ghost">Demo buchen</span>
         </div>
         <div className="s-dash">
           <div className="s-dash-side">
@@ -315,13 +315,13 @@ export function OrbitAnalytics() {
           <div className="s-dash-main">
             <div className="s-kpis">
               <span>
-                Revenue <b>€128.4k</b> <em>+12.6%</em>
+                Umsatz <b>128.400 €</b> <em>+12,6 %</em>
               </span>
               <span>
-                Active users <b>8,214</b> <em>+4.1%</em>
+                Aktive Nutzer <b>8.214</b> <em>+4,1 %</em>
               </span>
               <span>
-                Churn <b>1.8%</b> <em>−0.3%</em>
+                Abwanderung <b>1,8 %</b> <em>−0,3 %</em>
               </span>
             </div>
             <svg className="s-chart" viewBox="0 0 400 120" preserveAspectRatio="none">
@@ -358,27 +358,27 @@ export function LindeNordic() {
       <div className="s-nav">
         <span className="s-logo">Café Linde</span>
         <span className="s-links">
-          <span>Menu</span>
-          <span>Breakfast</span>
+          <span>Karte</span>
+          <span>Frühstück</span>
           <span>Events</span>
-          <span>Visit</span>
+          <span>Anfahrt</span>
         </span>
-        <span className="s-btn s-btn-line">Reserve a table</span>
+        <span className="s-btn s-btn-line">Tisch reservieren</span>
       </div>
       <div className="s-hero">
         <div className="s-copy">
           <span className="s-open">
-            <i /> Open today · 8:00 – 18:00
+            <i /> Heute geöffnet · 8:00 – 18:00
           </span>
           <div className="s-title">
-            Slow coffee.
+            Kaffee in Ruhe.
             <br />
-            Good company.
+            Gute Leute.
           </div>
-          <p>Seasonal breakfast, house-baked cardamom buns and coffee from small roasters — right by the canal.</p>
+          <p>Saisonales Frühstück, hausgebackene Kardamomschnecken und Kaffee von kleinen Röstereien — direkt am Kanal.</p>
           <div className="s-actions">
-            <span className="s-btn">See the menu</span>
-            <span className="s-link">Find us →</span>
+            <span className="s-btn">Zur Karte</span>
+            <span className="s-link">Anfahrt →</span>
           </div>
         </div>
         <div className="s-media">
@@ -387,9 +387,9 @@ export function LindeNordic() {
       </div>
       <div className="s-menu">
         {[
-          ['Cardamom bun', '3.80'],
-          ['Flat white', '3.90'],
-          ['Sourdough & eggs', '9.50'],
+          ['Kardamomschnecke', '3,80'],
+          ['Flat White', '3,90'],
+          ['Sauerteigbrot & Eier', '9,50'],
         ].map(([item, price]) => (
           <span key={item}>
             {item}
@@ -406,15 +406,15 @@ export function LindeBistro() {
     <div className="site s-linde-b">
       <div className="s-nav">
         <span className="s-links">
-          <span>Menu</span>
-          <span>Wine</span>
+          <span>Karte</span>
+          <span>Wein</span>
           <span>Events</span>
         </span>
         <span className="s-logo">
           Café Linde
-          <small>est. 1987</small>
+          <small>seit 1987</small>
         </span>
-        <span className="s-btn s-btn-line">Reservations</span>
+        <span className="s-btn s-btn-line">Reservierung</span>
       </div>
       <div className="s-hero">
         <div className="s-media">
@@ -423,19 +423,19 @@ export function LindeBistro() {
         <div className="s-copy">
           <span className="s-kicker">Bistro · Bar · Kaffeehaus</span>
           <div className="s-title">
-            Coffee by day,
+            Tagsüber Kaffee,
             <br />
-            <em>wine by night.</em>
+            <em>abends Wein.</em>
           </div>
-          <p>Hand-brewed coffee until five, natural wines and small plates until late. Thursday to Saturday until midnight.</p>
-          <span className="s-btn">Book a table</span>
+          <p>Handgebrühter Kaffee bis fünf, Naturweine und kleine Teller bis spät. Donnerstag bis Samstag bis Mitternacht.</p>
+          <span className="s-btn">Tisch buchen</span>
         </div>
       </div>
       <div className="s-menu">
         {[
-          ['Espresso tonic', '4.50'],
-          ['Burrata & figs', '12.00'],
-          ['Glass of Riesling', '7.00'],
+          ['Espresso Tonic', '4,50'],
+          ['Burrata & Feigen', '12,00'],
+          ['Glas Riesling', '7,00'],
         ].map(([item, price]) => (
           <span key={item}>
             {item}
@@ -454,50 +454,51 @@ export function LindePop() {
       <div className="s-nav">
         <span className="s-logo">linde!</span>
         <span className="s-links">
-          <span>Menu</span>
+          <span>Karte</span>
           <span>Bowls</span>
           <span>Catering</span>
-          <span>Hi!</span>
+          <span>Hallo!</span>
         </span>
-        <span className="s-btn">Order pickup</span>
+        <span className="s-btn">Abholung bestellen</span>
       </div>
       <div className="s-hero">
         <div className="s-title">
-          Berry
+          Beeren-
           <br />
-          good
+          starke
           <br />
-          mornings.
+          Morgen.
         </div>
-        <p>Bowls, buns and very good coffee. Open daily from 7 — come hungry.</p>
+        <p>Bowls, Gebäck und richtig guter Kaffee. Täglich ab 7 Uhr geöffnet — kommen Sie hungrig.</p>
         <div className="s-tile">
           <Photo name="linde-berries" />
         </div>
         <span className="s-sticker">
-          New
+          Neue
           <br />
-          menu!
+          Karte!
         </span>
       </div>
       <div className="s-band">
-        <span>Fresh pastry</span>
+        <span>Frisches Gebäck</span>
         <span>✦</span>
-        <span>Organic coffee</span>
+        <span>Bio-Kaffee</span>
         <span>✦</span>
-        <span>Berry bowls</span>
+        <span>Beeren-Bowls</span>
         <span>✦</span>
-        <span>Fresh pastry</span>
+        <span>Frisches Gebäck</span>
       </div>
       <div className="s-bowls">
-        <span className="s-bowls-title">Today's bowls</span>
+        <span className="s-bowls-title">Bowls des Tages</span>
         <div className="s-bowls-grid">
           {[
-            ['Berry blast', '8.50'],
-            ['Green glow', '8.90'],
-            ['Choco crunch', '7.90'],
+            ['Beerenrausch', '8,50'],
+            ['Grüner Glanz', '8,90'],
+            ['Schoko-Crunch', '7,90'],
           ].map(([name, price]) => (
             <span key={name}>
-              <b>{name}</b>€{price}
+              <b>{name}</b>
+              {price} €
             </span>
           ))}
         </div>

@@ -23,9 +23,9 @@ import './booking.css';
 type Step = 1 | 2 | 3;
 
 const STEPS: { id: Step; label: string; hint: string }[] = [
-  { id: 1, label: 'Service', hint: 'Choose a session' },
-  { id: 2, label: 'Date & time', hint: 'Pick a slot' },
-  { id: 3, label: 'Your details', hint: 'Confirm request' },
+  { id: 1, label: 'Leistung', hint: 'Termin auswählen' },
+  { id: 2, label: 'Datum & Uhrzeit', hint: 'Zeitfenster wählen' },
+  { id: 3, label: 'Ihre Angaben', hint: 'Anfrage bestätigen' },
 ];
 
 interface Details {
@@ -41,19 +41,19 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validate(details: Details): DetailErrors {
   const errors: DetailErrors = {};
-  if (details.fullName.trim().length < 2) errors.fullName = 'Please enter your full name.';
-  if (!EMAIL_RE.test(details.email.trim())) errors.email = 'Please enter a valid email address.';
+  if (details.fullName.trim().length < 2) errors.fullName = 'Bitte geben Sie Ihren vollständigen Namen ein.';
+  if (!EMAIL_RE.test(details.email.trim())) errors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
   const digits = details.phone.replace(/\D/g, '');
-  if (digits.length < 6 || details.phone.trim().length > 40) errors.phone = 'Please enter a valid phone number.';
-  if (details.notes.length > 2000) errors.notes = 'Please keep notes under 2000 characters.';
+  if (digits.length < 6 || details.phone.trim().length > 40) errors.phone = 'Bitte geben Sie eine gültige Telefonnummer ein.';
+  if (details.notes.length > 2000) errors.notes = 'Bitte halten Sie Ihre Notizen unter 2000 Zeichen.';
   return errors;
 }
 
 function groupSlots(slots: Slot[]) {
   const groups: { label: string; slots: Slot[] }[] = [
-    { label: 'Morning', slots: [] },
-    { label: 'Afternoon', slots: [] },
-    { label: 'Evening', slots: [] },
+    { label: 'Vormittag', slots: [] },
+    { label: 'Nachmittag', slots: [] },
+    { label: 'Abend', slots: [] },
   ];
   for (const slot of slots) {
     const h = slot.start.getHours();
@@ -237,12 +237,12 @@ export function BookingPage() {
     <div className="booking">
       <div className="container">
         <header className="booking-header">
-          <span className="eyebrow">Book a consultation</span>
-          <h1>Schedule your session</h1>
-          <p>Three short steps. You'll receive a confirmation by email once we've reviewed your request.</p>
+          <span className="eyebrow">Beratung buchen</span>
+          <h1>Vereinbaren Sie Ihren Termin</h1>
+          <p>Drei kurze Schritte. Sobald wir Ihre Anfrage geprüft haben, erhalten Sie eine Bestätigung per E-Mail.</p>
         </header>
 
-        <ol className="stepper" aria-label="Booking progress">
+        <ol className="stepper" aria-label="Buchungsfortschritt">
           {STEPS.map((s) => {
             const state = s.id < step ? 'done' : s.id === step ? 'current' : 'todo';
             const reachable = s.id < step || (s.id === 2 && service) || (s.id === 3 && slot);
@@ -267,8 +267,8 @@ export function BookingPage() {
 
         {bookingDisabled ? (
           <div className="booking-panel">
-            <EmptyState icon={<CalendarX2 size={20} />} title="Online booking is not available yet">
-              Please get in touch by email and we'll arrange a time with you directly.
+            <EmptyState icon={<CalendarX2 size={20} />} title="Die Online-Buchung ist noch nicht verfügbar">
+              Bitte kontaktieren Sie uns per E-Mail, dann vereinbaren wir direkt einen Termin mit Ihnen.
             </EmptyState>
           </div>
         ) : (
@@ -281,8 +281,8 @@ export function BookingPage() {
               {step === 1 ? (
                 <section className="booking-panel" aria-labelledby="step1-title">
                   <div className="panel-head">
-                    <h2 id="step1-title">Which session would you like?</h2>
-                    <p>Every session is with a senior designer or developer from the studio.</p>
+                    <h2 id="step1-title">Welchen Termin möchten Sie buchen?</h2>
+                    <p>Jeder Termin findet mit einem erfahrenen Designer oder Entwickler aus unserem Studio statt.</p>
                   </div>
                   {bootLoading && !services.data ? (
                     <div className="panel-loading">
@@ -322,8 +322,8 @@ export function BookingPage() {
                       })}
                     </div>
                   ) : (
-                    <EmptyState icon={<CalendarX2 size={20} />} title="No sessions available">
-                      There are no bookable services right now. Please check back soon.
+                    <EmptyState icon={<CalendarX2 size={20} />} title="Keine Termine verfügbar">
+                      Derzeit sind keine Leistungen buchbar. Bitte schauen Sie bald wieder vorbei.
                     </EmptyState>
                   )}
                 </section>
@@ -334,13 +334,13 @@ export function BookingPage() {
                 <section className="booking-panel" aria-labelledby="step2-title">
                   <div className="panel-head panel-head-row">
                     <div>
-                      <h2 id="step2-title">Choose a date and time</h2>
+                      <h2 id="step2-title">Datum und Uhrzeit wählen</h2>
                       <p>
-                        Showing availability for <strong>{service.name}</strong> ({formatDuration(service.duration_minutes)}).
+                        Verfügbare Termine für <strong>{service.name}</strong> ({formatDuration(service.duration_minutes)}).
                       </p>
                     </div>
                     <button type="button" className="btn btn-subtle btn-sm" onClick={() => goTo(1)}>
-                      Change service
+                      Leistung ändern
                     </button>
                   </div>
 
@@ -362,8 +362,8 @@ export function BookingPage() {
 
                     <div className="slots">
                       <div className="slots-head">
-                        <h3>{date ? safeFormat(date, 'EEEE, d MMMM') : 'Available times'}</h3>
-                        {date ? <span>{daySlots.length} {daySlots.length === 1 ? 'slot' : 'slots'}</span> : null}
+                        <h3>{date ? safeFormat(date, 'EEEE, d. MMMM') : 'Verfügbare Uhrzeiten'}</h3>
+                        {date ? <span>{daySlots.length} {daySlots.length === 1 ? 'Termin' : 'Termine'}</span> : null}
                       </div>
 
                       {monthData.loading || hours.loading ? (
@@ -377,8 +377,8 @@ export function BookingPage() {
                           <CalendarX2 size={20} />
                           <p>
                             {monthHasSlots
-                              ? 'Select a highlighted date to see available times.'
-                              : 'No availability this month. Try the next month.'}
+                              ? 'Wählen Sie ein markiertes Datum, um die verfügbaren Uhrzeiten zu sehen.'
+                              : 'In diesem Monat sind keine Termine frei. Versuchen Sie es im nächsten Monat.'}
                           </p>
                         </div>
                       ) : (
@@ -411,10 +411,10 @@ export function BookingPage() {
 
                   <div className="panel-foot">
                     <Button variant="ghost" onClick={() => goTo(1)}>
-                      <ArrowLeft size={16} /> Back
+                      <ArrowLeft size={16} /> Zurück
                     </Button>
                     <Button variant="primary" size="lg" disabled={!slot} onClick={() => goTo(3)}>
-                      Continue <ArrowRight size={16} />
+                      Weiter <ArrowRight size={16} />
                     </Button>
                   </div>
                 </section>
@@ -424,36 +424,36 @@ export function BookingPage() {
               {step === 3 && service && slot ? (
                 <form className="booking-panel" onSubmit={submit} noValidate aria-labelledby="step3-title">
                   <div className="panel-head">
-                    <h2 id="step3-title">Your details</h2>
-                    <p>We'll use these only to confirm and prepare for your session.</p>
+                    <h2 id="step3-title">Ihre Angaben</h2>
+                    <p>Wir verwenden sie ausschließlich, um Ihren Termin zu bestätigen und vorzubereiten.</p>
                   </div>
 
                   {submitError ? <Alert tone="error">{submitError}</Alert> : null}
 
                   <fieldset className="form-group">
-                    <legend>Contact</legend>
+                    <legend>Kontakt</legend>
                     <TextField
-                      label="Full name"
+                      label="Vollständiger Name"
                       autoComplete="name"
                       value={details.fullName}
                       onChange={(e) => updateDetail('fullName', e.target.value)}
                       error={errors.fullName}
-                      placeholder="Jane Doe"
+                      placeholder="Erika Mustermann"
                       required
                     />
                     <div className="grid-2">
                       <TextField
-                        label="Email"
+                        label="E-Mail"
                         type="email"
                         autoComplete="email"
                         value={details.email}
                         onChange={(e) => updateDetail('email', e.target.value)}
                         error={errors.email}
-                        placeholder="jane@company.com"
+                        placeholder="erika@firma.de"
                         required
                       />
                       <TextField
-                        label="Phone"
+                        label="Telefon"
                         type="tel"
                         autoComplete="tel"
                         value={details.phone}
@@ -466,29 +466,29 @@ export function BookingPage() {
                   </fieldset>
 
                   <fieldset className="form-group">
-                    <legend>About your project</legend>
+                    <legend>Zu Ihrem Projekt</legend>
                     <TextAreaField
-                      label="Notes"
+                      label="Notizen"
                       optional
                       value={details.notes}
                       onChange={(e) => updateDetail('notes', e.target.value)}
                       error={errors.notes}
-                      placeholder="Your current website, goals, timeline or anything we should know beforehand."
+                      placeholder="Ihre aktuelle Website, Ziele, Zeitrahmen oder alles, was wir vorab wissen sollten."
                       hint={`${details.notes.length}/2000`}
                       maxLength={2000}
                     />
                   </fieldset>
 
                   <p className="privacy-line">
-                    <Lock size={14} /> Your information is transmitted securely and never shared with third parties.
+                    <Lock size={14} /> Ihre Daten werden sicher übertragen und niemals an Dritte weitergegeben.
                   </p>
 
                   <div className="panel-foot">
                     <Button variant="ghost" onClick={() => goTo(2)} disabled={submitting}>
-                      <ArrowLeft size={16} /> Back
+                      <ArrowLeft size={16} /> Zurück
                     </Button>
                     <Button type="submit" variant="primary" size="lg" loading={submitting}>
-                      {submitting ? 'Sending request…' : 'Request appointment'}
+                      {submitting ? 'Anfrage wird gesendet…' : 'Termin anfragen'}
                     </Button>
                   </div>
                 </form>

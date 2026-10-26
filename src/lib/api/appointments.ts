@@ -36,7 +36,7 @@ export async function listAppointments(
     .order('start_time', { ascending: false })
     .range(page * pageSize, page * pageSize + pageSize - 1);
 
-  if (error) throw toApiError(error, 'Could not load appointments.');
+  if (error) throw toApiError(error, 'Termine konnten nicht geladen werden.');
   return { rows: (data ?? []) as AppointmentWithService[], count: count ?? 0 };
 }
 
@@ -48,7 +48,7 @@ export async function listAppointmentsBetween(from: string, to: string): Promise
     .lte('appointment_date', to)
     .order('appointment_date')
     .order('start_time');
-  return (unwrap(result, 'Could not load appointments.') as AppointmentWithService[] | null) ?? [];
+  return (unwrap(result, 'Termine konnten nicht geladen werden.') as AppointmentWithService[] | null) ?? [];
 }
 
 export async function countAppointments(filter: {
@@ -70,13 +70,13 @@ export async function countAppointments(filter: {
 export async function updateAppointmentStatus(id: string, status: AppointmentStatus): Promise<Appointment> {
   return unwrap(
     await supabase.from('appointments').update({ status }).eq('id', id).select().single(),
-    'Could not update appointment.',
+    'Termin konnte nicht aktualisiert werden.',
   );
 }
 
 export async function deleteAppointment(id: string): Promise<void> {
   const { error } = await supabase.from('appointments').delete().eq('id', id);
-  if (error) throw toApiError(error, 'Could not delete appointment.');
+  if (error) throw toApiError(error, 'Termin konnte nicht gelöscht werden.');
 }
 
 // ---- Public booking -------------------------------------------------------
@@ -101,6 +101,6 @@ export async function createAppointment(request: BookingRequest): Promise<Appoin
     p_phone: request.phone,
     p_notes: request.notes ?? null,
   });
-  if (error) throw toApiError(error, 'We could not complete your booking.');
+  if (error) throw toApiError(error, 'Ihre Buchung konnte nicht abgeschlossen werden.');
   return data as Appointment;
 }

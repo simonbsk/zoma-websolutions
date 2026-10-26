@@ -19,12 +19,12 @@ import { formatDuration, formatPrice } from '../../lib/time';
 import { SERVICE_VISUALS, type Service, type ServiceVisual as VisualKind } from '../../lib/types';
 
 const VISUAL_LABELS: Record<VisualKind, string> = {
-  landing: 'Landing page',
-  ecommerce: 'E-commerce',
-  brand: 'Brand & identity',
-  webapp: 'Web app / dashboard',
-  seo: 'SEO & performance',
-  care: 'Care & maintenance',
+  landing: 'Landingpage',
+  ecommerce: 'E-Commerce',
+  brand: 'Marke & Identität',
+  webapp: 'Web-App / Dashboard',
+  seo: 'SEO & Performance',
+  care: 'Betreuung & Wartung',
 };
 
 interface FormState {
@@ -74,12 +74,12 @@ function parseForm(f: FormState): { input?: ServiceInput; errors: Errors } {
   const sort = Number(f.sort_order);
   const slug = slugify(f.slug || f.name);
 
-  if (f.name.trim().length < 2) errors.name = 'Name must be at least 2 characters.';
-  if (!slug) errors.slug = 'Slug is required.';
-  if (!Number.isInteger(duration) || duration < 5 || duration > 600) errors.duration = 'Between 5 and 600 minutes.';
-  if (!Number.isFinite(price) || price < 0) errors.price = 'Enter a valid price (0 for free).';
-  if (!/^[A-Z]{3}$/.test(f.currency.trim().toUpperCase())) errors.currency = '3-letter code, e.g. EUR.';
-  if (!Number.isInteger(sort)) errors.sort_order = 'Whole number.';
+  if (f.name.trim().length < 2) errors.name = 'Der Name muss mindestens 2 Zeichen lang sein.';
+  if (!slug) errors.slug = 'Slug ist erforderlich.';
+  if (!Number.isInteger(duration) || duration < 5 || duration > 600) errors.duration = 'Zwischen 5 und 600 Minuten.';
+  if (!Number.isFinite(price) || price < 0) errors.price = 'Geben Sie einen gültigen Preis ein (0 = kostenlos).';
+  if (!/^[A-Z]{3}$/.test(f.currency.trim().toUpperCase())) errors.currency = '3-stelliger Code, z. B. EUR.';
+  if (!Number.isInteger(sort)) errors.sort_order = 'Ganze Zahl.';
 
   if (Object.keys(errors).length) return { errors };
   return {
@@ -164,7 +164,7 @@ export function ServicesPage() {
   }
 
   async function remove(s: Service) {
-    if (!window.confirm(`Delete “${s.name}”? This cannot be undone.`)) return;
+    if (!window.confirm(`„${s.name}“ löschen? Das kann nicht rückgängig gemacht werden.`)) return;
     setPageError(null);
     try {
       await deleteService(s.id);
@@ -177,11 +177,11 @@ export function ServicesPage() {
   return (
     <>
       <PageHeader
-        title="Services"
-        description="Active services appear on the website and in the booking flow immediately."
+        title="Leistungen"
+        description="Aktive Leistungen erscheinen sofort auf der Website und in der Buchung."
         actions={
           <Button onClick={openNew}>
-            <Plus size={16} /> New service
+            <Plus size={16} /> Neue Leistung
           </Button>
         }
       />
@@ -194,12 +194,12 @@ export function ServicesPage() {
           <table className="table">
             <thead>
               <tr>
-                <th>Service</th>
-                <th>Duration</th>
-                <th>Price</th>
-                <th className="hide-md">Order</th>
-                <th>Visible</th>
-                <th aria-label="Actions" />
+                <th>Leistung</th>
+                <th>Dauer</th>
+                <th>Preis</th>
+                <th className="hide-md">Reihenfolge</th>
+                <th>Sichtbar</th>
+                <th aria-label="Aktionen" />
               </tr>
             </thead>
             <tbody>
@@ -228,13 +228,13 @@ export function ServicesPage() {
                       <td>{formatPrice(s.price_cents, s.currency)}</td>
                       <td className="hide-md cell-secondary">{s.sort_order}</td>
                       <td>
-                        <Toggle checked={s.is_active} onChange={() => void toggleActive(s)} label={<span className="sr-only">Visible on website</span>} />
+                        <Toggle checked={s.is_active} onChange={() => void toggleActive(s)} label={<span className="sr-only">Auf der Website sichtbar</span>} />
                       </td>
                       <td className="cell-actions">
-                        <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => openEdit(s)} aria-label={`Edit ${s.name}`}>
+                        <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => openEdit(s)} aria-label={`${s.name} bearbeiten`}>
                           <Pencil size={15} />
                         </button>
-                        <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => void remove(s)} aria-label={`Delete ${s.name}`}>
+                        <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => void remove(s)} aria-label={`${s.name} löschen`}>
                           <Trash2 size={15} />
                         </button>
                       </td>
@@ -243,21 +243,21 @@ export function ServicesPage() {
             </tbody>
           </table>
           {!services.loading && services.data?.length === 0 ? (
-            <EmptyState icon={<Layers size={20} />} title="No services yet">
-              Create your first service to start accepting bookings.
+            <EmptyState icon={<Layers size={20} />} title="Noch keine Leistungen">
+              Legen Sie Ihre erste Leistung an, um Buchungen zu ermöglichen.
             </EmptyState>
           ) : null}
         </div>
       </section>
 
       {editing ? (
-        <Modal title={editing === 'new' ? 'New service' : 'Edit service'} onClose={() => setEditing(null)}>
+        <Modal title={editing === 'new' ? 'Neue Leistung' : 'Leistung bearbeiten'} onClose={() => setEditing(null)}>
           <form onSubmit={onSubmit} noValidate>
             <div className="modal-body">
               {formError ? <Alert tone="error">{formError}</Alert> : null}
               <TextField label="Name" value={form.name} onChange={(e) => set('name', e.target.value)} error={errors.name} autoFocus />
               <TextField
-                label="URL slug"
+                label="URL-Slug"
                 value={form.slug}
                 onChange={(e) => {
                   setSlugTouched(true);
@@ -265,18 +265,18 @@ export function ServicesPage() {
                 }}
                 onBlur={() => set('slug', slugify(form.slug))}
                 error={errors.slug}
-                hint="Used in booking links, e.g. /book?service=your-slug"
+                hint="Wird in Buchungslinks verwendet, z. B. /book?service=ihr-slug"
               />
               <TextAreaField
-                label="Description"
+                label="Beschreibung"
                 value={form.description}
                 onChange={(e) => set('description', e.target.value)}
                 rows={3}
-                hint="One or two sentences shown on the service card."
+                hint="Ein bis zwei Sätze, die auf der Leistungskarte erscheinen."
               />
               <div className="grid-2">
                 <TextField
-                  label="Duration (minutes)"
+                  label="Dauer (Minuten)"
                   type="number"
                   min={5}
                   max={600}
@@ -287,15 +287,15 @@ export function ServicesPage() {
                 />
                 <div className="price-row">
                   <TextField
-                    label="Price"
+                    label="Preis"
                     inputMode="decimal"
                     value={form.price}
                     onChange={(e) => set('price', e.target.value)}
                     error={errors.price}
-                    hint="0 = free consultation"
+                    hint="0 = kostenloses Erstgespräch"
                   />
                   <TextField
-                    label="Currency"
+                    label="Währung"
                     value={form.currency}
                     maxLength={3}
                     onChange={(e) => set('currency', e.target.value.toUpperCase())}
@@ -304,7 +304,7 @@ export function ServicesPage() {
                 </div>
               </div>
               <div className="grid-2">
-                <SelectField label="Card visual" value={form.visual} onChange={(e) => set('visual', e.target.value as VisualKind)}>
+                <SelectField label="Kartenmotiv" value={form.visual} onChange={(e) => set('visual', e.target.value as VisualKind)}>
                   {SERVICE_VISUALS.map((v) => (
                     <option key={v} value={v}>
                       {VISUAL_LABELS[v]}
@@ -312,7 +312,7 @@ export function ServicesPage() {
                   ))}
                 </SelectField>
                 <TextField
-                  label="Sort order"
+                  label="Reihenfolge"
                   type="number"
                   value={form.sort_order}
                   onChange={(e) => set('sort_order', e.target.value)}
@@ -322,14 +322,14 @@ export function ServicesPage() {
               <div className="visual-preview">
                 <ServiceVisual kind={form.visual} />
               </div>
-              <Toggle checked={form.is_active} onChange={(v) => set('is_active', v)} label="Visible on website and bookable" />
+              <Toggle checked={form.is_active} onChange={(v) => set('is_active', v)} label="Auf der Website sichtbar und buchbar" />
             </div>
             <div className="modal-foot">
               <Button variant="ghost" onClick={() => setEditing(null)} disabled={saving}>
-                Cancel
+                Abbrechen
               </Button>
               <Button type="submit" loading={saving}>
-                {editing === 'new' ? 'Create service' : 'Save changes'}
+                {editing === 'new' ? 'Leistung anlegen' : 'Änderungen speichern'}
               </Button>
             </div>
           </form>

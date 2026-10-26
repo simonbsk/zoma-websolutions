@@ -13,7 +13,7 @@ interface Tile {
 // Neighbouring squares alternate dark and bright so the diagonal reads clearly.
 const TILES: Tile[] = [
   { name: ['Atelier', 'Nord'], bg: '#1d1d1b', ink: '#e9e4da', Site: AtelierNord },
-  { name: ['Glut', 'Roastery'], bg: '#ff5a1f', ink: '#ffd9c2', Site: GlutRoastery },
+  { name: ['Glut', 'Rösterei'], bg: '#ff5a1f', ink: '#ffd9c2', Site: GlutRoastery },
   { name: ['Velo', 'Nine'], bg: '#d4ff3a', ink: '#141414', Site: VeloNine },
   { name: ['Hafen', '& Co.'], bg: '#14213d', ink: '#c8b48a', Site: HafenLegal },
   { name: ['Maison', 'Flora'], bg: '#e04f74', ink: '#ffd3df', Site: MaisonFlora },

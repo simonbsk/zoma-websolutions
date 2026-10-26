@@ -10,9 +10,10 @@ import {
   startOfMonth,
   startOfWeek,
 } from 'date-fns';
+import { de } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const WEEK_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const WEEK_LABELS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
 interface CalendarProps {
   month: Date;
@@ -39,14 +40,14 @@ export function Calendar({ month, onMonthChange, minMonth, maxMonth, selected, o
   return (
     <div className={`calendar ${loading ? 'is-loading' : ''}`}>
       <div className="calendar-head">
-        <h3>{format(month, 'MMMM yyyy')}</h3>
+        <h3>{format(month, 'MMMM yyyy', { locale: de })}</h3>
         <div className="calendar-nav">
           <button
             type="button"
             className="btn btn-ghost btn-sm btn-icon"
             onClick={() => onMonthChange(addMonths(month, -1))}
             disabled={!canPrev}
-            aria-label="Previous month"
+            aria-label="Vorheriger Monat"
           >
             <ChevronLeft size={16} />
           </button>
@@ -55,14 +56,14 @@ export function Calendar({ month, onMonthChange, minMonth, maxMonth, selected, o
             className="btn btn-ghost btn-sm btn-icon"
             onClick={() => onMonthChange(addMonths(month, 1))}
             disabled={!canNext}
-            aria-label="Next month"
+            aria-label="Nächster Monat"
           >
             <ChevronRight size={16} />
           </button>
         </div>
       </div>
 
-      <div className="calendar-grid" role="grid" aria-label={format(month, 'MMMM yyyy')}>
+      <div className="calendar-grid" role="grid" aria-label={format(month, 'MMMM yyyy', { locale: de })}>
         {WEEK_LABELS.map((label) => (
           <span key={label} className="calendar-weekday" role="columnheader">
             {label}
@@ -89,7 +90,7 @@ export function Calendar({ month, onMonthChange, minMonth, maxMonth, selected, o
                 .join(' ')}
               disabled={!available}
               aria-pressed={isSelected}
-              aria-label={format(day, 'EEEE d MMMM yyyy') + (available ? '' : ', unavailable')}
+              aria-label={format(day, 'EEEE, d. MMMM yyyy', { locale: de }) + (available ? '' : ', nicht verfügbar')}
               onClick={() => onSelect(day)}
             >
               {inMonth ? format(day, 'd') : ''}
@@ -100,10 +101,10 @@ export function Calendar({ month, onMonthChange, minMonth, maxMonth, selected, o
 
       <div className="calendar-legend">
         <span>
-          <i className="dot dot-available" /> Available
+          <i className="dot dot-available" /> Verfügbar
         </span>
         <span>
-          <i className="dot dot-selected" /> Selected
+          <i className="dot dot-selected" /> Ausgewählt
         </span>
       </div>
     </div>

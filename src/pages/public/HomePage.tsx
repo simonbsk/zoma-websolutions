@@ -14,21 +14,21 @@ interface Feature {
 
 const FEATURES: Feature[] = [
   {
-    title: 'Any style. Your call.',
-    text: 'Minimal or bold, playful or premium — you decide how your brand looks and feels. We never start from a template: every site is designed from scratch around your taste, your colours and your customers.',
-    link: { href: '/book', label: 'Tell us your vision' },
+    title: 'Jeder Stil. Ihre Wahl.',
+    text: 'Minimalistisch oder mutig, verspielt oder edel — Sie entscheiden, wie Ihre Marke aussieht und wirkt. Wir starten nie mit einem Template: Jede Website wird von Grund auf gestaltet, rund um Ihren Geschmack, Ihre Farben und Ihre Kunden.',
+    link: { href: '/book', label: 'Erzählen Sie uns von Ihrer Vision' },
     Example: StyleExample,
   },
   {
-    title: 'Three drafts. One favourite.',
-    text: "You won't get a single take-it-or-leave-it design. We create three distinct directions for your site — pick your favourite, mix the best parts, and we refine it until it feels like yours.",
-    link: { href: '/#pricing', label: "See what's included" },
+    title: 'Drei Entwürfe. Ein Favorit.',
+    text: 'Sie bekommen nicht nur ein einziges Design zum Annehmen oder Ablehnen. Wir entwickeln drei eigenständige Richtungen für Ihre Website — Sie wählen Ihren Favoriten, kombinieren die besten Elemente, und wir verfeinern ihn, bis er sich nach Ihnen anfühlt.',
+    link: { href: '/#pricing', label: 'Leistungen ansehen' },
     Example: DraftsExample,
   },
   {
-    title: 'Changes welcome. Always.',
-    text: 'Feedback is part of the process, not an extra. Comment right on your design and ask for changes until everything feels right — before launch and long after.',
-    link: { href: '/#team', label: 'Meet the team' },
+    title: 'Änderungen erwünscht. Immer.',
+    text: 'Feedback ist Teil des Prozesses, kein Extra. Kommentieren Sie direkt im Design und wünschen Sie sich Änderungen, bis alles stimmt — vor dem Launch und lange danach.',
+    link: { href: '/#team', label: 'Das Team kennenlernen' },
     Example: FeedbackExample,
   },
 ];
@@ -37,42 +37,42 @@ const FEATURES: Feature[] = [
 const PLANS = [
   {
     name: 'Start',
-    audience: 'For one-page sites',
+    audience: 'Für One-Pager',
     price: '990',
     features: [
-      'One-page website',
-      '3 design drafts',
-      'Mobile & tablet ready',
-      'Contact form',
-      'Basic SEO setup',
-      'Revisions until you are happy',
+      'One-Page-Website',
+      '3 Designentwürfe',
+      'Optimiert für Smartphone & Tablet',
+      'Kontaktformular',
+      'SEO-Grundeinrichtung',
+      'Überarbeitungen, bis Sie zufrieden sind',
     ],
   },
   {
     name: 'Business',
-    audience: 'For growing businesses',
-    price: '2,490',
+    audience: 'Für wachsende Unternehmen',
+    price: '2.490',
     featured: true,
     features: [
-      'Everything in Start',
-      'Up to 8 pages',
-      'Easy-to-use editor (CMS)',
-      'Animations & interactions',
-      'SEO & analytics setup',
-      'Booking or enquiry forms',
+      'Alles aus Start',
+      'Bis zu 8 Seiten',
+      'Einfacher Editor (CMS)',
+      'Animationen & Interaktionen',
+      'SEO- & Analytics-Einrichtung',
+      'Buchungs- oder Anfrageformulare',
     ],
   },
   {
     name: 'Premium',
-    audience: 'For shops & custom features',
-    price: '4,990',
+    audience: 'Für Shops & individuelle Funktionen',
+    price: '4.990',
     features: [
-      'Everything in Business',
-      'Unlimited pages',
-      'Online shop or web app',
-      'Multilingual setup',
-      'Custom integrations',
-      'Priority support',
+      'Alles aus Business',
+      'Unbegrenzte Seitenanzahl',
+      'Onlineshop oder Web-App',
+      'Mehrsprachigkeit',
+      'Individuelle Integrationen',
+      'Bevorzugter Support',
     ],
   },
 ];
@@ -80,29 +80,29 @@ const PLANS = [
 const CARE = {
   price: '49',
   features: [
-    'Fast, secure hosting & SSL',
-    'Updates, backups & monitoring',
-    'Small content changes included',
-    'Priority email support',
+    'Schnelles, sicheres Hosting & SSL',
+    'Updates, Backups & Monitoring',
+    'Kleine Inhaltsänderungen inklusive',
+    'Bevorzugter E-Mail-Support',
   ],
 };
 
 const FAQ = [
   {
-    q: 'Why are prices shown as “from”?',
-    a: 'Every project is different. After your free consultation you receive a fixed quote for your exact scope — no hidden costs and no surprises later.',
+    q: 'Warum stehen die Preise mit „ab“ da?',
+    a: 'Jedes Projekt ist anders. Nach Ihrem kostenlosen Erstgespräch erhalten Sie ein Festpreisangebot für genau Ihren Umfang — ohne versteckte Kosten und ohne spätere Überraschungen.',
   },
   {
-    q: "What if I don't like any of the drafts?",
-    a: 'Then we keep going. Tell us what is missing and we rework the direction until it feels right — that is what the revisions are for.',
+    q: 'Was, wenn mir keiner der Entwürfe gefällt?',
+    a: 'Dann machen wir weiter. Sagen Sie uns, was fehlt, und wir überarbeiten die Richtung, bis sie stimmt — genau dafür sind die Überarbeitungen da.',
   },
   {
-    q: 'Can I edit the website myself?',
-    a: 'Yes. Business and Premium sites come with an easy editor for texts, images and pages, and we show you how it works at launch.',
+    q: 'Kann ich die Website selbst bearbeiten?',
+    a: 'Ja. Business- und Premium-Websites kommen mit einem einfachen Editor für Texte, Bilder und Seiten, und zum Launch zeigen wir Ihnen, wie er funktioniert.',
   },
   {
-    q: 'Who owns the finished website?',
-    a: 'You do. Domain, content and design belong to you, and the code is clean and documented — you are never locked in.',
+    q: 'Wem gehört die fertige Website?',
+    a: 'Ihnen. Domain, Inhalte und Design gehören Ihnen, und der Code ist sauber und dokumentiert — Sie sind nie an uns gebunden.',
   },
 ];
 
@@ -117,13 +117,23 @@ interface Member {
 const TEAM: Member[] = [
   {
     name: 'Jakob',
-    role: 'Co-founder',
-    quote: 'A website should feel like the business behind it — not like a template with a new logo.',
+    role: 'Gründungsmitglied',
+    quote: 'Eine Website sollte sich anfühlen wie das Unternehmen dahinter — nicht wie ein Template mit neuem Logo.',
   },
   {
     name: 'Simon',
-    role: 'Co-founder',
-    quote: 'Fast, accessible and easy to edit. The best technology is the kind you never have to think about.',
+    role: 'Gründungsmitglied',
+    quote: 'Schnell, barrierefrei und leicht zu pflegen. Die beste Technik ist die, über die man nie nachdenken muss.',
+  },
+  {
+    name: 'Anton',
+    role: 'Gründungsmitglied',
+    quote: 'Gutes Design erklärt sich von selbst. Ihre Kunden sollen finden, was sie suchen — ohne lange zu suchen.',
+  },
+  {
+    name: 'Eyüp',
+    role: 'Gründungsmitglied',
+    quote: 'Wir hören erst zu und gestalten dann. Die besten Ideen entstehen im Gespräch mit unseren Kunden.',
   },
 ];
 
@@ -159,14 +169,14 @@ export function HomePage() {
       {/* 1 — Hero: flowing website ideas --------------------------------------- */}
       <section className="hero" aria-labelledby="hero-title">
         <h1 id="hero-title" className="hero-title display">
-          <span>Say Hello To</span> <span>Your New Site.</span>
+          <span>Sagen Sie Hallo zu</span> <span>Ihrer neuen Website.</span>
         </h1>
         <HeroFlow>
-          <span className="flow-badge">Concept designs by Zoma</span>
+          <span className="flow-badge">Konzeptdesigns von Zoma</span>
         </HeroFlow>
         <div className="hero-aside">
           <Link to="/book" className={buttonClass('primary', 'md', 'btn-cta')}>
-            Book your free consultation date today <ArrowUpRight size={18} strokeWidth={1.8} />
+            Jetzt kostenloses Erstgespräch buchen <ArrowUpRight size={18} strokeWidth={1.8} />
           </Link>
         </div>
       </section>
@@ -175,7 +185,7 @@ export function HomePage() {
       <section className="approach" id="approach" aria-labelledby="approach-title">
         <div className="wrap">
           <h2 id="approach-title" className="approach-title display">
-            Your site. Your rules.
+            Ihre Website. Ihre Regeln.
           </h2>
           <div className="features">
             {FEATURES.map(({ title, text, link, Example }, i) => (
@@ -198,24 +208,24 @@ export function HomePage() {
       <section className="pricing" id="pricing" aria-labelledby="pricing-title">
         <div className="wrap">
           <header className="pricing-head">
-            <span className="eyebrow">Pricing</span>
-            <h2 id="pricing-title">Clear prices. No surprises.</h2>
+            <span className="eyebrow">Preise</span>
+            <h2 id="pricing-title">Klare Preise. Keine Überraschungen.</h2>
             <p>
-              Every package includes three design drafts, a mobile-ready build and launch support. After your free
-              consultation you get a fixed quote.
+              Jedes Paket enthält drei Designentwürfe, eine für alle Geräte optimierte Umsetzung und Unterstützung beim
+              Launch. Nach Ihrem kostenlosen Erstgespräch erhalten Sie ein Festpreisangebot.
             </p>
           </header>
 
           <div className="plans">
             {PLANS.map((plan) => (
               <article key={plan.name} className={`plan ${plan.featured ? 'is-featured' : ''}`}>
-                {plan.featured ? <span className="plan-flag">Most popular</span> : null}
+                {plan.featured ? <span className="plan-flag">Am beliebtesten</span> : null}
                 <h3>{plan.name}</h3>
                 <p className="plan-for">{plan.audience}</p>
                 <p className="plan-price">
-                  <span className="plan-from">from</span>
-                  <span>€</span>
+                  <span className="plan-from">ab</span>
                   <strong>{plan.price}</strong>
+                  <span>€</span>
                 </p>
                 <ul className="plan-features">
                   {plan.features.map((feature) => (
@@ -226,26 +236,26 @@ export function HomePage() {
                   ))}
                 </ul>
                 <Link to="/book" className={buttonClass(plan.featured ? 'light' : 'ghost', 'lg', 'btn-block')}>
-                  Book a free consultation
+                  Kostenloses Erstgespräch buchen
                 </Link>
               </article>
             ))}
           </div>
           <p className="plans-note">
-            One-time project prices. Hosting and care are optional and billed monthly — see below.
+            Einmalige Projektpreise. Hosting und Betreuung sind optional und werden monatlich abgerechnet — siehe unten.
           </p>
 
           <div className="care-intro">
-            <h3>Care after launch</h3>
-            <p>Optional for every package.</p>
+            <h3>Betreuung nach dem Launch</h3>
+            <p>Optional für jedes Paket.</p>
           </div>
           <div className="care">
             <div>
-              <h4>Care &amp; Hosting</h4>
+              <h4>Betreuung &amp; Hosting</h4>
               <p className="plan-price">
-                <span>€</span>
                 <strong>{CARE.price}</strong>
-                <span className="plan-from">/ month</span>
+                <span>€</span>
+                <span className="plan-from">/ Monat</span>
               </p>
             </div>
             <ul className="plan-features">
@@ -259,7 +269,7 @@ export function HomePage() {
           </div>
 
           <div className="faq">
-            <h3 className="faq-title">Questions, answered.</h3>
+            <h3 className="faq-title">Ihre Fragen, beantwortet.</h3>
             <div className="faq-list">
               {FAQ.map(({ q, a }) => (
                 <details key={q} className="faq-item">
@@ -279,14 +289,15 @@ export function HomePage() {
       <section className="team" id="team" aria-labelledby="team-title">
         <div className="team-inner">
           <h2 id="team-title" className="team-title">
-            The Team
+            Das Team
           </h2>
           <div className="team-grid">
             {TEAM.map((member, i) => (
               <article key={member.name} className="member">
-                <div className={`member-photo ${i % 2 ? 'is-dark' : ''}`}>
+                {/* Checkerboard across the two-column grid: light, dark / dark, light. */}
+                <div className={`member-photo ${(i + Math.floor(i / 2)) % 2 ? 'is-dark' : ''}`}>
                   {member.photo ? (
-                    <img src={member.photo} alt={`Portrait of ${member.name}`} loading="lazy" />
+                    <img src={member.photo} alt={`Porträt von ${member.name}`} loading="lazy" />
                   ) : (
                     <span className="member-initial" aria-hidden>
                       {member.name[0]}
@@ -299,7 +310,7 @@ export function HomePage() {
                   <Slash />
                   {member.quote}
                 </p>
-                <ArrowLink href="/book">Book a call</ArrowLink>
+                <ArrowLink href="/book">Termin buchen</ArrowLink>
               </article>
             ))}
           </div>

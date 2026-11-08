@@ -169,7 +169,7 @@ export function HomePage() {
       {/* 1 — Hero: flowing website ideas --------------------------------------- */}
       <section className="hero" aria-labelledby="hero-title">
         <h1 id="hero-title" className="hero-title display">
-          <span>Sagen Sie Hallo zu</span> <span>Ihrer neuen Website.</span>
+          <span>Neue Website</span> <span>Unkompliziert</span> <span>Professionell</span>
         </h1>
         <HeroFlow>
           <span className="flow-badge">Konzeptdesigns von Zoma</span>

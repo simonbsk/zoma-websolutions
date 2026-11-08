@@ -11,40 +11,32 @@ export function Footer() {
 
   return (
     <footer className="footer" id="contact">
-      <div className="container">
-        <div className="footer-cta">
-          <div>
-            <h2 className="serif">Let's build something that lasts.</h2>
-            <p>Book a free consultation — we'll map out scope, timeline and the right approach for your site.</p>
-          </div>
-          <div className="footer-cta-actions">
-            <Link to="/book" className={buttonClass('primary', 'lg')}>
-              Book a consultation
-            </Link>
-            {settings?.business_email ? (
-              <a href={`mailto:${settings.business_email}`} className={buttonClass('ghost', 'lg', 'btn-on-dark')}>
-                Email us
-              </a>
-            ) : null}
-          </div>
-        </div>
+      <div className="wrap footer-cta">
+        <h2 className="display">Lassen Sie uns Ihre neue Website bauen.</h2>
+        <Link to="/book" className={buttonClass('primary', 'md', 'btn-xl')}>
+          Jetzt kostenloses Erstgespräch buchen <ArrowUpRight size={22} strokeWidth={1.8} />
+        </Link>
+      </div>
 
-        <div className="footer-grid">
+      <div className="footer-panel">
+        <div className="wrap footer-grid">
           <div className="footer-brand">
             <BrandLogo light />
-            <p>Premium websites, designed and engineered with care for businesses that want to look as good as they are.</p>
+            <p className="footer-tagline">Sagen Sie Hallo zu Ihrer neuen Website.</p>
           </div>
 
           <div className="footer-col">
             <h3>Studio</h3>
-            <a href="/#services">Services</a>
-            <a href="/#process">Process</a>
-            <a href="/#about">About</a>
-            <Link to="/book">Book a call</Link>
+            <a href="/#approach">Arbeitsweise</a>
+            <a href="/#pricing">Preise</a>
+            <a href="/#team">Das Team</a>
+            <Link to="/book">
+              Termin buchen <ArrowUpRight size={15} />
+            </Link>
           </div>
 
           <div className="footer-col">
-            <h3>Contact</h3>
+            <h3>Kontakt</h3>
             {settings?.business_email ? (
               <a href={`mailto:${settings.business_email}`}>
                 <Mail size={15} /> {settings.business_email}
@@ -62,17 +54,17 @@ export function Footer() {
             ) : null}
             {!settings?.business_email && !settings?.business_phone && !settings?.business_address ? (
               <Link to="/book">
-                Request a call <ArrowUpRight size={15} />
+                Rückruf anfragen <ArrowUpRight size={15} />
               </Link>
             ) : null}
           </div>
         </div>
 
-        <div className="footer-base">
+        <div className="wrap footer-base">
           <span>
-            © {year} {name}. All rights reserved.
+            © {year} {name}. Alle Rechte vorbehalten.
           </span>
-          <Link to="/admin">Studio login</Link>
+          <Link to="/admin">Studio-Login</Link>
         </div>
       </div>
     </footer>

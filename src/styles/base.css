@@ -15,8 +15,7 @@ body {
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.55;
-  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -34,9 +33,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
 }
 
 a {
@@ -63,13 +62,13 @@ button {
 }
 
 ::selection {
-  background: var(--teal-100);
-  color: var(--teal-900);
+  background: var(--ink);
+  color: #fff;
 }
 
 :focus-visible {
   outline: none;
-  box-shadow: var(--focus);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ink);
 }
 
 .container {
@@ -79,29 +78,38 @@ button {
   padding: 0 var(--gutter);
 }
 
-.serif {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+.wrap {
+  width: 100%;
+  max-width: calc(var(--max-w-wide) + var(--gutter) * 2);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
+/* Large, tightly tracked headline — the Studio display style. */
+.display {
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* Small label with a diagonal stroke, echoing the hero stripes. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 10px;
+  font-family: var(--font-tight);
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--teal-600);
+  line-height: 1.4;
+  color: var(--ink);
 }
 
 .eyebrow::before {
   content: '';
-  width: 18px;
-  height: 1px;
+  width: 14px;
+  height: 1.5px;
   background: currentColor;
-  opacity: 0.6;
+  transform: rotate(-45deg);
 }
 
 .muted {
@@ -127,18 +135,24 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   height: var(--btn-h);
   padding: 0 20px;
-  border-radius: var(--r-pill);
+  border-radius: var(--r-card);
   border: 1px solid transparent;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
   white-space: nowrap;
   transition: background-color 0.18s var(--ease), border-color 0.18s var(--ease), color 0.18s var(--ease),
-    transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+    transform 0.18s var(--ease), box-shadow 0.2s var(--ease);
   user-select: none;
+}
+
+.btn svg {
+  flex: none;
+  transition: transform 0.2s var(--ease);
 }
 
 .btn:active:not(:disabled) {
@@ -146,7 +160,7 @@ button {
 }
 
 .btn:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
@@ -157,38 +171,40 @@ button {
 }
 
 .btn-lg {
-  --btn-h: 52px;
-  padding: 0 26px;
-  font-size: 16px;
+  --btn-h: 50px;
+  padding: 0 24px;
 }
 
-.btn-primary {
-  background: var(--teal-800);
-  color: #fff;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: var(--teal-900);
-}
-
+.btn-primary,
 .btn-dark {
   background: var(--ink);
   color: #fff;
 }
 
+.btn-primary:hover:not(:disabled),
 .btn-dark:hover:not(:disabled) {
   background: #000;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-light {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.btn-light:hover:not(:disabled) {
+  background: var(--band);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: var(--surface);
   border-color: var(--hairline-strong);
   color: var(--ink);
 }
 
 .btn-ghost:hover:not(:disabled) {
   border-color: var(--ink);
-  background: var(--surface);
 }
 
 .btn-subtle {
@@ -197,7 +213,7 @@ button {
 }
 
 .btn-subtle:hover:not(:disabled) {
-  background: var(--mist);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .btn-danger {
@@ -209,6 +225,27 @@ button {
 .btn-danger:hover:not(:disabled) {
   background: var(--red-100);
   border-color: var(--red-100);
+}
+
+/* Compact arrow call-to-action: square-ish corners, trailing ↗. */
+.btn-cta {
+  --btn-h: 46px;
+  gap: 14px;
+  padding: 0 20px 0 28px;
+  border-radius: var(--r-xs);
+}
+
+.btn-cta:hover:not(:disabled) svg,
+.link-arrow:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.btn-xl {
+  --btn-h: 54px;
+  gap: 16px;
+  padding: 0 26px 0 32px;
+  border-radius: var(--r-sm);
+  font-size: 20px;
 }
 
 .btn-icon {
@@ -223,17 +260,14 @@ button {
 .link-arrow {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 500;
+  gap: 12px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
   color: var(--ink);
 }
 
 .link-arrow svg {
   transition: transform 0.2s var(--ease);
-}
-
-.link-arrow:hover svg {
-  transform: translateX(3px);
 }
 
 /* ----------------------------------------------------------------- Forms */
@@ -246,9 +280,9 @@ button {
 }
 
 .field-label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--ink-2);
+  color: var(--ink);
 }
 
 .field-label .optional {
@@ -291,7 +325,7 @@ button {
 .select {
   appearance: none;
   padding-right: 38px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6f78' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
 }
@@ -311,7 +345,7 @@ button {
 .select:focus,
 .textarea:focus {
   outline: none;
-  border-color: var(--teal-600);
+  border-color: var(--ink);
   box-shadow: var(--focus);
 }
 
@@ -369,7 +403,7 @@ button {
 }
 
 .toggle input:checked + .toggle-track {
-  background: var(--teal-600);
+  background: var(--ink);
 }
 
 .toggle input:checked + .toggle-track::after {
@@ -377,7 +411,7 @@ button {
 }
 
 .toggle input:focus-visible + .toggle-track {
-  box-shadow: var(--focus);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--ink);
 }
 
 /* ----------------------------------------------------------------- Badge */
@@ -387,8 +421,8 @@ button {
   align-items: center;
   gap: 6px;
   height: 24px;
-  padding: 0 10px;
-  border-radius: var(--r-pill);
+  padding: 0 8px;
+  border-radius: var(--r-xs);
   font-size: 12.5px;
   font-weight: 500;
   white-space: nowrap;
@@ -410,8 +444,8 @@ button {
 }
 
 .badge-confirmed {
-  background: var(--teal-100);
-  color: var(--teal-800);
+  background: var(--green-100);
+  color: var(--green-700);
 }
 
 .badge-completed {
@@ -436,7 +470,7 @@ button {
   gap: 10px;
   align-items: flex-start;
   padding: 12px 14px;
-  border-radius: var(--r-sm);
+  border-radius: var(--r-card);
   font-size: 14px;
   line-height: 1.45;
 }
@@ -452,8 +486,8 @@ button {
 }
 
 .alert-success {
-  background: var(--teal-100);
-  color: var(--teal-800);
+  background: var(--green-100);
+  color: var(--green-700);
 }
 
 .alert-info {
@@ -468,7 +502,7 @@ button {
   height: 20px;
   border-radius: 50%;
   border: 2px solid var(--hairline-strong);
-  border-top-color: var(--teal-600);
+  border-top-color: var(--ink);
   animation: spin 0.7s linear infinite;
 }
 
@@ -476,7 +510,7 @@ button {
   width: 14px;
   height: 14px;
   border-width: 2px;
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.35);
   border-top-color: #fff;
 }
 
@@ -517,7 +551,7 @@ button {
   display: grid;
   place-items: center;
   padding: 16px;
-  background: rgba(23, 25, 28, 0.32);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(2px);
   animation: fade-in 0.15s var(--ease);
 }
@@ -543,9 +577,9 @@ button {
 }
 
 .modal-head h2 {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .modal-body {
@@ -561,7 +595,7 @@ button {
   gap: 10px;
   padding: 16px 24px;
   border-top: 1px solid var(--hairline);
-  background: var(--canvas);
+  background: var(--band);
 }
 
 @keyframes fade-in {
@@ -594,15 +628,16 @@ button {
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 12px;
-  background: var(--band);
-  color: var(--teal-600);
+  border-radius: var(--r-card);
+  background: var(--accent-50);
+  color: var(--ink);
   margin-bottom: 4px;
 }
 
 .empty h3 {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: var(--ink);
 }
 
@@ -628,6 +663,7 @@ button {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

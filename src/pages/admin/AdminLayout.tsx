@@ -17,12 +17,12 @@ import { BrandMark } from '../../components/public/Brand';
 import './admin.css';
 
 const NAV = [
-  { to: '/admin', label: 'Overview', icon: LayoutDashboard, end: true },
-  { to: '/admin/appointments', label: 'Appointments', icon: CalendarClock },
-  { to: '/admin/services', label: 'Services', icon: Layers },
-  { to: '/admin/hours', label: 'Business hours', icon: Clock },
-  { to: '/admin/blocked', label: 'Blocked dates', icon: CalendarOff },
-  { to: '/admin/settings', label: 'Settings', icon: Settings },
+  { to: '/admin', label: 'Übersicht', icon: LayoutDashboard, end: true },
+  { to: '/admin/appointments', label: 'Termine', icon: CalendarClock },
+  { to: '/admin/services', label: 'Leistungen', icon: Layers },
+  { to: '/admin/hours', label: 'Geschäftszeiten', icon: Clock },
+  { to: '/admin/blocked', label: 'Gesperrte Tage', icon: CalendarOff },
+  { to: '/admin/settings', label: 'Einstellungen', icon: Settings },
 ];
 
 export function AdminLayout() {
@@ -41,9 +41,9 @@ export function AdminLayout() {
           <BrandMark size={28} />
           <div>
             <strong>Zoma</strong>
-            <span>Studio admin</span>
+            <span>Studio-Admin</span>
           </div>
-          <button type="button" className="btn btn-subtle btn-sm btn-icon admin-close" onClick={() => setOpen(false)} aria-label="Close menu">
+          <button type="button" className="btn btn-subtle btn-sm btn-icon admin-close" onClick={() => setOpen(false)} aria-label="Menü schließen">
             <X size={18} />
           </button>
         </div>
@@ -59,7 +59,7 @@ export function AdminLayout() {
 
         <div className="admin-side-foot">
           <a href="/" target="_blank" rel="noreferrer" className="admin-site-link">
-            <ExternalLink size={15} /> View website
+            <ExternalLink size={15} /> Website ansehen
           </a>
           <div className="admin-user">
             <span className="admin-avatar">{initials}</span>
@@ -67,7 +67,7 @@ export function AdminLayout() {
               <strong title={user?.email ?? ''}>{user?.email}</strong>
               <span>Administrator</span>
             </div>
-            <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => void signOut()} aria-label="Sign out" title="Sign out">
+            <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => void signOut()} aria-label="Abmelden" title="Abmelden">
               <LogOut size={16} />
             </button>
           </div>
@@ -78,11 +78,11 @@ export function AdminLayout() {
 
       <div className="admin-body">
         <header className="admin-topbar">
-          <button type="button" className="btn btn-subtle btn-icon admin-menu" onClick={() => setOpen(true)} aria-label="Open menu">
+          <button type="button" className="btn btn-subtle btn-icon admin-menu" onClick={() => setOpen(true)} aria-label="Menü öffnen">
             <Menu size={20} />
           </button>
           <span className="admin-topbar-brand">
-            <BrandMark size={24} /> Studio admin
+            <BrandMark size={24} /> Studio-Admin
           </span>
         </header>
         <main className="admin-main">

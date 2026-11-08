@@ -36,14 +36,14 @@ export function BlockedDatesPage() {
     e.preventDefault();
     setFormError(null);
     if (!parseDbDate(date)) {
-      setFormError('Please choose a date.');
+      setFormError('Bitte wählen Sie ein Datum.');
       return;
     }
     if (!fullDay) {
       const s = timeToMinutes(start);
       const en = timeToMinutes(end);
       if (s === null || en === null || en <= s) {
-        setFormError('End time must be after start time.');
+        setFormError('Die Endzeit muss nach der Startzeit liegen.');
         return;
       }
     }
@@ -81,37 +81,37 @@ export function BlockedDatesPage() {
 
   return (
     <>
-      <PageHeader title="Blocked dates" description="Holidays, time off or one-off unavailability. Blocked times can't be booked." />
+      <PageHeader title="Gesperrte Tage" description="Feiertage, Urlaub oder einmalige Abwesenheiten. Gesperrte Zeiten sind nicht buchbar." />
 
       <div className="split">
         <section className="panel">
           <div className="panel-header">
             <div>
-              <h2>Block time</h2>
-              <p>Whole day or a specific time range.</p>
+              <h2>Zeit sperren</h2>
+              <p>Ganzer Tag oder ein bestimmter Zeitraum.</p>
             </div>
           </div>
           <form className="panel-body form-stack" onSubmit={onSubmit} noValidate>
             {formError ? <Alert tone="error">{formError}</Alert> : null}
-            <TextField label="Date" type="date" min={todayKey} value={date} onChange={(e) => setDate(e.target.value)} required />
-            <Toggle checked={fullDay} onChange={setFullDay} label="Block the entire day" />
+            <TextField label="Datum" type="date" min={todayKey} value={date} onChange={(e) => setDate(e.target.value)} required />
+            <Toggle checked={fullDay} onChange={setFullDay} label="Ganzen Tag sperren" />
             {!fullDay ? (
               <div className="grid-2">
-                <TextField label="From" type="time" step={300} value={start} onChange={(e) => setStart(e.target.value)} />
-                <TextField label="Until" type="time" step={300} value={end} onChange={(e) => setEnd(e.target.value)} />
+                <TextField label="Von" type="time" step={300} value={start} onChange={(e) => setStart(e.target.value)} />
+                <TextField label="Bis" type="time" step={300} value={end} onChange={(e) => setEnd(e.target.value)} />
               </div>
             ) : null}
             <TextField
-              label="Reason"
+              label="Grund"
               optional
               value={reason}
               maxLength={200}
               onChange={(e) => setReason(e.target.value)}
-              placeholder="e.g. Public holiday"
-              hint="Internal note — not shown to visitors."
+              placeholder="z. B. Feiertag"
+              hint="Interne Notiz — für Besucher nicht sichtbar."
             />
             <Button type="submit" loading={saving} block>
-              Add blocked time
+              Sperrzeit hinzufügen
             </Button>
           </form>
         </section>
@@ -119,11 +119,11 @@ export function BlockedDatesPage() {
         <section className="panel">
           <div className="panel-header">
             <div>
-              <h2>Scheduled blocks</h2>
-              <p>{showPast ? 'All blocks, including past ones.' : 'Today and upcoming.'}</p>
+              <h2>Geplante Sperrzeiten</h2>
+              <p>{showPast ? 'Alle Sperrzeiten, auch vergangene.' : 'Heute und anstehend.'}</p>
             </div>
             {pastCount > 0 || showPast ? (
-              <Toggle checked={showPast} onChange={setShowPast} label="Show past" />
+              <Toggle checked={showPast} onChange={setShowPast} label="Vergangene anzeigen" />
             ) : null}
           </div>
 
@@ -147,13 +147,13 @@ export function BlockedDatesPage() {
                       <strong>{formatDbDate(b.blocked_date, 'd')}</strong>
                     </div>
                     <div className="upcoming-main">
-                      <strong>{formatDbDate(b.blocked_date, 'EEEE, d MMMM yyyy')}</strong>
+                      <strong>{formatDbDate(b.blocked_date, 'EEEE, d. MMMM yyyy')}</strong>
                       <span>
-                        {b.start_time && b.end_time ? `${formatDbTime(b.start_time)} – ${formatDbTime(b.end_time)}` : 'Entire day'}
+                        {b.start_time && b.end_time ? `${formatDbTime(b.start_time)} – ${formatDbTime(b.end_time)} Uhr` : 'Ganzer Tag'}
                         {b.reason ? ` · ${b.reason}` : ''}
                       </span>
                     </div>
-                    <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => void remove(b.id)} aria-label="Remove block">
+                    <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={() => void remove(b.id)} aria-label="Sperrzeit entfernen">
                       <Trash2 size={15} />
                     </button>
                   </li>
@@ -161,8 +161,8 @@ export function BlockedDatesPage() {
               })}
             </ul>
           ) : (
-            <EmptyState icon={<CalendarOff size={20} />} title="Nothing blocked">
-              All business hours are currently open for booking.
+            <EmptyState icon={<CalendarOff size={20} />} title="Nichts gesperrt">
+              Alle Geschäftszeiten sind derzeit buchbar.
             </EmptyState>
           )}
         </section>

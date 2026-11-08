@@ -17,23 +17,23 @@ where not exists (select 1 from public.business_hours);
 
 insert into public.services (name, slug, description, duration_minutes, price_cents, visual, sort_order)
 select * from (values
-  ('Website Strategy Call', 'website-strategy-call',
-   'A focused session to define goals, audience, scope and the right technical approach for your new website.',
+  ('Website-Strategiegespräch', 'website-strategy-call',
+   'Ein fokussiertes Gespräch, um Ziele, Zielgruppe, Umfang und den passenden technischen Ansatz für Ihre neue Website festzulegen.',
    45, 0, 'landing', 1),
-  ('Business Website', 'business-website',
-   'Planning session for a bespoke, conversion-focused marketing website — design, copy structure and launch plan.',
+  ('Unternehmenswebsite', 'business-website',
+   'Planungstermin für eine individuelle, auf Conversion ausgerichtete Unternehmenswebsite — Design, Textstruktur und Launch-Plan.',
    60, 0, 'brand', 2),
-  ('E-Commerce Store', 'e-commerce-store',
-   'Scope a fast, trustworthy online store: catalogue, checkout, payments and fulfilment workflow.',
+  ('Onlineshop', 'e-commerce-store',
+   'Planen Sie einen schnellen, vertrauenswürdigen Onlineshop: Sortiment, Checkout, Zahlungen und Versandablauf.',
    60, 0, 'ecommerce', 3),
-  ('Web App & Dashboard', 'web-app-dashboard',
-   'Product discovery for custom portals, booking systems and internal tools built on a modern stack.',
+  ('Web-App & Dashboard', 'web-app-dashboard',
+   'Produktplanung für individuelle Portale, Buchungssysteme und interne Tools auf einem modernen Technologie-Stack.',
    90, 0, 'webapp', 4),
-  ('SEO & Performance Audit', 'seo-performance-audit',
-   'A walkthrough of your current site''s speed, Core Web Vitals, accessibility and search visibility.',
+  ('SEO- & Performance-Audit', 'seo-performance-audit',
+   'Eine Analyse Ihrer aktuellen Website: Ladezeit, Core Web Vitals, Barrierefreiheit und Sichtbarkeit in Suchmaschinen.',
    45, 0, 'seo', 5),
-  ('Care & Maintenance', 'care-maintenance',
-   'Discuss ongoing updates, monitoring, backups and iterative improvements for an existing site.',
+  ('Betreuung & Wartung', 'care-maintenance',
+   'Besprechen Sie laufende Updates, Monitoring, Backups und schrittweise Verbesserungen für eine bestehende Website.',
    30, 0, 'care', 6)
 ) as v(name, slug, description, duration_minutes, price_cents, visual, sort_order)
 where not exists (select 1 from public.services);

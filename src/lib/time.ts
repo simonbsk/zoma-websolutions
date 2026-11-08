@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { de } from 'date-fns/locale';
 
 export interface TimeParts {
   hours: number;
@@ -72,9 +73,9 @@ export function toDbTime(date: Date): string {
   return format(date, 'HH:mm:ss');
 }
 
-/** Safely format a Date; returns a fallback for anything that is not a real Date. */
+/** Safely format a Date (German locale); returns a fallback for anything that is not a real Date. */
 export function safeFormat(date: Date | null | undefined, pattern: string, fallback = '—'): string {
-  return isValidDate(date) ? format(date, pattern) : fallback;
+  return isValidDate(date) ? format(date, pattern, { locale: de }) : fallback;
 }
 
 /** Format a "HH:mm[:ss]" database time for display, via a real Date. */
@@ -85,7 +86,7 @@ export function formatDbTime(time: string | null | undefined, pattern = 'HH:mm')
 }
 
 /** Format a "yyyy-MM-dd" database date for display, via a real Date. */
-export function formatDbDate(value: string | null | undefined, pattern = 'EEE, d MMM yyyy'): string {
+export function formatDbDate(value: string | null | undefined, pattern = 'EEE, d. MMM yyyy'): string {
   return safeFormat(parseDbDate(value), pattern);
 }
 
@@ -96,15 +97,15 @@ export function timeToMinutes(time: string | null | undefined): number | null {
 }
 
 export function formatDuration(minutes: number): string {
-  if (minutes < 60) return `${minutes} min`;
+  if (minutes < 60) return `${minutes} Min.`;
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
-  return m ? `${h} h ${m} min` : `${h} h`;
+  return m ? `${h} Std. ${m} Min.` : `${h} Std.`;
 }
 
 export function formatPrice(cents: number, currency = 'EUR'): string {
-  if (!cents) return 'Free consultation';
-  return new Intl.NumberFormat('en-GB', {
+  if (!cents) return 'Kostenloses Erstgespräch';
+  return new Intl.NumberFormat('de-DE', {
     style: 'currency',
     currency,
     maximumFractionDigits: cents % 100 === 0 ? 0 : 2,
@@ -112,11 +113,11 @@ export function formatPrice(cents: number, currency = 'EUR'): string {
 }
 
 export const WEEKDAY_NAMES = [
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
+  'Sonntag',
+  'Montag',
+  'Dienstag',
+  'Mittwoch',
+  'Donnerstag',
+  'Freitag',
+  'Samstag',
 ] as const;

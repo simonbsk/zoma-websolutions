@@ -1,67 +1,72 @@
+/*
+ * Design tokens modelled on the Studio.Design style: an achromatic interface
+ * (pale canvas, near-black ink, white surfaces) where only the showcased work
+ * carries colour.
+ */
 :root {
   /* Surfaces */
-  --canvas: #fbfaf7;
+  --canvas: #eeeeee;
   --surface: #ffffff;
-  --band: #f3f2ee;
-  --mist: #eeede8;
-  --hairline: #e6e4de;
-  --hairline-strong: #d8d5cd;
+  --band: #f7f7f7;
+  --mist: #e4e4e4;
+  --hairline: #e3e3e3;
+  --hairline-strong: #d0d0d0;
 
   /* Text */
-  --ink: #17191c;
-  --ink-2: #33363b;
-  --slate: #6b6f78;
-  --ash: #9a9ca3;
+  --ink: #222222;
+  --ink-2: #333333;
+  --slate: #555555;
+  --ash: #8c8c8c;
 
-  /* Accent — deep teal */
-  --teal-900: #163a37;
-  --teal-800: #1f4e4a;
-  --teal-600: #2d6a63;
-  --teal-400: #5b958c;
-  --teal-100: #e2ece9;
-  --teal-50: #f0f5f3;
+  /* Actions — monochrome on purpose */
+  --accent-900: #000000;
+  --accent-800: #222222;
+  --accent-600: #333333;
+  --accent-400: #8c8c8c;
+  --accent-100: #e4e4e4;
+  --accent-50: #f4f4f4;
 
-  /* Status */
+  /* Status (dashboard and booking only) */
   --amber-700: #8a5a12;
-  --amber-100: #f8ecd4;
-  --red-700: #9b3b32;
-  --red-100: #f6e1dd;
-  --slate-100: #ecedef;
+  --amber-100: #f6ead2;
+  --red-700: #a2362c;
+  --red-100: #f6dfdb;
+  --slate-100: #ececec;
   --green-700: #2c6a45;
-  --green-100: #e0efe5;
+  --green-100: #dfeee4;
 
   /* Typography */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Inter', Arial, 'Helvetica Neue', sans-serif;
+  --font-tight: 'Inter Tight', 'Inter', 'Arial Narrow', sans-serif;
 
-  /* Radius */
+  /* Radius — 4 / 8 / 12, no pills on interface chrome */
   --r-pill: 9999px;
-  --r-card: 24px;
-  --r-elevated: 20px;
-  --r-input: 14px;
-  --r-sm: 10px;
-  --r-xs: 8px;
+  --r-card: 8px;
+  --r-elevated: 12px;
+  --r-input: 8px;
+  --r-sm: 6px;
+  --r-xs: 4px;
 
-  /* Elevation */
-  --shadow-hairline: 0 0 0 1px rgba(23, 25, 28, 0.05);
-  --shadow-sm: 0 0 0 1px rgba(23, 25, 28, 0.05), 0 2px 8px rgba(23, 25, 28, 0.04);
-  --shadow-md: 0 0 0 1px rgba(23, 25, 28, 0.05), 0 4px 24px rgba(23, 25, 28, 0.07);
-  --shadow-float: 0 0 0 1px rgba(4, 23, 43, 0.05), 0 20px 25px -5px rgba(23, 25, 28, 0.08),
-    0 8px 10px -6px rgba(23, 25, 28, 0.06);
-  --shadow-lg: 0 0 0 1px rgba(23, 25, 28, 0.05), 0 12px 48px rgba(23, 25, 28, 0.12);
+  /* Elevation — a single soft lift, used sparingly */
+  --shadow-hairline: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 15px rgba(0, 0, 0, 0.1);
+  --shadow-float: 0 2px 15px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.18);
 
   /* Layout */
   --max-w: 1200px;
-  --gutter: 24px;
-  --section-y: 112px;
+  --max-w-wide: 1376px;
+  --gutter: 32px;
+  --section-y: 140px;
 
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --focus: 0 0 0 3px rgba(45, 106, 99, 0.25);
+  --focus: 0 0 0 3px rgba(34, 34, 34, 0.2);
 }
 
 @media (max-width: 720px) {
   :root {
     --gutter: 16px;
-    --section-y: 72px;
+    --section-y: 88px;
   }
 }

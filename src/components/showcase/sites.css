@@ -1,0 +1,1237 @@
+/*
+ * Showcase mock-ups. Everything is sized in cqw (1% of the site width) so the
+ * sites scale as a whole, like a screenshot. The first screen is 50cqw tall.
+ */
+
+.site {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  container-type: inline-size;
+  font-family: var(--font-sans);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: left;
+  user-select: none;
+}
+
+.site p {
+  margin: 0;
+}
+
+.s-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.site .s-nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6cqw;
+  padding: 0 3cqw;
+}
+
+.site .s-links {
+  display: flex;
+  gap: 2.4cqw;
+  font-size: 1.05cqw;
+}
+
+/* Atelier Nord ------------------------------------------------------------ */
+
+.s-atelier {
+  background: #f1efea;
+  color: #161616;
+  font-family: var(--font-tight);
+}
+
+.s-atelier .s-nav {
+  border-bottom: 0.08cqw solid #d9d5cc;
+}
+
+.s-atelier .s-logo {
+  font-size: 1.3cqw;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.s-atelier .s-links {
+  font-weight: 500;
+}
+
+.s-atelier .s-talk {
+  font-size: 1.05cqw;
+  font-weight: 500;
+  border-bottom: 0.1cqw solid currentColor;
+}
+
+.s-atelier .s-hero {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  height: 44cqw;
+}
+
+.s-atelier .s-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3cqw 3cqw 3.2cqw;
+  border-right: 0.08cqw solid #d9d5cc;
+}
+
+.s-atelier .s-index {
+  font-size: 1cqw;
+  color: #77736b;
+}
+
+.s-atelier .s-title {
+  font-size: 6.2cqw;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.s-atelier .s-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3cqw;
+  margin-top: 3cqw;
+}
+
+.s-atelier .s-row p {
+  max-width: 26cqw;
+  font-size: 1.15cqw;
+  line-height: 1.45;
+  color: #5d5a54;
+}
+
+.s-atelier .s-more {
+  flex: none;
+  font-size: 1.1cqw;
+  font-weight: 700;
+}
+
+.s-atelier .s-media {
+  position: relative;
+}
+
+.s-atelier .s-caption {
+  position: absolute;
+  left: 2cqw;
+  bottom: 2cqw;
+  padding: 0.6cqw 1cqw;
+  background: #f1efea;
+  font-size: 0.95cqw;
+  font-weight: 500;
+}
+
+.s-atelier .s-work {
+  padding: 4cqw 3cqw;
+  border-top: 0.08cqw solid #d9d5cc;
+}
+
+.s-atelier .s-work-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1cqw;
+  margin-bottom: 2.4cqw;
+  font-size: 3.2cqw;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.s-atelier .s-count {
+  font-size: 1.2cqw;
+  color: #77736b;
+  letter-spacing: 0;
+}
+
+.s-atelier .s-work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6cqw;
+}
+
+.s-atelier .s-work-item .s-photo {
+  aspect-ratio: 4 / 5;
+  height: auto;
+}
+
+.s-atelier .s-work-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.9cqw;
+  font-size: 1.1cqw;
+  font-weight: 500;
+}
+
+.s-atelier .s-work-meta span + span {
+  color: #77736b;
+}
+
+/* Glut roastery ----------------------------------------------------------- */
+
+.s-glut {
+  background: #ff5a1f;
+  color: #fff1e2;
+}
+
+.s-glut .s-logo {
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 2.6cqw;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.s-glut .s-links {
+  font-weight: 600;
+}
+
+.s-glut .s-cart {
+  padding: 0.7cqw 1.5cqw;
+  border-radius: 9cqw;
+  background: #fff1e2;
+  color: #2b1208;
+  font-size: 1cqw;
+  font-weight: 700;
+}
+
+.s-glut .s-hero {
+  position: relative;
+  height: 39.5cqw;
+  padding: 3.4cqw 3cqw 0;
+}
+
+.s-glut .s-title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 10.4cqw;
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.s-glut .s-sub {
+  max-width: 31cqw;
+  margin-top: 3cqw;
+  font-size: 1.35cqw;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.s-glut .s-actions {
+  display: flex;
+  gap: 1cqw;
+  margin-top: 2.4cqw;
+}
+
+.s-glut .s-btn {
+  padding: 1cqw 1.9cqw;
+  border-radius: 9cqw;
+  background: #fff1e2;
+  color: #2b1208;
+  font-size: 1.1cqw;
+  font-weight: 700;
+}
+
+.s-glut .s-btn-line {
+  background: transparent;
+  color: #fff1e2;
+  box-shadow: inset 0 0 0 0.15cqw #fff1e2;
+}
+
+.s-glut .s-disc {
+  position: absolute;
+  right: 5cqw;
+  top: 1.5cqw;
+  width: 36cqw;
+  height: 36cqw;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 0.9cqw #ff5a1f, 0 0 0 1.05cqw #fff1e2;
+}
+
+.s-glut .s-sticker {
+  position: absolute;
+  right: 35cqw;
+  top: 4cqw;
+  display: grid;
+  place-items: center;
+  width: 10cqw;
+  height: 10cqw;
+  border-radius: 50%;
+  background: #2b1208;
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 1.35cqw;
+  font-weight: 800;
+  line-height: 1.05;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-12deg);
+}
+
+.s-glut .s-band {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 4.5cqw;
+  background: #2b1208;
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 1.5cqw;
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Velo Nine --------------------------------------------------------------- */
+
+.s-velo {
+  background: #0d0e0c;
+  color: #fff;
+}
+
+.s-velo .s-hero {
+  position: relative;
+  height: 50cqw;
+}
+
+.s-velo .s-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.s-velo .s-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13, 14, 12, 0.94) 0%, rgba(13, 14, 12, 0.6) 46%, rgba(13, 14, 12, 0.08) 100%),
+    linear-gradient(0deg, rgba(13, 14, 12, 0.6), transparent 40%);
+}
+
+.s-velo .s-logo {
+  font-family: 'Anton', var(--font-sans);
+  font-size: 2.3cqw;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.s-velo .s-logo b,
+.s-velo .s-title b {
+  font-weight: inherit;
+  color: #d4ff3a;
+}
+
+.s-velo .s-links {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.s-velo .s-shop {
+  padding: 0.85cqw 1.7cqw;
+  border-radius: 0.3cqw;
+  background: #d4ff3a;
+  color: #0d0e0c;
+  font-size: 1cqw;
+  font-weight: 700;
+}
+
+.s-velo .s-copy {
+  position: absolute;
+  left: 3cqw;
+  bottom: 3.4cqw;
+  z-index: 1;
+}
+
+.s-velo .s-kicker {
+  font-size: 1cqw;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d4ff3a;
+}
+
+.s-velo .s-title {
+  margin-top: 1.2cqw;
+  font-family: 'Anton', var(--font-sans);
+  font-size: 12cqw;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.s-velo .s-row {
+  display: flex;
+  align-items: center;
+  gap: 2.4cqw;
+  margin-top: 2.6cqw;
+}
+
+.s-velo .s-cta {
+  padding: 1.1cqw 2cqw;
+  border-radius: 0.3cqw;
+  background: #d4ff3a;
+  color: #0d0e0c;
+  font-size: 1.15cqw;
+  font-weight: 700;
+}
+
+.s-velo .s-spec {
+  font-size: 1.15cqw;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.s-velo .s-dots {
+  position: absolute;
+  right: 3cqw;
+  bottom: 3.6cqw;
+  display: flex;
+  gap: 0.6cqw;
+}
+
+.s-velo .s-dots i {
+  width: 3cqw;
+  height: 0.25cqw;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.s-velo .s-dots i.is-on {
+  background: #d4ff3a;
+}
+
+.s-velo .s-more {
+  padding: 4.5cqw 3cqw;
+}
+
+.s-velo .s-more-title {
+  font-family: 'Anton', var(--font-sans);
+  font-size: 4.4cqw;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.s-velo .s-cards {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.6cqw;
+  margin-top: 2.6cqw;
+}
+
+.s-velo .s-card {
+  position: relative;
+  height: 26cqw;
+  border-radius: 0.5cqw;
+  overflow: hidden;
+}
+
+.s-velo .s-card-photo span {
+  position: absolute;
+  left: 1.6cqw;
+  bottom: 1.4cqw;
+  font-size: 1.3cqw;
+  font-weight: 700;
+}
+
+.s-velo .s-card-lime {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1cqw;
+  padding: 2.4cqw;
+  background: #d4ff3a;
+  color: #0d0e0c;
+  font-size: 1.3cqw;
+  font-weight: 500;
+}
+
+.s-velo .s-big {
+  font-family: 'Anton', var(--font-sans);
+  font-size: 3.6cqw;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Hafen & Co. ------------------------------------------------------ */
+
+.s-hafen {
+  background: #f4efe6;
+  color: #14213d;
+}
+
+.s-hafen .s-nav {
+  border-bottom: 0.08cqw solid rgba(20, 33, 61, 0.15);
+}
+
+.s-hafen .s-logo {
+  display: flex;
+  flex-direction: column;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.75cqw;
+  line-height: 1;
+}
+
+.s-hafen .s-logo small {
+  margin-top: 0.35cqw;
+  font-family: var(--font-sans);
+  font-size: 0.7cqw;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #b0904f;
+}
+
+.s-hafen .s-links {
+  font-weight: 500;
+}
+
+.s-hafen .s-btn {
+  padding: 0.95cqw 1.7cqw;
+  background: #14213d;
+  color: #f4efe6;
+  font-size: 1cqw;
+  font-weight: 600;
+}
+
+.s-hafen .s-hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  height: 44cqw;
+}
+
+.s-hafen .s-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4cqw 0 3cqw;
+}
+
+.s-hafen .s-kicker {
+  font-size: 0.95cqw;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b0904f;
+}
+
+.s-hafen .s-title {
+  margin-top: 1.6cqw;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 5.6cqw;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+.s-hafen .s-title em {
+  color: #b0904f;
+}
+
+.s-hafen .s-copy p {
+  max-width: 34cqw;
+  margin-top: 1.8cqw;
+  font-size: 1.25cqw;
+  line-height: 1.5;
+  color: #5b6172;
+}
+
+.s-hafen .s-stats {
+  display: flex;
+  gap: 3cqw;
+  margin-top: 3cqw;
+  padding-top: 2cqw;
+  border-top: 0.08cqw solid rgba(20, 33, 61, 0.18);
+  font-size: 0.95cqw;
+  color: #5b6172;
+}
+
+.s-hafen .s-stats span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3cqw;
+}
+
+.s-hafen .s-stats b {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 2.6cqw;
+  font-weight: 400;
+  color: #14213d;
+}
+
+.s-hafen .s-media {
+  position: relative;
+  background: #14213d;
+}
+
+.s-hafen .s-media .s-photo {
+  mix-blend-mode: luminosity;
+  opacity: 0.6;
+}
+
+.s-hafen .s-quote {
+  position: absolute;
+  left: -3cqw;
+  bottom: 3cqw;
+  width: 26cqw;
+  padding: 2cqw 2.2cqw;
+  background: #f4efe6;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.6cqw;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.s-hafen .s-quote small {
+  display: block;
+  margin-top: 1cqw;
+  font-family: var(--font-sans);
+  font-size: 0.85cqw;
+  font-style: normal;
+  color: #5b6172;
+}
+
+/* Maison Flora ------------------------------------------------------------ */
+
+.s-flora {
+  background: #f8dfe3;
+  color: #8f1d40;
+}
+
+.s-flora .s-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.s-flora .s-links {
+  font-weight: 500;
+}
+
+.s-flora .s-links-end {
+  justify-content: flex-end;
+}
+
+.s-flora .s-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.5cqw;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.s-flora .s-hero {
+  position: relative;
+  height: 44cqw;
+}
+
+.s-flora .s-title {
+  position: relative;
+  z-index: 1;
+  padding-top: 2.6cqw;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 6.4cqw;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.s-flora .s-arch {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 27cqw;
+  height: 29cqw;
+  border-radius: 13.5cqw 13.5cqw 0 0;
+  overflow: hidden;
+  transform: translateX(-50%);
+}
+
+.s-flora .s-note {
+  position: absolute;
+  left: 3cqw;
+  bottom: 3cqw;
+  font-size: 1.2cqw;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.s-flora .s-note span {
+  display: block;
+  margin-top: 1cqw;
+  font-weight: 700;
+  border-bottom: 0.1cqw solid currentColor;
+  width: max-content;
+}
+
+.s-flora .s-badge {
+  position: absolute;
+  right: 6cqw;
+  bottom: 6cqw;
+  display: grid;
+  place-items: center;
+  width: 11cqw;
+  height: 11cqw;
+  border-radius: 50%;
+  background: #8f1d40;
+  color: #f8dfe3;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.4cqw;
+  font-style: italic;
+  line-height: 1.15;
+  text-align: center;
+  transform: rotate(10deg);
+}
+
+/* Orbit analytics --------------------------------------------------------- */
+
+.s-orbit {
+  background: radial-gradient(60% 70% at 50% 0%, #e9e4ff 0%, rgba(233, 228, 255, 0) 70%),
+    radial-gradient(40% 50% at 90% 30%, #e1ecff 0%, rgba(225, 236, 255, 0) 70%), #ffffff;
+  color: #0f1020;
+}
+
+.s-orbit .s-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6cqw;
+  font-size: 1.7cqw;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.s-orbit .s-logo i {
+  width: 1.7cqw;
+  height: 1.7cqw;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 0.35cqw #5b3df5;
+  background: radial-gradient(circle, #5b3df5 22%, transparent 24%);
+}
+
+.s-orbit .s-links {
+  font-weight: 500;
+  color: #4b4e63;
+}
+
+.s-orbit .s-auth {
+  display: flex;
+  align-items: center;
+  gap: 1.6cqw;
+  font-size: 1.05cqw;
+  font-weight: 500;
+}
+
+.s-orbit .s-btn {
+  padding: 0.9cqw 1.6cqw;
+  border-radius: 0.6cqw;
+  background: #5b3df5;
+  color: #fff;
+  font-size: 1.05cqw;
+  font-weight: 600;
+}
+
+.s-orbit .s-btn-ghost {
+  background: #fff;
+  color: #0f1020;
+  box-shadow: inset 0 0 0 0.1cqw #d9dbe7;
+}
+
+.s-orbit .s-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3.4cqw;
+  text-align: center;
+}
+
+.s-orbit .s-pill {
+  padding: 0.55cqw 1.2cqw;
+  border-radius: 9cqw;
+  background: #efeaff;
+  color: #4a2ee0;
+  font-size: 0.95cqw;
+  font-weight: 600;
+}
+
+.s-orbit .s-title {
+  margin-top: 1.8cqw;
+  font-size: 4.8cqw;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.s-orbit .s-hero p {
+  max-width: 40cqw;
+  margin-top: 1.6cqw;
+  font-size: 1.3cqw;
+  line-height: 1.45;
+  color: #5d6075;
+}
+
+.s-orbit .s-actions {
+  display: flex;
+  gap: 1cqw;
+  margin-top: 2.2cqw;
+}
+
+.s-orbit .s-dash {
+  display: flex;
+  width: 76cqw;
+  height: 30cqw;
+  margin-top: 3.4cqw;
+  border-radius: 1cqw;
+  background: #fff;
+  box-shadow: 0 0 0 0.08cqw rgba(15, 16, 32, 0.08), 0 2cqw 5cqw rgba(48, 32, 140, 0.16);
+  overflow: hidden;
+  text-align: left;
+}
+
+.s-orbit .s-dash-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2cqw;
+  padding: 2cqw 1.4cqw;
+  border-right: 0.08cqw solid #eceef5;
+}
+
+.s-orbit .s-dash-side i {
+  width: 1.6cqw;
+  height: 1.6cqw;
+  border-radius: 0.4cqw;
+  background: #eceef5;
+}
+
+.s-orbit .s-dash-side i.is-on {
+  background: #5b3df5;
+}
+
+.s-orbit .s-dash-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2cqw;
+}
+
+.s-orbit .s-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2cqw;
+}
+
+.s-orbit .s-kpis span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4cqw;
+  padding: 1.2cqw 1.4cqw;
+  border-radius: 0.6cqw;
+  background: #f6f7fb;
+  font-size: 0.9cqw;
+  color: #6b6e82;
+}
+
+.s-orbit .s-kpis b {
+  font-size: 2cqw;
+  letter-spacing: -0.04em;
+  color: #0f1020;
+}
+
+.s-orbit .s-kpis em {
+  font-style: normal;
+  font-weight: 600;
+  color: #12a26b;
+}
+
+.s-orbit .s-chart {
+  flex: 1;
+  width: 100%;
+  margin-top: 1.4cqw;
+}
+
+/* Café Linde — A: Nordic -------------------------------------------------- */
+
+.s-linde-a {
+  background: #f5f2ec;
+  color: #1e2620;
+  font-family: var(--font-tight);
+}
+
+.s-linde-a .s-logo {
+  font-size: 1.7cqw;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.s-linde-a .s-links {
+  font-weight: 500;
+}
+
+.s-linde-a .s-btn {
+  padding: 0.9cqw 1.7cqw;
+  border-radius: 9cqw;
+  background: #5d6f5f;
+  color: #f5f2ec;
+  font-size: 1.05cqw;
+  font-weight: 700;
+}
+
+.s-linde-a .s-btn-line {
+  background: transparent;
+  color: #1e2620;
+  box-shadow: inset 0 0 0 0.1cqw #1e2620;
+}
+
+.s-linde-a .s-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3cqw;
+  height: 44cqw;
+  padding: 0 3cqw 3cqw;
+}
+
+.s-linde-a .s-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.s-linde-a .s-open {
+  display: flex;
+  align-items: center;
+  gap: 0.7cqw;
+  font-size: 1cqw;
+  font-weight: 500;
+  color: #5d6f5f;
+}
+
+.s-linde-a .s-open i {
+  width: 0.7cqw;
+  height: 0.7cqw;
+  border-radius: 50%;
+  background: #4f9a5c;
+}
+
+.s-linde-a .s-title {
+  margin-top: 1.6cqw;
+  font-size: 5.8cqw;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.s-linde-a .s-copy p {
+  max-width: 32cqw;
+  margin-top: 1.8cqw;
+  font-size: 1.25cqw;
+  line-height: 1.5;
+  color: #59625b;
+}
+
+.s-linde-a .s-actions {
+  display: flex;
+  align-items: center;
+  gap: 2cqw;
+  margin-top: 2.4cqw;
+}
+
+.s-linde-a .s-link {
+  font-size: 1.1cqw;
+  font-weight: 700;
+}
+
+.s-linde-a .s-media {
+  border-radius: 1.4cqw;
+  overflow: hidden;
+}
+
+.s-linde-a .s-menu,
+.s-linde-b .s-menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6cqw;
+  padding: 0 3cqw 4cqw;
+}
+
+.s-linde-a .s-menu span {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.6cqw 1.8cqw;
+  border-radius: 1cqw;
+  background: #ebe6dc;
+  font-size: 1.25cqw;
+  font-weight: 500;
+}
+
+/* Café Linde — B: Bistro -------------------------------------------------- */
+
+.s-linde-b {
+  background: #14110e;
+  color: #efe5d4;
+}
+
+.s-linde-b .s-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  border-bottom: 0.08cqw solid rgba(239, 229, 212, 0.14);
+}
+
+.s-linde-b .s-links {
+  font-weight: 500;
+  color: rgba(239, 229, 212, 0.75);
+}
+
+.s-linde-b .s-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 2.1cqw;
+  line-height: 1;
+}
+
+.s-linde-b .s-logo small {
+  margin-top: 0.3cqw;
+  font-family: var(--font-sans);
+  font-size: 0.7cqw;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c8a267;
+}
+
+.s-linde-b .s-btn {
+  justify-self: end;
+  padding: 0.95cqw 1.8cqw;
+  background: #c8a267;
+  color: #14110e;
+  font-size: 1.05cqw;
+  font-weight: 700;
+}
+
+.s-linde-b .s-btn-line {
+  background: transparent;
+  color: #c8a267;
+  box-shadow: inset 0 0 0 0.1cqw #c8a267;
+}
+
+.s-linde-b .s-hero {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  height: 44cqw;
+}
+
+.s-linde-b .s-media .s-photo {
+  filter: saturate(0.85) contrast(1.05);
+}
+
+.s-linde-b .s-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 4cqw;
+}
+
+.s-linde-b .s-kicker {
+  font-size: 0.9cqw;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #c8a267;
+}
+
+.s-linde-b .s-title {
+  margin-top: 1.8cqw;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 5.3cqw;
+  line-height: 1.02;
+}
+
+.s-linde-b .s-title em {
+  color: #c8a267;
+}
+
+.s-linde-b .s-copy p {
+  max-width: 36cqw;
+  margin: 1.8cqw 0 2.6cqw;
+  font-size: 1.25cqw;
+  line-height: 1.55;
+  color: #a99d8b;
+}
+
+.s-linde-b .s-menu {
+  padding-top: 4cqw;
+}
+
+.s-linde-b .s-menu span {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8cqw;
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.5cqw;
+}
+
+.s-linde-b .s-menu i {
+  flex: 1;
+  border-bottom: 0.12cqw dotted rgba(239, 229, 212, 0.35);
+}
+
+.s-linde-b .s-menu b {
+  font-weight: 400;
+  color: #c8a267;
+}
+
+/* Café Linde — C: Pop ----------------------------------------------------- */
+
+.s-linde-c {
+  background: #ffd23f;
+  color: #1a1a1a;
+}
+
+.s-linde-c .s-logo {
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 2.5cqw;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.s-linde-c .s-links {
+  font-weight: 700;
+}
+
+.s-linde-c .s-btn {
+  padding: 0.9cqw 1.7cqw;
+  border-radius: 9cqw;
+  background: #e5285e;
+  color: #fff8e6;
+  font-size: 1.05cqw;
+  font-weight: 700;
+  box-shadow: 0.25cqw 0.25cqw 0 #1a1a1a;
+}
+
+.s-linde-c .s-hero {
+  position: relative;
+  height: 39.5cqw;
+  padding: 2.2cqw 3cqw 0;
+}
+
+.s-linde-c .s-title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 9cqw;
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+
+.s-linde-c .s-hero p {
+  max-width: 28cqw;
+  margin-top: 2cqw;
+  font-size: 1.35cqw;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.s-linde-c .s-tile {
+  position: absolute;
+  right: 7cqw;
+  top: 2.4cqw;
+  width: 33cqw;
+  height: 31cqw;
+  border-radius: 2cqw;
+  border: 0.45cqw solid #1a1a1a;
+  box-shadow: 1cqw 1cqw 0 #1a1a1a;
+  overflow: hidden;
+  transform: rotate(4deg);
+}
+
+.s-linde-c .s-sticker {
+  position: absolute;
+  right: 36cqw;
+  bottom: 5cqw;
+  display: grid;
+  place-items: center;
+  width: 10cqw;
+  height: 10cqw;
+  border-radius: 50%;
+  background: #e5285e;
+  color: #fff8e6;
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 1.7cqw;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-12deg);
+}
+
+.s-linde-c .s-band {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 4.5cqw;
+  background: #e5285e;
+  color: #fff8e6;
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 1.6cqw;
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.s-linde-c .s-bowls {
+  padding: 4cqw 3cqw;
+}
+
+.s-linde-c .s-bowls-title {
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 4cqw;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.s-linde-c .s-bowls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6cqw;
+  margin-top: 2cqw;
+}
+
+.s-linde-c .s-bowls-grid span {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.4cqw;
+  height: 15cqw;
+  padding: 1.8cqw;
+  border: 0.35cqw solid #1a1a1a;
+  border-radius: 1.6cqw;
+  background: #fff8e6;
+  font-size: 1.3cqw;
+  font-weight: 600;
+  box-shadow: 0.6cqw 0.6cqw 0 #1a1a1a;
+}
+
+.s-linde-c .s-bowls-grid span:first-child {
+  background: #e5285e;
+  color: #fff8e6;
+}
+
+.s-linde-c .s-bowls-grid span:last-child {
+  background: #1a1a1a;
+  color: #ffd23f;
+}
+
+.s-linde-c .s-bowls-grid b {
+  font-family: 'Bricolage Grotesque', var(--font-sans);
+  font-size: 2.4cqw;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}

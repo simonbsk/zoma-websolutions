@@ -34,7 +34,7 @@ export function LoginPage() {
     e.preventDefault();
     setError(null);
     if (!email.trim() || !password) {
-      setError('Please enter your email and password.');
+      setError('Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.');
       return;
     }
     setSubmitting(true);
@@ -54,13 +54,13 @@ export function LoginPage() {
         <div className="auth-brand">
           <BrandMark size={40} />
         </div>
-        <h1 className="auth-title">Studio dashboard</h1>
-        <p className="auth-sub">Sign in with your administrator account.</p>
+        <h1 className="auth-title">Studio-Dashboard</h1>
+        <p className="auth-sub">Melden Sie sich mit Ihrem Administratorkonto an.</p>
 
         <form className="auth-form" onSubmit={onSubmit} noValidate>
           {error ? <Alert tone="error">{error}</Alert> : null}
           <TextField
-            label="Email"
+            label="E-Mail"
             type="email"
             autoComplete="username"
             value={email}
@@ -69,7 +69,7 @@ export function LoginPage() {
             required
           />
           <TextField
-            label="Password"
+            label="Passwort"
             type="password"
             autoComplete="current-password"
             value={password}
@@ -77,16 +77,16 @@ export function LoginPage() {
             required
           />
           <Button type="submit" variant="dark" size="lg" block loading={submitting}>
-            {submitting ? 'Signing in…' : 'Sign in'}
+            {submitting ? 'Anmeldung läuft…' : 'Anmelden'}
           </Button>
         </form>
 
         <p className="auth-foot">
-          <Lock size={13} /> Access restricted to authorised staff.
+          <Lock size={13} /> Zugang nur für autorisierte Mitarbeitende.
         </p>
       </div>
       <Link to="/" className="auth-back">
-        <ArrowLeft size={15} /> Back to website
+        <ArrowLeft size={15} /> Zurück zur Website
       </Link>
     </div>
   );

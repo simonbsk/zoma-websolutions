@@ -36,20 +36,20 @@ export function OverviewPage() {
   const { user } = useAuth();
   const { data, error, loading } = useAsync(loadOverview, []);
   const hour = new Date().getHours();
-  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+  const greeting = hour < 12 ? 'Guten Morgen' : hour < 18 ? 'Guten Tag' : 'Guten Abend';
 
   const stats = [
-    { label: 'Today', value: data?.todayCount, icon: CalendarDays, hint: 'Active appointments' },
-    { label: 'Next 7 days', value: data?.weekCount, icon: CalendarClock, hint: 'Including today' },
-    { label: 'Awaiting review', value: data?.pendingCount, icon: Hourglass, hint: 'Pending requests', accent: true },
-    { label: 'Confirmed this month', value: data?.monthConfirmed, icon: CalendarCheck2, hint: safeFormat(new Date(), 'MMMM yyyy') },
+    { label: 'Heute', value: data?.todayCount, icon: CalendarDays, hint: 'Aktive Termine' },
+    { label: 'Nächste 7 Tage', value: data?.weekCount, icon: CalendarClock, hint: 'Inklusive heute' },
+    { label: 'Zu prüfen', value: data?.pendingCount, icon: Hourglass, hint: 'Offene Anfragen', accent: true },
+    { label: 'Bestätigt diesen Monat', value: data?.monthConfirmed, icon: CalendarCheck2, hint: safeFormat(new Date(), 'MMMM yyyy') },
   ];
 
   return (
     <>
       <PageHeader
         title={`${greeting}.`}
-        description={`Signed in as ${user?.email ?? ''}. Here's what's coming up.`}
+        description={`Angemeldet als ${user?.email ?? ''}. Das steht als Nächstes an.`}
       />
 
       {error ? <Alert tone="error">{error}</Alert> : null}
@@ -74,11 +74,11 @@ export function OverviewPage() {
       <section className="panel">
         <div className="panel-header">
           <div>
-            <h2>Upcoming appointments</h2>
-            <p>The next 30 days, pending and confirmed.</p>
+            <h2>Anstehende Termine</h2>
+            <p>Die nächsten 30 Tage, offen und bestätigt.</p>
           </div>
           <Link to="/admin/appointments" className="btn btn-ghost btn-sm">
-            View all <ArrowRight size={14} />
+            Alle ansehen <ArrowRight size={14} />
           </Link>
         </div>
 
@@ -99,8 +99,8 @@ export function OverviewPage() {
                 <div className="upcoming-main">
                   <strong>{a.full_name}</strong>
                   <span>
-                    {a.services?.name ?? 'Service removed'} · {formatDbDate(a.appointment_date, 'EEEE')}{' '}
-                    {formatDbTime(a.start_time)}–{formatDbTime(a.end_time)}
+                    {a.services?.name ?? 'Leistung entfernt'} · {formatDbDate(a.appointment_date, 'EEEE')}{' '}
+                    {formatDbTime(a.start_time)}–{formatDbTime(a.end_time)} Uhr
                   </span>
                 </div>
                 <StatusBadge status={a.status} />
@@ -108,8 +108,8 @@ export function OverviewPage() {
             ))}
           </ul>
         ) : (
-          <EmptyState icon={<Inbox size={20} />} title="No upcoming appointments">
-            New booking requests from the website will appear here.
+          <EmptyState icon={<Inbox size={20} />} title="Keine anstehenden Termine">
+            Neue Buchungsanfragen von der Website erscheinen hier.
           </EmptyState>
         )}
       </section>

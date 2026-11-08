@@ -2,7 +2,7 @@ import { useEffect, type ReactNode } from 'react';
 import { AlertCircle, CheckCircle2, Info, X } from 'lucide-react';
 import type { AppointmentStatus } from '../../lib/types';
 
-export function Spinner({ label = 'Loading' }: { label?: string }) {
+export function Spinner({ label = 'Wird geladen' }: { label?: string }) {
   return (
     <span role="status" aria-label={label}>
       <span className="spinner" />
@@ -39,10 +39,10 @@ export function Toggle({
 }
 
 const STATUS_LABEL: Record<AppointmentStatus, string> = {
-  pending: 'Pending',
-  confirmed: 'Confirmed',
-  completed: 'Completed',
-  cancelled: 'Cancelled',
+  pending: 'Ausstehend',
+  confirmed: 'Bestätigt',
+  completed: 'Abgeschlossen',
+  cancelled: 'Storniert',
 };
 
 export function StatusBadge({ status }: { status: AppointmentStatus }) {
@@ -100,7 +100,7 @@ export function Modal({
       <div className="modal" role="dialog" aria-modal="true" aria-label={title}>
         <div className="modal-head">
           <h2>{title}</h2>
-          <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={onClose} aria-label="Close">
+          <button type="button" className="btn btn-subtle btn-sm btn-icon" onClick={onClose} aria-label="Schließen">
             <X size={18} />
           </button>
         </div>

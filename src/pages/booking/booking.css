@@ -1,24 +1,32 @@
 .booking {
-  padding: 48px 0 120px;
-  min-height: calc(100vh - 76px);
+  /* Clears the fixed navigation. */
+  padding: 140px 0 120px;
+  min-height: 100vh;
 }
 
 .booking-header {
-  max-width: 640px;
-  margin-bottom: 36px;
+  max-width: 680px;
+  margin-bottom: 40px;
 }
 
 .booking-header h1 {
-  margin-top: 14px;
-  font-size: clamp(30px, 3.6vw, 40px);
-  font-weight: 500;
-  letter-spacing: -0.025em;
+  margin-top: 16px;
+  font-size: clamp(36px, 4.4vw, 56px);
+  line-height: 1;
 }
 
 .booking-header p {
-  margin-top: 10px;
+  margin-top: 16px;
   color: var(--slate);
-  font-size: 16.5px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 720px) {
+  .booking {
+    padding-top: 104px;
+  }
 }
 
 /* Stepper ------------------------------------------------------------------ */
@@ -31,8 +39,8 @@
   padding: 6px;
   list-style: none;
   background: var(--surface);
-  border-radius: 18px;
-  box-shadow: var(--shadow-hairline);
+  border-radius: var(--r-elevated);
+  box-shadow: none;
 }
 
 .step button {
@@ -42,7 +50,7 @@
   width: 100%;
   padding: 10px 14px;
   border: 0;
-  border-radius: 13px;
+  border-radius: var(--r-card);
   background: transparent;
   text-align: left;
   transition: background-color 0.18s var(--ease);
@@ -57,7 +65,7 @@
 }
 
 .step.is-current button {
-  background: var(--teal-50);
+  background: var(--accent-50);
 }
 
 .step-index {
@@ -76,14 +84,14 @@
 }
 
 .step.is-current .step-index {
-  background: var(--teal-800);
+  background: var(--accent-800);
   color: #fff;
-  box-shadow: 0 0 0 4px var(--teal-100);
+  box-shadow: 0 0 0 4px var(--accent-100);
 }
 
 .step.is-done .step-index {
-  background: var(--teal-100);
-  color: var(--teal-800);
+  background: var(--accent-100);
+  color: var(--accent-800);
   box-shadow: none;
 }
 
@@ -95,7 +103,7 @@
 
 .step-text strong {
   font-size: 14.5px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--ink);
 }
 
@@ -144,7 +152,7 @@
 
 .booking-side {
   position: sticky;
-  top: 100px;
+  top: 110px;
 }
 
 .booking-panel {
@@ -154,16 +162,16 @@
   padding: 32px;
   background: var(--surface);
   border-radius: var(--r-card);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
   border: 0;
   margin: 0;
   min-width: 0;
 }
 
 .panel-head h2 {
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
 }
 
 .panel-head p {
@@ -211,7 +219,7 @@
 @media (max-width: 560px) {
   .booking-panel {
     padding: 22px 18px;
-    border-radius: 20px;
+    border-radius: var(--r-elevated);
   }
   .panel-head-row {
     flex-direction: column;
@@ -235,7 +243,7 @@
   flex-direction: column;
   padding: 0;
   border: 1px solid var(--hairline);
-  border-radius: 18px;
+  border-radius: var(--r-elevated);
   background: var(--surface);
   text-align: left;
   overflow: hidden;
@@ -249,8 +257,8 @@
 }
 
 .service-option.is-selected {
-  border-color: var(--teal-600);
-  box-shadow: 0 0 0 3px var(--teal-100);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
 }
 
 .service-option-visual {
@@ -268,8 +276,8 @@
 
 .service-option-body strong {
   font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .service-option-body p {
@@ -299,7 +307,7 @@
 
 .service-option-price {
   font-weight: 500;
-  color: var(--teal-800);
+  color: var(--accent-800);
 }
 
 .service-option-check {
@@ -311,7 +319,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--teal-800);
+  background: var(--accent-800);
   color: #fff;
   opacity: 0;
   transform: scale(0.7);
@@ -339,7 +347,7 @@
 
 .calendar {
   padding: 20px;
-  border-radius: 18px;
+  border-radius: var(--r-elevated);
   border: 1px solid var(--hairline);
   background: var(--canvas);
 }
@@ -357,7 +365,7 @@
 
 .calendar-head h3 {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .calendar-nav {
@@ -388,7 +396,7 @@
   display: grid;
   place-items: center;
   border: 0;
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   background: transparent;
   font-size: 14px;
   font-variant-numeric: tabular-nums;
@@ -419,21 +427,21 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--teal-400);
+  background: var(--accent-400);
 }
 
 .calendar-day.is-available:hover {
-  box-shadow: inset 0 0 0 1px var(--teal-600);
+  box-shadow: inset 0 0 0 1px var(--accent-600);
 }
 
 .calendar-day.is-today:not(.is-selected) {
-  color: var(--teal-800);
+  color: var(--accent-800);
 }
 
 .calendar-day.is-selected {
-  background: var(--teal-800);
+  background: var(--accent-800);
   color: #fff;
-  box-shadow: 0 6px 16px -6px rgba(31, 78, 74, 0.6);
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.28);
 }
 
 .calendar-day.is-selected::after {
@@ -468,7 +476,7 @@
 }
 
 .dot-selected {
-  background: var(--teal-800);
+  background: var(--accent-800);
 }
 
 .slots {
@@ -489,7 +497,7 @@
 
 .slots-head h3 {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .slots-head span {
@@ -506,7 +514,7 @@
   flex: 1;
   min-height: 200px;
   padding: 24px;
-  border-radius: 16px;
+  border-radius: var(--r-elevated);
   border: 1px dashed var(--hairline-strong);
   color: var(--slate);
   text-align: center;
@@ -525,7 +533,7 @@
 
 .slots-skeleton span {
   height: 42px;
-  border-radius: var(--r-pill);
+  border-radius: var(--r-sm);
 }
 
 .slot-groups {
@@ -555,7 +563,7 @@
 
 .slot {
   height: 42px;
-  border-radius: var(--r-pill);
+  border-radius: var(--r-sm);
   border: 1px solid var(--hairline-strong);
   background: var(--surface);
   font-size: 14.5px;
@@ -566,16 +574,16 @@
 }
 
 .slot:hover {
-  border-color: var(--teal-600);
-  color: var(--teal-800);
-  background: var(--teal-50);
+  border-color: var(--accent-600);
+  color: var(--accent-800);
+  background: var(--accent-50);
 }
 
 .slot.is-selected {
-  background: var(--teal-800);
-  border-color: var(--teal-800);
+  background: var(--accent-800);
+  border-color: var(--accent-800);
   color: #fff;
-  box-shadow: 0 6px 16px -6px rgba(31, 78, 74, 0.6);
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.28);
 }
 
 @media (max-width: 860px) {
@@ -592,7 +600,7 @@
     padding: 14px;
   }
   .calendar-day {
-    border-radius: 10px;
+    border-radius: var(--r-sm);
     font-size: 13.5px;
   }
 }
@@ -633,7 +641,7 @@
 }
 
 .privacy-line svg {
-  color: var(--teal-600);
+  color: var(--accent-600);
   flex: none;
 }
 
@@ -643,7 +651,7 @@
   padding: 24px;
   border-radius: var(--r-card);
   background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
 }
 
 .summary-head {
@@ -656,17 +664,17 @@
 
 .summary-kicker {
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .summary-duration {
   font-size: 12.5px;
   font-weight: 500;
   padding: 3px 10px;
-  border-radius: var(--r-pill);
-  background: var(--teal-50);
-  color: var(--teal-800);
+  border-radius: var(--r-xs);
+  background: var(--accent-50);
+  color: var(--accent-800);
 }
 
 .summary-list {
@@ -692,7 +700,7 @@
 }
 
 .summary-list > div.is-set dt svg {
-  color: var(--teal-600);
+  color: var(--accent-600);
 }
 
 .summary-list dt svg {
@@ -732,7 +740,7 @@
     flex-direction: column;
     gap: 2px;
     padding: 12px 18px;
-    border-radius: 16px;
+    border-radius: var(--r-elevated);
     background: var(--ink);
     color: #fff;
     box-shadow: var(--shadow-lg);
@@ -769,7 +777,7 @@
   align-items: center;
   text-align: center;
   padding: 48px 32px 32px;
-  background: linear-gradient(180deg, var(--teal-50), var(--surface));
+  background: linear-gradient(180deg, var(--accent-50), var(--surface));
 }
 
 .success-badge {
@@ -779,9 +787,9 @@
   height: 64px;
   margin-bottom: 20px;
   border-radius: 50%;
-  background: var(--teal-800);
+  background: var(--accent-800);
   color: #fff;
-  box-shadow: 0 0 0 8px var(--teal-100);
+  box-shadow: 0 0 0 8px var(--accent-100);
   animation: pop 0.5s var(--ease);
 }
 
@@ -794,9 +802,9 @@
 
 .success-hero h1 {
   margin-top: 12px;
-  font-size: clamp(28px, 3.4vw, 36px);
-  font-weight: 500;
-  letter-spacing: -0.025em;
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
 }
 
 .success-hero p {
@@ -813,7 +821,7 @@
 .success-summary {
   margin: 0 32px;
   border: 1px solid var(--hairline);
-  border-radius: 18px;
+  border-radius: var(--r-elevated);
   overflow: hidden;
 }
 
@@ -895,9 +903,9 @@
 }
 
 .next-steps h2 {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   margin-bottom: 18px;
 }
 
@@ -921,9 +929,9 @@
   place-items: center;
   width: 38px;
   height: 38px;
-  border-radius: 11px;
+  border-radius: var(--r-card);
   background: var(--surface);
-  color: var(--teal-800);
+  color: var(--accent-800);
   box-shadow: var(--shadow-hairline);
 }
 

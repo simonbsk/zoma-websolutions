@@ -12,7 +12,7 @@ export const DEFAULT_RULES = {
 
 export async function getSettings(): Promise<WebdesignSettings | null> {
   const result = await supabase.from('webdesign_settings').select('*').limit(1).maybeSingle();
-  return unwrap(result, 'Could not load settings.');
+  return unwrap(result, 'Einstellungen konnten nicht geladen werden.');
 }
 
 /** Upsert the single settings row. */
@@ -20,8 +20,8 @@ export async function saveSettings(id: string | null, input: SettingsInput): Pro
   if (id) {
     return unwrap(
       await supabase.from('webdesign_settings').update(input).eq('id', id).select().single(),
-      'Could not save settings.',
+      'Einstellungen konnten nicht gespeichert werden.',
     );
   }
-  return unwrap(await supabase.from('webdesign_settings').insert(input).select().single(), 'Could not save settings.');
+  return unwrap(await supabase.from('webdesign_settings').insert(input).select().single(), 'Einstellungen konnten nicht gespeichert werden.');
 }

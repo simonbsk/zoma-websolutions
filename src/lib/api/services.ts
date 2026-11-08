@@ -17,23 +17,23 @@ export async function listActiveServices(): Promise<Service[]> {
     .eq('is_active', true)
     .order(ORDER.sort)
     .order(ORDER.name);
-  return unwrap(result, 'Could not load services.') ?? [];
+  return unwrap(result, 'Leistungen konnten nicht geladen werden.') ?? [];
 }
 
 /** All services (admin only — RLS returns inactive rows to admins). */
 export async function listAllServices(): Promise<Service[]> {
   const result = await supabase.from('services').select('*').order(ORDER.sort).order(ORDER.name);
-  return unwrap(result, 'Could not load services.') ?? [];
+  return unwrap(result, 'Leistungen konnten nicht geladen werden.') ?? [];
 }
 
 export async function createService(input: ServiceInput): Promise<Service> {
-  return unwrap(await supabase.from('services').insert(input).select().single(), 'Could not create service.');
+  return unwrap(await supabase.from('services').insert(input).select().single(), 'Leistung konnte nicht angelegt werden.');
 }
 
 export async function updateService(id: string, input: Partial<ServiceInput>): Promise<Service> {
   return unwrap(
     await supabase.from('services').update(input).eq('id', id).select().single(),
-    'Could not update service.',
+    'Leistung konnte nicht aktualisiert werden.',
   );
 }
 
@@ -42,7 +42,7 @@ export async function deleteService(id: string): Promise<void> {
   if (error) {
     // FK violation: the service has appointments.
     if (error.code === '23503') {
-      throw new Error('This service has appointments. Deactivate it instead of deleting it.');
+      throw new Error('Für diese Leistung gibt es Termine. Deaktivieren Sie sie, statt sie zu löschen.');
     }
     unwrap({ data: null, error });
   }

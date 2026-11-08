@@ -11,6 +11,12 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
+    "@fontsource/anton": "^5.3.0",
+    "@fontsource/bricolage-grotesque": "^5.3.0",
+    "@fontsource/dm-serif-display": "^5.3.0",
+    "@fontsource/fraunces": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/inter-tight": "^5.3.0",
     "@supabase/supabase-js": "^2.45.4",
     "date-fns": "^3.6.0",
     "lucide-react": "^0.453.0",
@@ -23,7 +29,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "typescript": "~5.6.3",
-    "vite": "^5.4.10",
+    "vite": "^6.0.0",
     "vitest": "^2.1.4"
   }
 }
